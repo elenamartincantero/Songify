@@ -31,41 +31,45 @@ Partial Class frmLogin
         'ofdDB
         '
         Me.ofdDB.FileName = "OpenFileDialog1"
-        Me.ofdDB.Filter = """MS Database .accdb | *.accdb"""
         '
         'LoginBox
         '
-        Me.LoginBox.Location = New System.Drawing.Point(44, 112)
+        Me.LoginBox.Location = New System.Drawing.Point(51, 119)
+        Me.LoginBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LoginBox.Name = "LoginBox"
-        Me.LoginBox.Size = New System.Drawing.Size(284, 23)
+        Me.LoginBox.Size = New System.Drawing.Size(324, 22)
         Me.LoginBox.TabIndex = 0
         '
         'DatabaseButton
         '
-        Me.DatabaseButton.Location = New System.Drawing.Point(44, 167)
+        Me.DatabaseButton.Location = New System.Drawing.Point(51, 178)
+        Me.DatabaseButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DatabaseButton.Name = "DatabaseButton"
-        Me.DatabaseButton.Size = New System.Drawing.Size(101, 49)
+        Me.DatabaseButton.Size = New System.Drawing.Size(116, 52)
         Me.DatabaseButton.TabIndex = 1
         Me.DatabaseButton.Text = "Choose Database"
         Me.DatabaseButton.UseVisualStyleBackColor = True
         '
         'LoginButton
         '
-        Me.LoginButton.Location = New System.Drawing.Point(228, 167)
+        Me.LoginButton.Enabled = False
+        Me.LoginButton.Location = New System.Drawing.Point(260, 178)
+        Me.LoginButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LoginButton.Name = "LoginButton"
-        Me.LoginButton.Size = New System.Drawing.Size(100, 46)
+        Me.LoginButton.Size = New System.Drawing.Size(115, 49)
         Me.LoginButton.TabIndex = 2
         Me.LoginButton.Text = "Log in"
         Me.LoginButton.UseVisualStyleBackColor = True
         '
         'frmLogin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(915, 480)
         Me.Controls.Add(Me.LoginButton)
         Me.Controls.Add(Me.DatabaseButton)
         Me.Controls.Add(Me.LoginBox)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmLogin"
         Me.Text = "frmLogin"
         Me.ResumeLayout(False)
