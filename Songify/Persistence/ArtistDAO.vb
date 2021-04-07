@@ -1,24 +1,32 @@
 ﻿Public Class ArtistDAO
-    Private Property artist As Artist
+    Private Property artists As Collection
+    Private Property artistsSortedCol As Collection
     Public Sub readAll()
 
     End Sub
-    Public Sub read()
+    Public Sub read(ByRef a As Artist)
 
     End Sub
-    Public Sub insert()
+    Public Sub insert(a As Artist)
 
     End Sub
-    Public Sub update()
+    Public Sub update(a As Artist)
 
     End Sub
-    Public Sub delete()
+    Public Sub delete(a As Artist)
 
     End Sub
-    Public Sub fav()
+    Public Sub readMyAlbums(ByRef a As Artist)
 
     End Sub
-    Public Sub not_fav()
+    Public Sub fav(us As User, a As Artist)
+
+    End Sub
+    Public Sub not_fav(us As User, a As Artist)
+
+    End Sub
+
+    Public Sub artistsSorted(ar As Artist)
 
     End Sub
 End Class
