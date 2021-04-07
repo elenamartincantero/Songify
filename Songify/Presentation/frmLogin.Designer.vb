@@ -31,38 +31,38 @@ Partial Class frmLogin
         'ofdDB
         '
         Me.ofdDB.FileName = "OpenFileDialog1"
-        Me.ofdDB.Filter = """MS Database .accdb | *.accdb"""
         '
         'LoginBox
         '
-        Me.LoginBox.Location = New System.Drawing.Point(44, 112)
+        Me.LoginBox.Location = New System.Drawing.Point(38, 97)
         Me.LoginBox.Name = "LoginBox"
-        Me.LoginBox.Size = New System.Drawing.Size(284, 23)
+        Me.LoginBox.Size = New System.Drawing.Size(244, 20)
         Me.LoginBox.TabIndex = 0
         '
         'DatabaseButton
         '
-        Me.DatabaseButton.Location = New System.Drawing.Point(44, 167)
+        Me.DatabaseButton.Location = New System.Drawing.Point(38, 145)
         Me.DatabaseButton.Name = "DatabaseButton"
-        Me.DatabaseButton.Size = New System.Drawing.Size(101, 49)
+        Me.DatabaseButton.Size = New System.Drawing.Size(87, 42)
         Me.DatabaseButton.TabIndex = 1
         Me.DatabaseButton.Text = "Choose Database"
         Me.DatabaseButton.UseVisualStyleBackColor = True
         '
         'LoginButton
         '
-        Me.LoginButton.Location = New System.Drawing.Point(228, 167)
+        Me.LoginButton.Enabled = False
+        Me.LoginButton.Location = New System.Drawing.Point(195, 145)
         Me.LoginButton.Name = "LoginButton"
-        Me.LoginButton.Size = New System.Drawing.Size(100, 46)
+        Me.LoginButton.Size = New System.Drawing.Size(86, 40)
         Me.LoginButton.TabIndex = 2
         Me.LoginButton.Text = "Log in"
         Me.LoginButton.UseVisualStyleBackColor = True
         '
         'frmLogin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(686, 390)
         Me.Controls.Add(Me.LoginButton)
         Me.Controls.Add(Me.DatabaseButton)
         Me.Controls.Add(Me.LoginBox)

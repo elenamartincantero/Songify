@@ -1,24 +1,24 @@
 ﻿Public Class SongDAO
-    Private Property song As Song
-    Public Sub readAll()
+    Private Property songs As Collection
+    Public Sub readAll(album As String)
 
     End Sub
-    Public Sub read()
+    Public Sub read(ByRef s As Song)
 
     End Sub
-    Public Sub insert()
+    Public Sub insert(ByVal s As Song)
 
     End Sub
-    Public Sub update()
+    Public Sub update(ByVal s As Song)
 
     End Sub
-    Public Sub delete()
+    Public Sub delete(ByVal s As Song)
 
     End Sub
-    Public Sub convertLength()
+    Public Sub convertLength(ByRef s As Song)
 
     End Sub
-    Public Sub play()
+    Public Sub play(us As User, ByVal s As Song)
 
     End Sub
 End Class
