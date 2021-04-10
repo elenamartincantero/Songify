@@ -15,12 +15,13 @@
         Me.releaseDate = releaseDate
         Me.artist = New Artist(artist)
         Me.cover = cover
-        Me.AlbumDAO.readMySongs(Me)
+        Me.songs = New Collection
     End Sub
 
     Public Sub New(name As String)
         Me.AlbumDAO = New AlbumDAO
         Me.name = name
+        Me.songs = New Collection
     End Sub
 
     Public Sub readAllAlbums()

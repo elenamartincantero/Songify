@@ -9,6 +9,7 @@
     Public Sub New(email As String)
         Me.UserDAO = New UserDAO
         Me.email = email
+        Me.fav_artists = New Collection
     End Sub
 
     Public Sub New(email As String, uName As String, uSurname As String, birthday As String)
@@ -17,7 +18,8 @@
         Me.uName = uName
         Me.uSurname = uSurname
         Me.birthday = birthday
-        Me.UserDAO.readMyArtists(Me)
+        Me.fav_artists = New Collection
+
     End Sub
 
     Public Sub readUser(path As String)

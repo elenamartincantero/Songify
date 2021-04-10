@@ -7,9 +7,15 @@
 
     Public ReadOnly Property ArtistDAO As ArtistDAO
 
+    Public Sub New(id As Integer)
+        Me.ArtistDAO = New ArtistDAO
+        Me.id = id
+        Me.albums = New Collection
+    End Sub
     Public Sub New(name As String)
         Me.ArtistDAO = New ArtistDAO
         Me.name = name
+        Me.albums = New Collection
     End Sub
 
     Public Sub New(name As String, country As String, image As String)
@@ -17,7 +23,7 @@
         Me.name = name
         Me.country = country
         Me.image = image
-        Me.ArtistDAO.readMyAlbums(Me)
+        Me.albums = New Collection
 
     End Sub
 
