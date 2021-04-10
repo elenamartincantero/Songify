@@ -19,10 +19,9 @@
         Dim seg As Integer
         Dim min As Double
         seg = s.length Mod 60
-        min = (s.length - seg) / 60
+        min = Integer.Parse(((s.length - seg) / 60).ToString)
 
-
-        Return min.ToString() + ":" + seg.ToString()
+        Return min.ToString() & ":" & seg.ToString()
     End Function
     Public Sub play(us As User, s As Song)
         'Insert playback
