@@ -1,6 +1,11 @@
 ﻿Public Class ArtistDAO
     Private Property artists As Collection
     Private Property artistsSortedCol As Collection
+
+    Public Sub New()
+        artists = New Collection
+        artistsSortedCol = New Collection
+    End Sub
     Public Sub readAll()
 
     End Sub

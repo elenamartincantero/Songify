@@ -1,5 +1,8 @@
 ﻿Public Class AlbumDAO
-    Private Property album As Collection
+    Private Property albums As Collection
+    Public Sub New()
+        albums = New Collection
+    End Sub
     Public Sub readAll()
 
     End Sub
