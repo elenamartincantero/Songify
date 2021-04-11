@@ -1,4 +1,5 @@
 ﻿Public Class frmMainMenu
+    Property user As User
     Private Sub ChangeUserButton_Click(sender As Object, e As EventArgs) Handles ChangeUserButton.Click
         frmLogin.Show()
         frmManage.Close()

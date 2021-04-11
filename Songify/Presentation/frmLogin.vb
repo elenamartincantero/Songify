@@ -13,7 +13,18 @@
 
     Private Sub LoginButton_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
         Me.user = New User(LoginBox.Text.ToString)
-        Me.user.ReadUser(ofdDB.FileName)
-        LoginBox.Text = user.uName.ToString
+
+        Try
+            Me.user.readUser(ofdDB.FileName)
+            frmMainMenu.Show()
+            frmMainMenu.user = user
+            Me.Close()
+        Catch ex As Exception
+            MessageBox.Show("Please introduce a valid user", ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+
     End Sub
+
+
 End Class
