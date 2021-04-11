@@ -31,6 +31,9 @@
     Public Sub readUser(path As String)
         Me.UserDAO.read(Me, path)
     End Sub
+    Public Sub readUser()
+        Me.UserDAO.read(Me)
+    End Sub
     Public Sub insertUser()
         Me.UserDAO.insert(Me)
     End Sub

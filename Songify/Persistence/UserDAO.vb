@@ -24,6 +24,19 @@
 
         Next
     End Sub
+    Public Sub read(ByRef u As User)
+        Dim col As Collection : Dim aux As Collection
+        col = DBBroker.GetBroker().Read("SELECT * FROM USERS WHERE Email='" & u.email & "';")
+        If col.Count = 0 Then
+            Throw New Exception()
+        End If
+        For Each aux In col
+            u.uName = aux(2).ToString
+            u.uSurname = aux(3).ToString
+            u.birthday = aux(4).ToString
+
+        Next
+    End Sub
     Public Sub insert(u As User)
         DBBroker.GetBroker.Change("INSERT INTO USERS VALUES ('" & u.email & "', '" & u.uName & "','" & u.uSurname & "','" & u.birthday & "');")
     End Sub
