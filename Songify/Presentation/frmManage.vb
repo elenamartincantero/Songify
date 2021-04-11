@@ -7,8 +7,8 @@
 
 
     Private Sub MainMenuButton_Click(sender As Object, e As EventArgs) Handles MainMenuButton.Click
-        Me.Close()
         frmMainMenu.Show()
+        Me.Close()
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
@@ -87,11 +87,14 @@
         Dim uAux As User
         Me.user = New User
         Try
-            user.ReadUser(frmLogin.ofdDB.FileName)
+            user.readAllUsers()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
+        For Each uAux In Me.user.UserDAO.allUsers
+            Me.InfoListBox1.Items.Add(uAux.email)
+        Next
 
     End Sub
 

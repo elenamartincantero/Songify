@@ -27,6 +27,7 @@ Partial Class frmMainMenu
         Me.StatisticsButton = New System.Windows.Forms.Button()
         Me.ChangeUserButton = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LoggedUserLbl = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -79,11 +80,21 @@ Partial Class frmMainMenu
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
         '
+        'LoggedUserLbl
+        '
+        Me.LoggedUserLbl.AutoSize = True
+        Me.LoggedUserLbl.Location = New System.Drawing.Point(347, 313)
+        Me.LoggedUserLbl.Name = "LoggedUserLbl"
+        Me.LoggedUserLbl.Size = New System.Drawing.Size(49, 16)
+        Me.LoggedUserLbl.TabIndex = 5
+        Me.LoggedUserLbl.Text = "Label1"
+        '
         'frmMainMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(760, 347)
+        Me.Controls.Add(Me.LoggedUserLbl)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ChangeUserButton)
         Me.Controls.Add(Me.StatisticsButton)
@@ -93,6 +104,7 @@ Partial Class frmMainMenu
         Me.Text = "frmMainMenu"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -101,4 +113,5 @@ Partial Class frmMainMenu
     Friend WithEvents StatisticsButton As Button
     Friend WithEvents ChangeUserButton As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents LoggedUserLbl As Label
 End Class

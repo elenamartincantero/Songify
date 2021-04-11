@@ -6,7 +6,13 @@
         allUsers = New Collection
     End Sub
     Public Sub readAll()
-
+        Dim user As User
+        Dim col, aux As Collection
+        col = DBBroker.GetBroker().Read("SELECT * FROM USERS")
+        For Each aux In col
+            user = New User(aux(1).ToString)
+            Me.allUsers.Add(user)
+        Next
     End Sub
     Public Sub readAllByTime()
 
