@@ -13,7 +13,7 @@
 
     End Sub
     Public Sub insert(a As Artist)
-
+        DBBroker.GetBroker.Change("INSERT INTO ARTISTS VALUES ('" & a.name & "', '" & a.country & "','" & a.image & "');")
     End Sub
     Public Sub update(a As Artist)
 
