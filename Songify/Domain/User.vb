@@ -6,6 +6,9 @@
     Public Property fav_artists As Collection
     Public ReadOnly Property UserDAO As UserDAO
 
+    Public Sub New()
+        Me.UserDAO = New UserDAO
+    End Sub
     Public Sub New(email As String)
         Me.UserDAO = New UserDAO
         Me.email = email
@@ -22,6 +25,9 @@
 
     End Sub
 
+    Public Sub readAllUsers()
+        Me.UserDAO.readAll()
+    End Sub
     Public Sub readUser(path As String)
         Me.UserDAO.read(Me, path)
     End Sub

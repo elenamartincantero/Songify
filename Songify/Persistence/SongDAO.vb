@@ -1,7 +1,13 @@
 ﻿Public Class SongDAO
     Private Property sortedSongs As Collection
+    Private Property allSongs As Collection
+
     Public Sub New()
         sortedSongs = New Collection
+        allSongs = New Collection
+    End Sub
+    Public Sub readAll()
+
     End Sub
     Public Sub read(ByRef s As Song)
 

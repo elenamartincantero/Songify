@@ -1,7 +1,12 @@
 ﻿Public Class UserDAO
     Public ReadOnly Property usersByTime As Collection
+    Public ReadOnly Property allUsers As Collection
     Public Sub New()
         usersByTime = New Collection
+        allUsers = New Collection
+    End Sub
+    Public Sub readAll()
+
     End Sub
     Public Sub readAllByTime()
 

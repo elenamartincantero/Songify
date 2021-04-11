@@ -5,6 +5,9 @@
     Public Property album As Album
     Public ReadOnly Property SongDAO As SongDAO
 
+    Public Sub New()
+        Me.SongDAO = New SongDAO
+    End Sub
     Public Sub New(sName As String)
         Me.SongDAO = New SongDAO
         Me.sName = sName
@@ -17,6 +20,9 @@
         Me.album = New Album(album)
     End Sub
 
+    Public Sub readAllSongs()
+        Me.SongDAO.readAll()
+    End Sub
     Public Sub readSong()
         Me.SongDAO.read(Me)
     End Sub

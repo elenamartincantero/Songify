@@ -9,6 +9,9 @@
 
     Public ReadOnly Property AlbumDAO As AlbumDAO
 
+    Public Sub New()
+        Me.AlbumDAO = New AlbumDAO
+    End Sub
     Public Sub New(name As String, releaseDate As String, artist As String, cover As String)
         Me.AlbumDAO = New AlbumDAO
         Me.name = name

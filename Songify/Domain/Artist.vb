@@ -7,6 +7,9 @@
 
     Public ReadOnly Property ArtistDAO As ArtistDAO
 
+    Public Sub New()
+        Me.ArtistDAO = New ArtistDAO
+    End Sub
     Public Sub New(id As Integer)
         Me.ArtistDAO = New ArtistDAO
         Me.id = id
