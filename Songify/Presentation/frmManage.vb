@@ -20,6 +20,9 @@
 
     Private Sub ListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles InfoListBox.SelectedIndexChanged
         If InfoListBox IsNot Nothing Then
+            ClearButton.Enabled = True
+            DeleteButton.Enabled = True
+            UpdateButton.Enabled = True
             If TypeComboBox.SelectedItem.ToString() = "Users" Then
                 listUsers()
             ElseIf TypeComboBox.SelectedItem.ToString() = "Artists" Then
@@ -33,6 +36,10 @@
     End Sub
 
     Private Sub TypeComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TypeComboBox.SelectedIndexChanged
+        If TypeComboBox.SelectedItem IsNot Nothing Then
+            invisibleElements()
+            InsertButton.Enabled = True
+        End If
         If TypeComboBox.SelectedItem.ToString() = "Users" Then
             clearTextBoxes()
             InfoListBox.Items.Clear()
@@ -220,4 +227,23 @@
         InfoTextBox3.Text = Me.song.length.ToString
     End Sub
 
+    Private Sub InsertButton_Click(sender As Object, e As EventArgs) Handles InsertButton.Click
+        If TypeComboBox.SelectedItem.ToString = "Users" Then
+            If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
+                InfoTextBox3.Text IsNot String.Empty And InfoTextBox4.Text IsNot String.Empty Then
+                Me.user = New User(InfoTextBox3.Text)
+                Me.user.uName = NameTextBox.Text
+                Me.user.uSurname = InfoTextBox2.Text
+                Me.user.birthday = Date.Parse(InfoTextBox4.Text)
+                Try
+                    Me.user.insertUser()
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End Try
+                InfoListBox.Items.Add(Me.user.email)
+            End If
+        End If
+
+    End Sub
 End Class

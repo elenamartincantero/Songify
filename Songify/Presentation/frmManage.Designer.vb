@@ -43,6 +43,7 @@ Partial Class frmManage
         '
         'InsertButton
         '
+        Me.InsertButton.Enabled = False
         Me.InsertButton.Location = New System.Drawing.Point(465, 280)
         Me.InsertButton.Name = "InsertButton"
         Me.InsertButton.Size = New System.Drawing.Size(72, 50)
@@ -52,6 +53,7 @@ Partial Class frmManage
         '
         'UpdateButton
         '
+        Me.UpdateButton.Enabled = False
         Me.UpdateButton.Location = New System.Drawing.Point(465, 347)
         Me.UpdateButton.Name = "UpdateButton"
         Me.UpdateButton.Size = New System.Drawing.Size(72, 50)
@@ -61,6 +63,7 @@ Partial Class frmManage
         '
         'DeleteButton
         '
+        Me.DeleteButton.Enabled = False
         Me.DeleteButton.Location = New System.Drawing.Point(541, 347)
         Me.DeleteButton.Name = "DeleteButton"
         Me.DeleteButton.Size = New System.Drawing.Size(72, 50)
@@ -169,6 +172,7 @@ Partial Class frmManage
         '
         'ClearButton
         '
+        Me.ClearButton.Enabled = False
         Me.ClearButton.Location = New System.Drawing.Point(541, 280)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(72, 50)
