@@ -63,9 +63,10 @@ Partial Class frmMainMenu
         '
         'ChangeUserButton
         '
-        Me.ChangeUserButton.Location = New System.Drawing.Point(566, 306)
+        Me.ChangeUserButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChangeUserButton.Location = New System.Drawing.Point(566, 303)
         Me.ChangeUserButton.Name = "ChangeUserButton"
-        Me.ChangeUserButton.Size = New System.Drawing.Size(134, 31)
+        Me.ChangeUserButton.Size = New System.Drawing.Size(116, 35)
         Me.ChangeUserButton.TabIndex = 3
         Me.ChangeUserButton.Text = "Change User"
         Me.ChangeUserButton.UseVisualStyleBackColor = True
@@ -83,9 +84,10 @@ Partial Class frmMainMenu
         'LoggedUserLbl
         '
         Me.LoggedUserLbl.AutoSize = True
-        Me.LoggedUserLbl.Location = New System.Drawing.Point(347, 313)
+        Me.LoggedUserLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LoggedUserLbl.Location = New System.Drawing.Point(306, 313)
         Me.LoggedUserLbl.Name = "LoggedUserLbl"
-        Me.LoggedUserLbl.Size = New System.Drawing.Size(49, 16)
+        Me.LoggedUserLbl.Size = New System.Drawing.Size(51, 18)
         Me.LoggedUserLbl.TabIndex = 5
         Me.LoggedUserLbl.Text = "Label1"
         '

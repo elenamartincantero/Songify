@@ -1,5 +1,5 @@
 ﻿Public Class frmLogin
-    Property user As User
+    Public Property user As User
     Private Sub DatabaseButton_Click(sender As Object, e As EventArgs) Handles DatabaseButton.Click
         If Me.ofdDB.ShowDialog = DialogResult.OK Then
             LoginButton.Enabled = True
@@ -17,7 +17,6 @@
         Try
             Me.user.readUser(ofdDB.FileName)
             frmMainMenu.Show()
-            frmMainMenu.user = user
             Me.Close()
         Catch ex As Exception
             MessageBox.Show("Please introduce a valid user", ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)

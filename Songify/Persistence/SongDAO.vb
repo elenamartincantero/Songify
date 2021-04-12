@@ -1,6 +1,6 @@
 ﻿Public Class SongDAO
-    Private Property sortedSongs As Collection
-    Private Property allSongs As Collection
+    Public ReadOnly Property sortedSongs As Collection
+    Public ReadOnly Property allSongs As Collection
 
     Public Sub New()
         sortedSongs = New Collection

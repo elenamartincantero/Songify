@@ -24,7 +24,7 @@
         For Each aux In col
             u.uName = aux(2).ToString
             u.uSurname = aux(3).ToString
-            u.birthday = aux(4).ToString
+            u.birthday = CDate(aux(4).ToString)
 
         Next
     End Sub

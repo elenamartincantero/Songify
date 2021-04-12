@@ -34,11 +34,11 @@ Partial Class frmManage
         Me.InfoTextBox2 = New System.Windows.Forms.TextBox()
         Me.InfoTextBox3 = New System.Windows.Forms.TextBox()
         Me.InfoTextBox4 = New System.Windows.Forms.TextBox()
-        Me.InfoListBox1 = New System.Windows.Forms.ListBox()
+        Me.InfoListBox = New System.Windows.Forms.ListBox()
         Me.MainMenuButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ArtistImage = New System.Windows.Forms.PictureBox()
+        CType(Me.ArtistImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'InsertButton
@@ -149,14 +149,14 @@ Partial Class frmManage
         Me.InfoTextBox4.TabIndex = 11
         Me.InfoTextBox4.Visible = False
         '
-        'InfoListBox1
+        'InfoListBox
         '
-        Me.InfoListBox1.FormattingEnabled = True
-        Me.InfoListBox1.ItemHeight = 16
-        Me.InfoListBox1.Location = New System.Drawing.Point(48, 83)
-        Me.InfoListBox1.Name = "InfoListBox1"
-        Me.InfoListBox1.Size = New System.Drawing.Size(165, 372)
-        Me.InfoListBox1.TabIndex = 13
+        Me.InfoListBox.FormattingEnabled = True
+        Me.InfoListBox.ItemHeight = 16
+        Me.InfoListBox.Location = New System.Drawing.Point(48, 83)
+        Me.InfoListBox.Name = "InfoListBox"
+        Me.InfoListBox.Size = New System.Drawing.Size(165, 372)
+        Me.InfoListBox.TabIndex = 13
         '
         'MainMenuButton
         '
@@ -176,24 +176,24 @@ Partial Class frmManage
         Me.ClearButton.Text = "Clear"
         Me.ClearButton.UseVisualStyleBackColor = True
         '
-        'PictureBox1
+        'ArtistImage
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(249, 279)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(182, 180)
-        Me.PictureBox1.TabIndex = 16
-        Me.PictureBox1.TabStop = False
-        Me.PictureBox1.Visible = False
+        Me.ArtistImage.Location = New System.Drawing.Point(249, 279)
+        Me.ArtistImage.Name = "ArtistImage"
+        Me.ArtistImage.Size = New System.Drawing.Size(182, 180)
+        Me.ArtistImage.TabIndex = 16
+        Me.ArtistImage.TabStop = False
+        Me.ArtistImage.Visible = False
         '
         'frmManage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(694, 480)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.ArtistImage)
         Me.Controls.Add(Me.ClearButton)
         Me.Controls.Add(Me.MainMenuButton)
-        Me.Controls.Add(Me.InfoListBox1)
+        Me.Controls.Add(Me.InfoListBox)
         Me.Controls.Add(Me.InfoTextBox4)
         Me.Controls.Add(Me.InfoTextBox3)
         Me.Controls.Add(Me.InfoTextBox2)
@@ -208,7 +208,7 @@ Partial Class frmManage
         Me.Controls.Add(Me.InsertButton)
         Me.Name = "frmManage"
         Me.Text = "frmManage"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArtistImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -226,9 +226,9 @@ Partial Class frmManage
     Friend WithEvents InfoTextBox2 As TextBox
     Friend WithEvents InfoTextBox3 As TextBox
     Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents InfoListBox1 As ListBox
+    Friend WithEvents InfoListBox As ListBox
     Friend WithEvents InfoTextBox4 As TextBox
     Friend WithEvents MainMenuButton As Button
     Friend WithEvents ClearButton As Button
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ArtistImage As PictureBox
 End Class
