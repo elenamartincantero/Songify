@@ -27,10 +27,12 @@
         Me.SongDAO.read(Me)
     End Sub
     Public Sub insertSong()
+        Me.album.readAlbum()
         Me.SongDAO.insert(Me)
     End Sub
     Public Sub updateSong()
-        Me.SongDAO.insert(Me)
+        Me.album.readAlbum()
+        Me.SongDAO.update(Me)
     End Sub
     Public Sub deleteSong()
         Me.SongDAO.delete(Me)

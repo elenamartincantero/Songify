@@ -2,7 +2,7 @@
     Public Property email As String
     Public Property uName As String
     Public Property uSurname As String
-    Public Property birthday As String
+    Public Property birthday As Date
     Public Property fav_artists As Collection
     Public ReadOnly Property UserDAO As UserDAO
 
@@ -20,7 +20,7 @@
         Me.email = email
         Me.uName = uName
         Me.uSurname = uSurname
-        Me.birthday = birthday
+        Me.birthday = Date.Parse(birthday)
         Me.fav_artists = New Collection
 
     End Sub
@@ -29,6 +29,7 @@
         Me.UserDAO.readAll()
     End Sub
     Public Sub readUser(path As String)
+        Dim s As Song
         Me.UserDAO.read(Me, path)
     End Sub
     Public Sub readUser()
