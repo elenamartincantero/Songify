@@ -32,6 +32,8 @@
     End Sub
     Public Sub readAlbum()
         Me.AlbumDAO.read(Me)
+        Me.AlbumDAO.readMySongs(Me)
+        Me.AlbumDAO.calculateTotalLength(Me)
     End Sub
     Public Sub insertAlbum()
         Me.artist.readArtist()
@@ -45,8 +47,6 @@
         Me.AlbumDAO.delete(Me)
     End Sub
     Public Function convertLength() As String
-        Me.AlbumDAO.readMySongs(Me)
-        Me.AlbumDAO.calculateTotalLength(Me)
         Return Me.AlbumDAO.convertLength(Me)
     End Function
 

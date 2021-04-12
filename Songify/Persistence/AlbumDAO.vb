@@ -48,6 +48,7 @@
         End If
         For Each aux In col
             song = New Song(aux(1).ToString)
+            song.readSong()
             a.songs.Add(song)
         Next
     End Sub

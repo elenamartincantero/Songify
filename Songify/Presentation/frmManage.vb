@@ -204,7 +204,7 @@
         End Try
         NameTextBox.Text = Me.album.name
         InfoTextBox2.Text = Me.album.releaseDate.ToString
-        InfoTextBox3.Text = Me.album.length.ToString
+        InfoTextBox3.Text = Me.album.convertLength()
     End Sub
 
     Private Sub listSongs()
