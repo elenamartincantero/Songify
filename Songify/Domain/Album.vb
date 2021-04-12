@@ -45,9 +45,9 @@
         Me.AlbumDAO.delete(Me)
     End Sub
     Public Function convertLength() As String
-        Return Me.AlbumDAO.convertLength(Me)
         Me.AlbumDAO.readMySongs(Me)
         Me.AlbumDAO.calculateTotalLength(Me)
+        Return Me.AlbumDAO.convertLength(Me)
     End Function
 
 
