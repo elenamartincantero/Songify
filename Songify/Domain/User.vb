@@ -28,9 +28,8 @@
     Public Sub readAllUsers()
         Me.UserDAO.readAll()
     End Sub
-    Public Sub readUser(path As String)
-        Dim s As Song
-        Me.UserDAO.read(Me, path)
+    Public Sub connect(path As String)
+        Me.UserDAO.connect(path)
     End Sub
     Public Sub readUser()
         Me.UserDAO.read(Me)

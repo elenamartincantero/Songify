@@ -5,6 +5,9 @@
         usersByTime = New Collection
         allUsers = New Collection
     End Sub
+    Public Sub connect(path As String)
+        DBBroker.GetBroker(path)
+    End Sub
     Public Sub readAll()
         Dim user As User
         Dim col, aux As Collection
@@ -15,19 +18,6 @@
         Next
     End Sub
 
-    Public Sub read(ByRef u As User, path As String)
-        Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker(path).Read("SELECT * FROM USERS WHERE Email='" & u.email & "';")
-        If col.Count = 0 Then
-            Throw New Exception()
-        End If
-        For Each aux In col
-            u.uName = aux(2).ToString
-            u.uSurname = aux(3).ToString
-            u.birthday = CDate(aux(4).ToString)
-
-        Next
-    End Sub
     Public Sub read(ByRef u As User)
         Dim col As Collection : Dim aux As Collection
         col = DBBroker.GetBroker().Read("SELECT * FROM USERS WHERE Email='" & u.email & "';")

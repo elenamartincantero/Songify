@@ -52,9 +52,9 @@
             InfoTextBox3.Visible = True
             InfoLabel3.Visible = True
             InfoLabel3.Text = "Email"
-            InfoTextBox4.Visible = True
-            InfoLabel4.Visible = True
-            InfoLabel4.Text = "Birthdate"
+            DateBox.Visible = True
+            DateLabel.Visible = True
+            DateLabel.Text = "Birthdate"
             readUsers()
 
         ElseIf TypeComboBox.SelectedItem.ToString() = "Artists" Then
@@ -103,7 +103,6 @@
         NameTextBox.Text = String.Empty
         InfoTextBox2.Text = String.Empty
         InfoTextBox3.Text = String.Empty
-        InfoTextBox4.Text = String.Empty
     End Sub
 
     Private Sub invisibleElements()
@@ -113,8 +112,6 @@
         InfoLabel2.Visible = False
         InfoTextBox3.Visible = False
         InfoLabel3.Visible = False
-        InfoTextBox4.Visible = False
-        InfoLabel4.Visible = False
     End Sub
 
     Private Sub readUsers()
@@ -246,4 +243,10 @@
         End If
 
     End Sub
+
+    Private Sub frmManage_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Me.Close()
+        frmLogin.Close()
+    End Sub
+
 End Class

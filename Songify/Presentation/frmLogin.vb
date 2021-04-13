@@ -15,7 +15,7 @@
         Me.user = New User(LoginBox.Text.ToString)
 
         Try
-            Me.user.readUser(ofdDB.FileName)
+            Me.user.readUser()
             frmMainMenu.Show()
             Me.Close()
         Catch ex As Exception
@@ -25,5 +25,8 @@
 
     End Sub
 
-
+    Private Sub ConnectButton_Click(sender As Object, e As EventArgs) Handles ConnectButton.Click
+        user = New User()
+        Me.user.connect(ofdDB.FileName)
+    End Sub
 End Class
