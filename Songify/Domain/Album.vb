@@ -52,5 +52,8 @@
         Return Me.AlbumDAO.convertLength(Me)
     End Function
 
+    Public Sub readMySongs()
+        Me.AlbumDAO.readMySongs(Me)
+    End Sub
 
 End Class

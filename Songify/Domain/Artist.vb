@@ -50,4 +50,7 @@
         Me.ArtistDAO.artistsSorted(Me)
     End Sub
 
+    Public Sub readMyAlbums()
+        Me.ArtistDAO.readMyAlbums(Me)
+    End Sub
 End Class
