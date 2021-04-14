@@ -2,7 +2,7 @@
     Public Property user As User
     Private Sub DatabaseButton_Click(sender As Object, e As EventArgs) Handles DatabaseButton.Click
         If Me.ofdDB.ShowDialog = DialogResult.OK Then
-            LoginButton.Enabled = True
+            ConnectButton.Enabled = True
         End If
 
     End Sub
@@ -28,5 +28,6 @@
     Private Sub ConnectButton_Click(sender As Object, e As EventArgs) Handles ConnectButton.Click
         user = New User()
         Me.user.connect(ofdDB.FileName)
+        LoginButton.Enabled = True
     End Sub
 End Class
