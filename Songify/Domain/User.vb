@@ -20,7 +20,7 @@
         Me.email = email
         Me.uName = uName
         Me.uSurname = uSurname
-        Me.birthday = Date.Parse(birthday)
+        Me.birthday = CDate(birthday)
         Me.fav_artists = New Collection
 
     End Sub
@@ -53,5 +53,12 @@
     End Sub
     Public Sub readArtistsMostListened(beginDate As Date, endDate As Date, user As User)
         Me.UserDAO.readArtistsMostListened(beginDate, endDate, Me)
+    End Sub
+
+    Public Sub readMyArtists()
+        Me.UserDAO.readMyArtists(Me)
+    End Sub
+    Public Sub readAllByTime()
+        Me.UserDAO.readAllByTime()
     End Sub
 End Class

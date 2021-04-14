@@ -1,4 +1,4 @@
-ublic Class frmSearch
+Public Class frmSearch
     Property album As Album
     Property artist As Artist
     Property song As Song
@@ -27,7 +27,7 @@ ublic Class frmSearch
         Dim albumAux As Album
         Me.artist = New Artist
         Try
-            artist.readmyAlbums()
+            artist.readMyAlbums()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
