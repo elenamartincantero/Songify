@@ -23,24 +23,24 @@
             ClearButton.Enabled = True
             DeleteButton.Enabled = True
             UpdateButton.Enabled = True
-            If TypeComboBox.SelectedItem.ToString() = "Users" Then
-                listUsers()
-            ElseIf TypeComboBox.SelectedItem.ToString() = "Artists" Then
-                listArtists()
-            ElseIf TypeComboBox.SelectedItem.ToString() = "Albums" Then
-                listAlbums()
-            ElseIf TypeComboBox.SelectedItem.ToString() = "Songs" Then
-                listSongs()
+            If DataTypeComboBox.SelectedItem.ToString() = "Users" Then
+                listUser()
+            ElseIf DataTypeComboBox.SelectedItem.ToString() = "Artists" Then
+                listArtist()
+            ElseIf DataTypeComboBox.SelectedItem.ToString() = "Albums" Then
+                listAlbum()
+            ElseIf DataTypeComboBox.SelectedItem.ToString() = "Songs" Then
+                listSong()
             End If
         End If
     End Sub
 
-    Private Sub TypeComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TypeComboBox.SelectedIndexChanged
-        If TypeComboBox.SelectedItem IsNot Nothing Then
+    Private Sub TypeComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DataTypeComboBox.SelectedIndexChanged
+        If DataTypeComboBox.SelectedItem IsNot Nothing Then
             invisibleElements()
             InsertButton.Enabled = True
         End If
-        If TypeComboBox.SelectedItem.ToString() = "Users" Then
+        If DataTypeComboBox.SelectedItem.ToString() = "Users" Then
             clearTextBoxes()
             InfoListBox.Items.Clear()
             invisibleElements()
@@ -57,7 +57,7 @@
             DateLabel.Text = "Birthdate"
             readUsers()
 
-        ElseIf TypeComboBox.SelectedItem.ToString() = "Artists" Then
+        ElseIf DataTypeComboBox.SelectedItem.ToString() = "Artists" Then
             clearTextBoxes()
             InfoListBox.Items.Clear()
             invisibleElements()
@@ -66,9 +66,12 @@
             InfoTextBox2.Visible = True
             InfoLabel2.Visible = True
             InfoLabel2.Text = "Country"
+            InfoTextBox3.Visible = True
+            InfoLabel3.Visible = True
+            InfoLabel3.Text = "Image path"
             readArtists()
 
-        ElseIf TypeComboBox.SelectedItem.ToString() = "Albums" Then
+        ElseIf DataTypeComboBox.SelectedItem.ToString() = "Albums" Then
             clearTextBoxes()
             InfoListBox.Items.Clear()
             invisibleElements()
@@ -76,13 +79,16 @@
             NameLabel.Visible = True
             InfoTextBox2.Visible = True
             InfoLabel2.Visible = True
-            InfoLabel2.Text = "Release date"
-            InfoTextBox3.Visible = True
+            InfoLabel2.Text = "Cover path"
+            DateBox.Visible = True
+            DateLabel.Visible = True
+            DateLabel.Text = "Release date"
+            SelectionComboBox.Visible = True
             InfoLabel3.Visible = True
-            InfoLabel3.Text = "Total length"
+            InfoLabel3.Text = "Artist"
             readAlbums()
 
-        ElseIf TypeComboBox.SelectedItem.ToString() = "Songs" Then
+        ElseIf DataTypeComboBox.SelectedItem.ToString() = "Songs" Then
             clearTextBoxes()
             InfoListBox.Items.Clear()
             invisibleElements()
@@ -112,6 +118,8 @@
         InfoLabel2.Visible = False
         InfoTextBox3.Visible = False
         InfoLabel3.Visible = False
+        DateBox.Visible = False
+        SelectionComboBox.Visible = False
     End Sub
 
     Private Sub readUsers()
@@ -170,7 +178,7 @@
         Next
     End Sub
 
-    Private Sub listUsers()
+    Private Sub listUser()
         Me.user = New User(InfoListBox.SelectedItem.ToString) 'email
         Try
             Me.user.readUser()
@@ -181,10 +189,10 @@
         NameTextBox.Text = Me.user.uName
         InfoTextBox2.Text = Me.user.uSurname
         InfoTextBox3.Text = Me.user.email
-        InfoTextBox4.Text = Me.user.birthday.ToString()
+        DateBox.Value = Me.user.birthday
     End Sub
 
-    Private Sub listArtists()
+    Private Sub listArtist()
         Me.artist = New Artist(InfoListBox.SelectedItem.ToString)  'name
         Try
             Me.artist.readArtist()
@@ -194,11 +202,11 @@
         End Try
         NameTextBox.Text = Me.artist.name
         InfoTextBox2.Text = Me.artist.country
-
-        ArtistImage.ImageLocation = Me.artist.image
+        InfoTextBox3.Text = Me.artist.image
+        ImageBox.ImageLocation = Me.artist.image
     End Sub
 
-    Private Sub listAlbums()
+    Private Sub listAlbum()
         Me.album = New Album(InfoListBox.SelectedItem.ToString) 'name
         Try
             Me.album.readAlbum()
@@ -206,12 +214,14 @@
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
+        readArtistInAlbum(Me.album)
         NameTextBox.Text = Me.album.name
-        InfoTextBox2.Text = Me.album.releaseDate.ToString
-        InfoTextBox3.Text = Me.album.convertLength()
+        DateBox.Value = Me.album.releaseDate
+        ImageBox.ImageLocation = Me.album.cover
+
     End Sub
 
-    Private Sub listSongs()
+    Private Sub listSong()
         Me.song = New Song(InfoListBox.SelectedItem.ToString)
         Try
             Me.song.readSong()
@@ -225,28 +235,85 @@
     End Sub
 
     Private Sub InsertButton_Click(sender As Object, e As EventArgs) Handles InsertButton.Click
-        If TypeComboBox.SelectedItem.ToString = "Users" Then
-            If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
-                InfoTextBox3.Text IsNot String.Empty And InfoTextBox4.Text IsNot String.Empty Then
-                Me.user = New User(InfoTextBox3.Text)
-                Me.user.uName = NameTextBox.Text
-                Me.user.uSurname = InfoTextBox2.Text
-                Me.user.birthday = Date.Parse(InfoTextBox4.Text)
-                Try
-                    Me.user.insertUser()
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    Exit Sub
-                End Try
-                InfoListBox.Items.Add(Me.user.email)
-            End If
+        If DataTypeComboBox.SelectedItem.ToString = "Users" Then
+            insertUser()
+        ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
+            insertArtist()
+        ElseIf DataTypeComboBox.SelectedItem.ToString = "Albums" Then
+            insertAlbum()
+        ElseIf DataTypeComboBox.SelectedItem.ToString = "Songs" Then
+            'insertSong()
         End If
 
-    End Sub
 
+    End Sub
     Private Sub frmManage_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Me.Close()
         frmLogin.Close()
+    End Sub
+
+    Private Sub insertUser()
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
+                InfoTextBox3.Text IsNot String.Empty Then
+            Me.user = New User(InfoTextBox3.Text)
+            Me.user.uName = NameTextBox.Text
+            Me.user.uSurname = InfoTextBox2.Text
+            Me.user.birthday = DateBox.Value
+            Try
+                Me.user.insertUser()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            Me.InfoListBox.Items.Add(Me.user.email)
+        End If
+    End Sub
+
+    Private Sub insertArtist()
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
+                InfoTextBox3.Text IsNot String.Empty Then
+            Me.artist = New Artist(NameTextBox.Text)
+            Me.artist.country = InfoTextBox2.Text
+            Me.artist.image = InfoTextBox3.Text
+            Try
+                Me.artist.insertArtist()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            Me.InfoListBox.Items.Add(Me.artist.name)
+        End If
+    End Sub
+
+    Private Sub insertAlbum()
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
+                InfoTextBox3.Text IsNot String.Empty And InfoTextBox4.Text IsNot String.Empty Then
+            Me.user = New User(InfoTextBox3.Text)
+            Me.user.uName = NameTextBox.Text
+            Me.user.uSurname = InfoTextBox2.Text
+            Me.user.birthday = DateBox.Value
+            Try
+                Me.user.insertUser()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            InfoListBox.Items.Add(Me.user.email)
+        End If
+    End Sub
+
+    Private Sub readArtistInAlbum(album As Album)
+        Me.artist = New Artist
+        Try
+            artist.readAllArtists()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+        For Each artistAux In Me.artist.ArtistDAO.artists()
+            Me.SelectionComboBox.Items.Add(artistAux.name.ToString)
+        Next
+        SelectionComboBox.SelectedItem = album.artist.name.ToString
     End Sub
 
 End Class
