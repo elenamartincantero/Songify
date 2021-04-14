@@ -53,7 +53,16 @@
         DBBroker.GetBroker.Change("INSERT INTO PLAYABACKS VALUES ('" & us.email & "', " & s.idSong & "," & Date.Today & ");")
     End Sub
     Public Function readPlayblacks(s As Song) As String
-        Return "tengo que hacer el código"
+        Dim col1 As Collection : Dim aux1 As Collection
+        Dim txt As String = ""
+        col1 = DBBroker.GetBroker().Read("SELECT * FROM PLAYBACKS WHERE song=" & s.idSong & ";")
+        If col1.Count = 0 Then
+            Throw New Exception()
+        End If
+        For Each aux1 In col1
+            txt += aux1.ToString
+        Next
+        Return txt
     End Function
     Public Sub songsSorted()
 
