@@ -1,4 +1,4 @@
-Public Class frmSearch
+ublic Class frmSearch
     Property album As Album
     Property artist As Artist
     Property song As Song
@@ -20,8 +20,8 @@ Public Class frmSearch
         End Try
         For Each artistAux In Me.artist.ArtistDAO.artists
             Me.List.Items.Add(artistAux.name)
-            Me.InfoList.Items.Add(artistAux.country)
         Next
+        aArtist()
     End Sub
     Private Sub readAlbum()
         Dim albumAux As Album
@@ -35,9 +35,8 @@ Public Class frmSearch
         For Each albumAux In Me.album.AlbumDAO.albums
             Me.AlbumList.Items.Add(albumAux.name)
             InfoLabel.Text = "Info album"
-            Me.InfoList.Items.Add(albumAux.releaseDate)
-            Me.InfoList.Items.Add(albumAux.artist)
         Next
+        aAlbum()
     End Sub
     Private Sub readSong()
         Dim songAux As Song
@@ -50,11 +49,46 @@ Public Class frmSearch
         End Try
         For Each songAux In Me.album.AlbumDAO.albums
             Me.SongList.Items.Add(songAux.sName)
-            InfoLabel.Text = "Info son"
-            Me.InfoList.Items.Add(songAux.album)
-            Me.InfoList.Items.Add(songAux.length)
+            InfoLabel.Text = "Info song"
         Next
+        aSong()
         ShowButtons()
+    End Sub
+    Private Sub aSong()
+        Me.song = New Song(SongList.SelectedItem.ToString)
+        Try
+            Me.song.readSong()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+        Me.InfoList.Items.Clear()
+        Me.InfoList.Items.Add(Me.song.album)
+        Me.InfoList.Items.Add(Me.song.length)
+    End Sub
+    Private Sub aAlbum()
+        Me.album = New Album(AlbumList.SelectedItem.ToString)
+        Try
+            Me.album.readAlbum()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+        Me.InfoList.Items.Clear()
+        Me.InfoList.Items.Add(Me.album.length)
+        Me.InfoList.Items.Add(Me.album.releaseDate)
+    End Sub
+    Private Sub aArtist()
+        Me.artist = New Artist(List.SelectedItem.ToString)
+        Try
+            Me.artist.readArtist()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+        Me.InfoList.Items.Clear()
+        Me.InfoList.Items.Add(Me.artist.image)
+        Me.InfoList.Items.Add(Me.artist.country)
     End Sub
     Private Sub Play_Click(sender As Object, e As EventArgs) Handles Play.Click
         readArtists()
@@ -65,6 +99,7 @@ Public Class frmSearch
         HistoryButton.Visible = False
         FavButton.Visible = False
         InfoLabel.Visible = False
+        UnFav.Visible = False
         HistoryLabel.Visible = False
     End Sub
     Private Sub ShowButtons()
@@ -72,6 +107,7 @@ Public Class frmSearch
         HistoryButton.Visible = True
         FavButton.Visible = True
         InfoLabel.Visible = True
+        UnFav.Visible = True
         HistoryLabel.Visible = True
     End Sub
 
