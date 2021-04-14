@@ -199,9 +199,9 @@ Partial Class frmManage
         Me.DateLabel.Location = New System.Drawing.Point(253, 198)
         Me.DateLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.DateLabel.Name = "DateLabel"
-        Me.DateLabel.Size = New System.Drawing.Size(71, 16)
+        Me.DateLabel.Size = New System.Drawing.Size(37, 16)
         Me.DateLabel.TabIndex = 19
-        Me.DateLabel.Text = "DateLabel"
+        Me.DateLabel.Text = "Date"
         Me.DateLabel.Visible = False
         '
         'SelectionComboBox

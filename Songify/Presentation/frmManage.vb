@@ -311,6 +311,7 @@
             Exit Sub
         End Try
         For Each artistAux In Me.artist.ArtistDAO.artists()
+
             Me.SelectionComboBox.Items.Add(artistAux.name.ToString)
         Next
         SelectionComboBox.SelectedItem = album.artist.name.ToString
