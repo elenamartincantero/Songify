@@ -15,7 +15,7 @@
     Public Sub New(name As String, releaseDate As String, artist As String, cover As String)
         Me.AlbumDAO = New AlbumDAO
         Me.name = name
-        Me.releaseDate = Date.Parse(releaseDate)
+        Me.releaseDate = CDate(releaseDate)
         Me.artist = New Artist(artist)
         Me.cover = cover
         Me.songs = New Collection
@@ -51,6 +51,9 @@
 
     Public Sub readMySongs()
         Me.AlbumDAO.readMySongs(Me)
+    End Sub
+    Public Sub calculateTotalLength()
+        Me.AlbumDAO.calculateTotalLength(Me)
     End Sub
 
 End Class
