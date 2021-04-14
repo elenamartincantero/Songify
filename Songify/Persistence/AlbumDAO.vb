@@ -30,24 +30,6 @@
 
         Next
     End Sub
-    Public Sub readbyArtist(name As String, ByRef a As Album)
-        Dim col As Collection : Dim aux As Collection
-        Dim col1 As Collection : Dim aux1 As Collection
-        Dim artist As Artist
-        Dim album As Album
-        col = DBBroker.GetBroker().Read("SELECT aName FROM ARTISTs WHERE aName=" & name & ";")
-        If col.Count = 0 Then
-            Throw New Exception()
-        End If
-        For Each aux In col
-            artist = New Artist(aux(1).ToString)
-            col1 = DBBroker.GetBroker().Read("SELECT aName FROM ALBUMS WHERE artist=" & artist.id & ";")
-            For Each aux1 In col1
-                album = New Album(aux1(1).ToString)
-                a.AlbumDAO.albums.Add(album)
-            Next
-        Next
-     End Sub
     Public Sub insert(a As Album)
         DBBroker.GetBroker.Change("INSERT INTO ALBUMS VALUES ('" & a.name & "', " & a.releaseDate & "," & a.artist.id & ",'" & a.cover & ");")
     End Sub
