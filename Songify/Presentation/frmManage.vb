@@ -247,10 +247,7 @@
 
 
     End Sub
-    Private Sub frmManage_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Me.Close()
-        frmLogin.Close()
-    End Sub
+
 
     Private Sub insertUser()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
@@ -304,6 +301,7 @@
 
     Private Sub readArtistInAlbum(album As Album)
         Me.artist = New Artist
+        Dim artistAux As Artist
         Try
             artist.readAllArtists()
         Catch ex As Exception
