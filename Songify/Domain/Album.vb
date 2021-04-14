@@ -26,9 +26,6 @@
         Me.name = name
         Me.songs = New Collection
     End Sub
-    Public Sub readbyArtist(name As String)
-        Me.AlbumDAO.readbyArtist(name, Me)
-    End Sub
     Public Sub readAllAlbums()
         Me.AlbumDAO.readAll()
     End Sub
