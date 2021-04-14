@@ -54,10 +54,17 @@
     End Sub
     Public Function convertLength(a As Album) As String
         Dim seg As Integer
-        Dim min As Double
-
+        Dim min As Integer
+        Dim minAux As Integer
+        Dim hour As Integer
         seg = a.length Mod 60
-        min = Integer.Parse(((a.length - seg) / 60).ToString)
+        minAux = Integer.Parse(((a.length - seg) / 60).ToString)
+        If min > 60 Then
+            min = minAux Mod 60
+            hour = Integer.Parse(((minAux - min) / 60).ToString)
+        Else
+            min = minAux
+        End If
 
         Return min.ToString() & ":" & seg.ToString()
     End Function
