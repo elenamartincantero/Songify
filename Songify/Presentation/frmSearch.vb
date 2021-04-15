@@ -27,7 +27,7 @@ Public Class frmSearch
         Dim albumAux As Album
         Me.artist = New Artist
         Try
-            artist.readMyAlbums()
+            artist.readmyAlbums()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
@@ -78,6 +78,7 @@ Public Class frmSearch
         Me.InfoList.Items.Add(Me.album.length)
         Me.InfoList.Items.Add(Me.album.releaseDate)
     End Sub
+
     Private Sub aArtist()
         Me.artist = New Artist(List.SelectedItem.ToString)
         Try
@@ -111,7 +112,6 @@ Public Class frmSearch
         HistoryLabel.Visible = True
     End Sub
 
-
     Private Sub PlayButton_Click(sender As Object, e As EventArgs) Handles PlayButton.Click
         Dim song As Song = New Song(Me.SongList.SelectedItem.ToString)
         song.play(Me.user)
@@ -123,6 +123,19 @@ Public Class frmSearch
         InfoList.Items.Clear()
         InfoList.Items.Add(song.readPlayblacks)
     End Sub
+
+    Private Sub FavButton_Click(sender As Object, e As EventArgs) Handles FavButton.Click
+        Dim artist As Artist = New Artist(Me.List.SelectedItem.ToString)
+        artist.favArtist(Me.user)
+    End Sub
+
+
+    Private Sub UnFav_Click(sender As Object, e As EventArgs) Handles UnFav.Click
+        Dim artist As Artist = New Artist(Me.List.SelectedItem.ToString)
+        artist.not_favArtist(Me.user)
+    End Sub
+End Class
+
 
     Private Sub FavButton_Click(sender As Object, e As EventArgs) Handles FavButton.Click
         Dim artist As Artist = New Artist(Me.List.SelectedItem.ToString)
