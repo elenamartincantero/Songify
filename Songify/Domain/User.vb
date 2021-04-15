@@ -32,7 +32,6 @@
         Me.UserDAO.connect(path)
     End Sub
     Public Sub readUser()
-        Me.UserDAO.usersSortedByTime()
         Me.UserDAO.read(Me)
 
     End Sub
