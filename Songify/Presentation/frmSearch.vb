@@ -55,9 +55,9 @@ Public Class frmSearch
         ShowButtons()
     End Sub
     Private Sub aSong()
-        Me.song = New Song(SongList.SelectedItem.ToString)
+        Me.song = New Song()
         Try
-            Me.song.readSong()
+            song.readSong()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
@@ -67,9 +67,9 @@ Public Class frmSearch
         Me.InfoList.Items.Add(Me.song.length)
     End Sub
     Private Sub aAlbum()
-        Me.album = New Album(AlbumList.SelectedItem.ToString)
+        Me.album = New Album()
         Try
-            Me.album.readAlbum()
+            album.readAlbum()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
@@ -79,9 +79,9 @@ Public Class frmSearch
         Me.InfoList.Items.Add(Me.album.releaseDate)
     End Sub
     Private Sub aArtist()
-        Me.artist = New Artist(List.SelectedItem.ToString)
+        Me.artist = New Artist()
         Try
-            Me.artist.readArtist()
+            artist.readArtist()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
@@ -101,6 +101,8 @@ Public Class frmSearch
         InfoLabel.Visible = False
         UnFav.Visible = False
         HistoryLabel.Visible = False
+        Start.Visible = False
+
     End Sub
     Private Sub ShowButtons()
         PlayButton.Visible = True
