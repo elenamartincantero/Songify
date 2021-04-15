@@ -28,6 +28,10 @@ Partial Class frmSearch
         Me.HistoryButton = New System.Windows.Forms.Button()
         Me.FavButton = New System.Windows.Forms.Button()
         Me.HistoryLabel = New System.Windows.Forms.Label()
+        Me.AlbumList = New System.Windows.Forms.ListBox()
+        Me.SongList = New System.Windows.Forms.ListBox()
+        Me.Start = New System.Windows.Forms.Button()
+        Me.UnFav = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'List
@@ -36,15 +40,15 @@ Partial Class frmSearch
         Me.List.ItemHeight = 16
         Me.List.Location = New System.Drawing.Point(62, 57)
         Me.List.Name = "List"
-        Me.List.Size = New System.Drawing.Size(306, 308)
+        Me.List.Size = New System.Drawing.Size(177, 308)
         Me.List.TabIndex = 0
         '
         'InfoLabel
         '
         Me.InfoLabel.AutoSize = True
-        Me.InfoLabel.Location = New System.Drawing.Point(561, 57)
+        Me.InfoLabel.Location = New System.Drawing.Point(661, 57)
         Me.InfoLabel.Name = "InfoLabel"
-        Me.InfoLabel.Size = New System.Drawing.Size(29, 16)
+        Me.InfoLabel.Size = New System.Drawing.Size(31, 17)
         Me.InfoLabel.TabIndex = 1
         Me.InfoLabel.Text = "Info"
         '
@@ -68,9 +72,9 @@ Partial Class frmSearch
         '
         'FavButton
         '
-        Me.FavButton.Location = New System.Drawing.Point(416, 387)
+        Me.FavButton.Location = New System.Drawing.Point(408, 385)
         Me.FavButton.Name = "FavButton"
-        Me.FavButton.Size = New System.Drawing.Size(64, 35)
+        Me.FavButton.Size = New System.Drawing.Size(72, 37)
         Me.FavButton.TabIndex = 4
         Me.FavButton.Text = "Fav"
         Me.FavButton.UseVisualStyleBackColor = True
@@ -78,17 +82,57 @@ Partial Class frmSearch
         'HistoryLabel
         '
         Me.HistoryLabel.AutoSize = True
-        Me.HistoryLabel.Location = New System.Drawing.Point(563, 245)
+        Me.HistoryLabel.Location = New System.Drawing.Point(661, 251)
         Me.HistoryLabel.Name = "HistoryLabel"
-        Me.HistoryLabel.Size = New System.Drawing.Size(50, 16)
+        Me.HistoryLabel.Size = New System.Drawing.Size(52, 17)
         Me.HistoryLabel.TabIndex = 5
         Me.HistoryLabel.Text = "History"
+        '
+        'AlbumList
+        '
+        Me.AlbumList.FormattingEnabled = True
+        Me.AlbumList.ItemHeight = 16
+        Me.AlbumList.Location = New System.Drawing.Point(281, 57)
+        Me.AlbumList.Name = "AlbumList"
+        Me.AlbumList.Size = New System.Drawing.Size(155, 308)
+        Me.AlbumList.TabIndex = 6
+        '
+        'SongList
+        '
+        Me.SongList.FormattingEnabled = True
+        Me.SongList.ItemHeight = 16
+        Me.SongList.Location = New System.Drawing.Point(478, 57)
+        Me.SongList.Name = "SongList"
+        Me.SongList.Size = New System.Drawing.Size(134, 308)
+        Me.SongList.TabIndex = 7
+        '
+        'Start
+        '
+        Me.Start.Location = New System.Drawing.Point(62, 12)
+        Me.Start.Name = "Start"
+        Me.Start.Size = New System.Drawing.Size(92, 39)
+        Me.Start.TabIndex = 8
+        Me.Start.Text = "Start"
+        Me.Start.UseVisualStyleBackColor = True
+        '
+        'UnFav
+        '
+        Me.UnFav.Location = New System.Drawing.Point(516, 387)
+        Me.UnFav.Name = "UnFav"
+        Me.UnFav.Size = New System.Drawing.Size(75, 36)
+        Me.UnFav.TabIndex = 9
+        Me.UnFav.Text = "UnFav"
+        Me.UnFav.UseVisualStyleBackColor = True
         '
         'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(914, 480)
+        Me.Controls.Add(Me.UnFav)
+        Me.Controls.Add(Me.Start)
+        Me.Controls.Add(Me.SongList)
+        Me.Controls.Add(Me.AlbumList)
         Me.Controls.Add(Me.HistoryLabel)
         Me.Controls.Add(Me.FavButton)
         Me.Controls.Add(Me.HistoryButton)
@@ -112,4 +156,9 @@ Partial Class frmSearch
     Private Sub frmSearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+
+    Friend WithEvents AlbumList As ListBox
+    Friend WithEvents SongList As ListBox
+    Friend WithEvents Start As Button
+    Friend WithEvents UnFav As Button
 End Class

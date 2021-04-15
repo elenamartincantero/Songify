@@ -1,5 +1,5 @@
 Public Class frmSearch
-    '    Property album As Album
+    '   Property album As Album
     '    Property artist As Artist
     '    Property song As Song
     '    Property user As User
