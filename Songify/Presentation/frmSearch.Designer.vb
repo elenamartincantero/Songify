@@ -32,6 +32,7 @@ Partial Class frmSearch
         Me.SongList = New System.Windows.Forms.ListBox()
         Me.Start = New System.Windows.Forms.Button()
         Me.UnFav = New System.Windows.Forms.Button()
+        Me.InfoList = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'List
@@ -124,11 +125,21 @@ Partial Class frmSearch
         Me.UnFav.Text = "UnFav"
         Me.UnFav.UseVisualStyleBackColor = True
         '
+        'InfoList
+        '
+        Me.InfoList.FormattingEnabled = True
+        Me.InfoList.ItemHeight = 16
+        Me.InfoList.Location = New System.Drawing.Point(675, 98)
+        Me.InfoList.Name = "InfoList"
+        Me.InfoList.Size = New System.Drawing.Size(193, 148)
+        Me.InfoList.TabIndex = 10
+        '
         'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(914, 480)
+        Me.Controls.Add(Me.InfoList)
         Me.Controls.Add(Me.UnFav)
         Me.Controls.Add(Me.Start)
         Me.Controls.Add(Me.SongList)
@@ -161,4 +172,5 @@ Partial Class frmSearch
     Friend WithEvents SongList As ListBox
     Friend WithEvents Start As Button
     Friend WithEvents UnFav As Button
+    Friend WithEvents InfoList As ListBox
 End Class
