@@ -1,5 +1,5 @@
 ﻿Public Class frmManage
-
+    Public Property myUser As User
     Property album As Album
     Property artist As Artist
     Property song As Song
@@ -8,6 +8,7 @@
 
     Private Sub MainMenuButton_Click(sender As Object, e As EventArgs) Handles MainMenuButton.Click
         frmMainMenu.Show()
+        frmMainMenu.user = Me.myUser
         Me.Close()
     End Sub
 
@@ -41,7 +42,7 @@
             InsertButton.Enabled = True
         End If
         If DataTypeComboBox.SelectedItem.ToString() = "Users" Then
-            clearTextBoxes()
+            clearElements()
             InfoListBox.Items.Clear()
             invisibleElements()
             NameTextBox.Visible = True
@@ -58,7 +59,7 @@
             readUsers()
 
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Artists" Then
-            clearTextBoxes()
+            clearElements()
             InfoListBox.Items.Clear()
             invisibleElements()
             NameTextBox.Visible = True
@@ -72,7 +73,7 @@
             readArtists()
 
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Albums" Then
-            clearTextBoxes()
+            clearElements()
             InfoListBox.Items.Clear()
             invisibleElements()
             NameTextBox.Visible = True
@@ -87,28 +88,31 @@
             InfoLabel3.Visible = True
             InfoLabel3.Text = "Artist"
             readAlbums()
+            readArtistInAlbum()
 
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Songs" Then
-            clearTextBoxes()
+            clearElements()
             InfoListBox.Items.Clear()
             invisibleElements()
             NameTextBox.Visible = True
             NameLabel.Visible = True
             InfoTextBox2.Visible = True
             InfoLabel2.Visible = True
-            InfoLabel2.Text = "Belonging album"
-            InfoTextBox3.Visible = True
+            InfoLabel2.Text = "Length"
+            SelectionComboBox.Visible = True
             InfoLabel3.Visible = True
-            InfoLabel3.Text = "Length"
+            InfoLabel3.Text = "Belonging album"
             readSongs()
+            readAlbumInSong()
         End If
 
     End Sub
 
-    Private Sub clearTextBoxes()
+    Private Sub clearElements()
         NameTextBox.Text = String.Empty
         InfoTextBox2.Text = String.Empty
         InfoTextBox3.Text = String.Empty
+        SelectionComboBox.Items.Clear()
     End Sub
 
     Private Sub invisibleElements()
@@ -214,10 +218,11 @@
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        readArtistInAlbum(Me.album)
         NameTextBox.Text = Me.album.name
+        InfoTextBox2.Text = Me.album.cover
         DateBox.Value = Me.album.releaseDate
         ImageBox.ImageLocation = Me.album.cover
+        SelectionComboBox.SelectedItem = Me.album.artist.name.ToString
 
     End Sub
 
@@ -230,8 +235,8 @@
             Exit Sub
         End Try
         NameTextBox.Text = Me.song.sName
-        InfoTextBox2.Text = Me.song.album.ToString
-        InfoTextBox3.Text = Me.song.length.ToString
+        InfoTextBox2.Text = Me.song.length.ToString
+        SelectionComboBox.SelectedItem = Me.song.album.ToString
     End Sub
 
     Private Sub InsertButton_Click(sender As Object, e As EventArgs) Handles InsertButton.Click
@@ -242,12 +247,11 @@
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Albums" Then
             insertAlbum()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Songs" Then
-            'insertSong()
+            insertSong()
         End If
 
 
     End Sub
-
 
     Private Sub insertUser()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
@@ -255,7 +259,7 @@
             Me.user = New User(InfoTextBox3.Text)
             Me.user.uName = NameTextBox.Text
             Me.user.uSurname = InfoTextBox2.Text
-            Me.user.birthday = DateBox.Value
+            Me.user.birthday = Date.Parse(DateBox.Value.ToShortDateString)
             Try
                 Me.user.insertUser()
             Catch ex As Exception
@@ -283,23 +287,39 @@
     End Sub
 
     Private Sub insertAlbum()
-        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
-                InfoTextBox3.Text IsNot String.Empty And InfoTextBox4.Text IsNot String.Empty Then
-            Me.user = New User(InfoTextBox3.Text)
-            Me.user.uName = NameTextBox.Text
-            Me.user.uSurname = InfoTextBox2.Text
-            Me.user.birthday = DateBox.Value
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
+            Me.album = New Album(NameTextBox.Text)
+            Me.album.cover = InfoTextBox2.Text
+            Dim artist = New Artist(SelectionComboBox.SelectedItem.ToString())
+            Me.album.artist = artist
+            Me.album.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try
-                Me.user.insertUser()
+                Me.album.insertAlbum()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            InfoListBox.Items.Add(Me.user.email)
+            InfoListBox.Items.Add(Me.album.name)
         End If
     End Sub
 
-    Private Sub readArtistInAlbum(album As Album)
+    Private Sub insertSong()
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
+            Me.song = New Song(NameTextBox.Text)
+            Me.song.length = Integer.Parse(InfoTextBox2.Text)
+            Dim album = New Album(SelectionComboBox.SelectedItem.ToString())
+            Me.song.album = album
+            Try
+                Me.song.insertSong()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            InfoListBox.Items.Add(Me.song.sName)
+        End If
+    End Sub
+
+    Private Sub readArtistInAlbum()
         Me.artist = New Artist
         Dim artistAux As Artist
         Try
@@ -309,10 +329,25 @@
             Exit Sub
         End Try
         For Each artistAux In Me.artist.ArtistDAO.artists()
-
             Me.SelectionComboBox.Items.Add(artistAux.name.ToString)
         Next
-        SelectionComboBox.SelectedItem = album.artist.name.ToString
     End Sub
 
+    Private Sub readAlbumInSong()
+        Me.album = New album
+        Dim albumAux As Album
+        Try
+            Me.album.readAllAlbums()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+        For Each albumAux In Me.album.AlbumDAO.albums()
+            Me.SelectionComboBox.Items.Add(albumAux.name.ToString)
+        Next
+    End Sub
+
+    Private Sub frmManage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.myUser = frmMainMenu.user
+    End Sub
 End Class

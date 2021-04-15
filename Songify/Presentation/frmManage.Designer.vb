@@ -185,6 +185,7 @@ Partial Class frmManage
         '
         'DateBox
         '
+        Me.DateBox.CustomFormat = "dd/mm/yyyy"
         Me.DateBox.Location = New System.Drawing.Point(367, 193)
         Me.DateBox.Margin = New System.Windows.Forms.Padding(4)
         Me.DateBox.Name = "DateBox"
@@ -211,6 +212,7 @@ Partial Class frmManage
         Me.SelectionComboBox.Name = "SelectionComboBox"
         Me.SelectionComboBox.Size = New System.Drawing.Size(216, 24)
         Me.SelectionComboBox.TabIndex = 20
+        Me.SelectionComboBox.Visible = False
         '
         'frmManage
         '

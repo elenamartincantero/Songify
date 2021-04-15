@@ -31,7 +31,7 @@
         Next
     End Sub
     Public Sub insert(a As Album)
-        DBBroker.GetBroker.Change("INSERT INTO ALBUMS VALUES ('" & a.name & "', " & a.releaseDate & "," & a.artist.id & ",'" & a.cover & ");")
+        DBBroker.GetBroker.Change("INSERT INTO ALBUMS (aName, releaseDate, artist, cover) VALUES ('" & a.name & "', '" & a.releaseDate & "', " & a.artist.id & ",'" & a.cover & "');")
     End Sub
     Public Sub update(a As Album)
         DBBroker.GetBroker.Change("UPDATE ALBUMS SET aName='" & a.name & "',releaseDate=" & a.releaseDate & ",artist=" & a.artist.id & ",cover=" & a.cover & "WHERE IdAlbum=" & a.albumID & ";")
