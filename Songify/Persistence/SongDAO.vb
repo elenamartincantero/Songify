@@ -60,7 +60,7 @@
             Throw New Exception()
         End If
         For Each aux1 In col1
-            txt += aux1.ToString
+            txt += aux1(2).ToString + " played on " + aux1(4).ToString
         Next
         Return txt
     End Function

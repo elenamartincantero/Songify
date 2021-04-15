@@ -32,7 +32,9 @@
         Me.UserDAO.connect(path)
     End Sub
     Public Sub readUser()
+        Me.UserDAO.usersSortedByTime()
         Me.UserDAO.read(Me)
+
     End Sub
     Public Sub insertUser()
         Me.UserDAO.insert(Me)
@@ -45,7 +47,7 @@
     End Sub
 
     Public Sub usersSortedByTime()
-        Me.UserDAO.readAllByTime()
+        Me.UserDAO.usersSortedByTime()
     End Sub
 
     Public Sub playbackFavArtists()
@@ -58,7 +60,5 @@
     Public Sub readMyArtists()
         Me.UserDAO.readMyArtists(Me)
     End Sub
-    Public Sub readAllByTime()
-        Me.UserDAO.readAllByTime()
-    End Sub
+
 End Class
