@@ -34,6 +34,10 @@
         Me.AlbumDAO.readMySongs(Me)
         Me.AlbumDAO.calculateTotalLength(Me)
     End Sub
+
+    Public Sub readAlbumWithoutSongs()
+        Me.AlbumDAO.read(Me)
+    End Sub
     Public Sub insertAlbum()
         Me.artist.readArtist()
         Me.AlbumDAO.insert(Me)

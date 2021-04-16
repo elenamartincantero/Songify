@@ -39,6 +39,8 @@ Partial Class frmManage
         Me.DateBox = New System.Windows.Forms.DateTimePicker()
         Me.DateLabel = New System.Windows.Forms.Label()
         Me.SelectionComboBox = New System.Windows.Forms.ComboBox()
+        Me.ImageFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.ImageButton = New System.Windows.Forms.Button()
         CType(Me.ImageBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -179,6 +181,7 @@ Partial Class frmManage
         Me.ImageBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ImageBox.Name = "ImageBox"
         Me.ImageBox.Size = New System.Drawing.Size(181, 180)
+        Me.ImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.ImageBox.TabIndex = 16
         Me.ImageBox.TabStop = False
         Me.ImageBox.Visible = False
@@ -214,11 +217,26 @@ Partial Class frmManage
         Me.SelectionComboBox.TabIndex = 20
         Me.SelectionComboBox.Visible = False
         '
+        'ImageFileDialog
+        '
+        Me.ImageFileDialog.FileName = "OpenFileDialog1"
+        '
+        'ImageButton
+        '
+        Me.ImageButton.Location = New System.Drawing.Point(256, 231)
+        Me.ImageButton.Name = "ImageButton"
+        Me.ImageButton.Size = New System.Drawing.Size(120, 31)
+        Me.ImageButton.TabIndex = 21
+        Me.ImageButton.Text = "Button1"
+        Me.ImageButton.UseVisualStyleBackColor = True
+        Me.ImageButton.Visible = False
+        '
         'frmManage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(693, 480)
+        Me.Controls.Add(Me.ImageButton)
         Me.Controls.Add(Me.SelectionComboBox)
         Me.Controls.Add(Me.DateLabel)
         Me.Controls.Add(Me.DateBox)
@@ -265,4 +283,6 @@ Partial Class frmManage
     Friend WithEvents DateBox As DateTimePicker
     Friend WithEvents DateLabel As Label
     Friend WithEvents SelectionComboBox As ComboBox
+    Friend WithEvents ImageFileDialog As OpenFileDialog
+    Friend WithEvents ImageButton As Button
 End Class

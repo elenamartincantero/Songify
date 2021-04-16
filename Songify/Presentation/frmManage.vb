@@ -42,7 +42,6 @@
         End If
         If DataTypeComboBox.SelectedItem.ToString() = "Users" Then
             clearElements()
-            InfoListBox.Items.Clear()
             invisibleElements()
             NameTextBox.Visible = True
             NameLabel.Visible = True
@@ -59,39 +58,34 @@
 
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Artists" Then
             clearElements()
-            InfoListBox.Items.Clear()
             invisibleElements()
             NameTextBox.Visible = True
             NameLabel.Visible = True
             InfoTextBox2.Visible = True
             InfoLabel2.Visible = True
             InfoLabel2.Text = "Country"
-            InfoTextBox3.Visible = True
-            InfoLabel3.Visible = True
-            InfoLabel3.Text = "Image path"
+            ImageButton.Visible = True
+            ImageButton.Text = "Change image"
             readArtists()
 
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Albums" Then
             clearElements()
-            InfoListBox.Items.Clear()
             invisibleElements()
             NameTextBox.Visible = True
             NameLabel.Visible = True
-            InfoTextBox2.Visible = True
-            InfoLabel2.Visible = True
-            InfoLabel2.Text = "Cover path"
             DateBox.Visible = True
             DateLabel.Visible = True
             DateLabel.Text = "Release date"
             SelectionComboBox.Visible = True
             InfoLabel3.Visible = True
             InfoLabel3.Text = "Artist"
+            ImageButton.Visible = True
+            ImageButton.Text = "Change cover"
             readAlbums()
             readArtistInAlbum()
 
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Songs" Then
             clearElements()
-            InfoListBox.Items.Clear()
             invisibleElements()
             NameTextBox.Visible = True
             NameLabel.Visible = True
@@ -111,7 +105,9 @@
         NameTextBox.Text = String.Empty
         InfoTextBox2.Text = String.Empty
         InfoTextBox3.Text = String.Empty
+        InfoListBox.Items.Clear()
         SelectionComboBox.Items.Clear()
+        SelectionComboBox.Text = String.Empty
     End Sub
 
     Private Sub invisibleElements()
@@ -121,8 +117,10 @@
         InfoLabel2.Visible = False
         InfoTextBox3.Visible = False
         InfoLabel3.Visible = False
+        DateLabel.Visible = False
         DateBox.Visible = False
         SelectionComboBox.Visible = False
+        ImageButton.Visible = True
     End Sub
 
     Private Sub readUsers()
@@ -212,7 +210,7 @@
     Private Sub listAlbum()
         Me.album = New Album(InfoListBox.SelectedItem.ToString) 'name
         Try
-            Me.album.readAlbum()
+            Me.album.readAlbumWithoutSongs()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
@@ -229,13 +227,14 @@
         Me.song = New Song(InfoListBox.SelectedItem.ToString)
         Try
             Me.song.readSong()
+            Me.song.album.readAlbum()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
         NameTextBox.Text = Me.song.sName
         InfoTextBox2.Text = Me.song.length.ToString
-        SelectionComboBox.SelectedItem = Me.song.album.ToString
+        SelectionComboBox.SelectedItem = Me.song.album.name
     End Sub
 
     Private Sub InsertButton_Click(sender As Object, e As EventArgs) Handles InsertButton.Click
@@ -248,8 +247,18 @@
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Songs" Then
             insertSong()
         End If
+    End Sub
 
-
+    Private Sub UpdateButton_Click(sender As Object, e As EventArgs) Handles UpdateButton.Click
+        If DataTypeComboBox.SelectedItem.ToString = "Users" Then
+            updateUser()
+        ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
+            updateArtist()
+        ElseIf DataTypeComboBox.SelectedItem.ToString = "Albums" Then
+            updateAlbum()
+        ElseIf DataTypeComboBox.SelectedItem.ToString = "Songs" Then
+            'updateSong()
+        End If
     End Sub
 
     Private Sub insertUser()
@@ -348,5 +357,64 @@
 
     Private Sub frmManage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.myUser = frmMainMenu.user
+    End Sub
+
+    Private Sub updateUser()
+        Dim userAux As User
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
+                InfoTextBox3.Text IsNot String.Empty Then
+            userAux = New User(InfoTextBox3.Text)
+            userAux.uName = NameTextBox.Text
+            userAux.uSurname = InfoTextBox2.Text
+            userAux.birthday = Date.Parse(DateBox.Value.ToShortDateString)
+            Try
+                userAux.updateUser()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+        End If
+    End Sub
+
+    Private Sub updateAlbum()
+        Dim albumAux As Album
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
+            albumAux = New Album(NameTextBox.Text)
+            albumAux.cover = InfoTextBox2.Text
+            Dim artist = New Artist(SelectionComboBox.SelectedItem.ToString())
+            albumAux.artist = artist
+            albumAux.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
+            Try
+                albumAux.updateAlbum()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+        End If
+    End Sub
+
+    Private Sub updateArtist()
+        Dim artistAux As Artist
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
+            artistAux = New Artist(NameTextBox.Text)
+            artistAux.country = InfoTextBox2.Text
+            artistAux.image = ImageFileDialog.FileName
+            Try
+                artistAux.updateArtist()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+        End If
+    End Sub
+
+    Private Sub ImageButton_Click(sender As Object, e As EventArgs) Handles ImageButton.Click
+        If DataTypeComboBox.SelectedItem.ToString = "Artists" Then
+            ImageFileDialog.InitialDirectory = Application.StartupPath.ToString + "\ArtistsImages"
+
+        ElseIf DataTypeComboBox.SelectedItem.ToString = "Albums" Then
+            ImageFileDialog.InitialDirectory = Application.StartupPath.ToString + "\AlbumsImages"
+        End If
+        ImageFileDialog.ShowDialog()
     End Sub
 End Class
