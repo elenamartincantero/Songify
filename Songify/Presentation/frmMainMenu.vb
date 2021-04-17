@@ -2,15 +2,29 @@
     Public Property user As User
 
     Private Sub frmMainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.user = frmLogin.user
+        If frmLogin.user IsNot Nothing Then
+            Me.user = frmLogin.user
+        ElseIf frmManage.myUser IsNot Nothing Then
+            Me.user = frmManage.myUser
+        ElseIf frmSearch.user IsNot Nothing Then
+            Me.user = frmSearch.user
+        ElseIf frmStatistics.user IsNot Nothing Then
+            Me.user = frmStatistics.user
+        End If
+
         LoggedUserLbl.Text = "User logged as: " + Me.user.email.ToString
     End Sub
 
     Private Sub ChangeUserButton_Click(sender As Object, e As EventArgs) Handles ChangeUserButton.Click
-        frmLogin.Show()
-        frmLogin.user = Me.user
-        frmLogin.LoginButton.Enabled = True
-        Me.Close()
+        If MessageBox.Show("Are you sure you want to change user?", "Change user", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            frmLogin.Show()
+            frmLogin.user = Me.user
+            frmLogin.LoginButton.Enabled = True
+            frmLogin.ConnectButton.Enabled = False
+            frmLogin.LoginBox.Enabled = True
+            Me.Close()
+        End If
+
     End Sub
 
     Private Sub ManageButton_Click(sender As Object, e As EventArgs) Handles ManageButton.Click
