@@ -36,9 +36,11 @@ Partial Class frmLogin
         'ofdDB
         '
         Me.ofdDB.FileName = "OpenFileDialog1"
+        Me.ofdDB.Filter = "MS Database | *accdb"
         '
         'LoginBox
         '
+        Me.LoginBox.Enabled = False
         Me.LoginBox.Location = New System.Drawing.Point(79, 141)
         Me.LoginBox.Name = "LoginBox"
         Me.LoginBox.Size = New System.Drawing.Size(244, 20)
@@ -83,9 +85,9 @@ Partial Class frmLogin
         '
         'ConnectButton
         '
-        Me.ConnectButton.Location = New System.Drawing.Point(159, 201)
+        Me.ConnectButton.Location = New System.Drawing.Point(159, 191)
         Me.ConnectButton.Name = "ConnectButton"
-        Me.ConnectButton.Size = New System.Drawing.Size(75, 23)
+        Me.ConnectButton.Size = New System.Drawing.Size(75, 42)
         Me.ConnectButton.TabIndex = 5
         Me.ConnectButton.Text = "Connect"
         Me.ConnectButton.UseVisualStyleBackColor = True
@@ -102,7 +104,7 @@ Partial Class frmLogin
         Me.Controls.Add(Me.LoginButton)
         Me.Controls.Add(Me.DatabaseButton)
         Me.Controls.Add(Me.LoginBox)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLogin"
         Me.Text = "Songify - Login"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

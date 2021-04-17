@@ -1,5 +1,6 @@
 ﻿Public Class frmLogin
     Public Property user As User
+
     Private Sub DatabaseButton_Click(sender As Object, e As EventArgs) Handles DatabaseButton.Click
         If Me.ofdDB.ShowDialog = DialogResult.OK Then
             ConnectButton.Enabled = True
@@ -16,10 +17,15 @@
 
         Try
             Me.user.readUser()
-            frmMainMenu.Show()
-            Me.Close()
+            If Me.user.uName <> String.Empty Then
+                frmMainMenu.Show()
+                Me.Close()
+            Else
+                MessageBox.Show("Please, insert valid user", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            End If
+
         Catch ex As Exception
-            MessageBox.Show("Please introduce a valid user", ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
 
@@ -28,6 +34,11 @@
     Private Sub ConnectButton_Click(sender As Object, e As EventArgs) Handles ConnectButton.Click
         user = New User()
         Me.user.connect(ofdDB.FileName)
+        Me.LoginBox.Enabled = True
+
+    End Sub
+
+    Private Sub LoginBox_TextChanged(sender As Object, e As EventArgs) Handles LoginBox.TextChanged
         LoginButton.Enabled = True
     End Sub
 End Class
