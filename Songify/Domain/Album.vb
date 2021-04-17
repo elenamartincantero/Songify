@@ -26,6 +26,11 @@
         Me.name = name
         Me.songs = New Collection
     End Sub
+    Public Sub New(albumID As Integer)
+        Me.AlbumDAO = New AlbumDAO
+        Me.albumID = albumID
+        Me.songs = New Collection
+    End Sub
     Public Sub readAllAlbums()
         Me.AlbumDAO.readAll()
     End Sub

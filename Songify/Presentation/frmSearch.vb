@@ -25,14 +25,21 @@ Public Class frmSearch
     End Sub
     Private Sub readAlbum()
         Dim albumAux As Album
-        Me.artist = New Artist
+        Dim artistAux As Artist = New Artist(List.SelectedItem.ToString)
+        Try
+            artistAux.readArtist()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End Try
+        Me.artist = New Artist(artistAux.id)
         Try
             artist.readMyAlbums()
         Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
         End Try
-        For Each albumAux In Me.album.AlbumDAO.albums
+        For Each albumAux In Me.artist.albums
             Me.AlbumList.Items.Add(albumAux.name)
             InfoLabel.Text = "Info album"
         Next
@@ -40,14 +47,21 @@ Public Class frmSearch
     End Sub
     Private Sub readSong()
         Dim songAux As Song
-        Me.album = New Album
+        Dim albumAux As Album = New Album(AlbumList.SelectedItem.ToString)
+        Try
+            albumAux.readAlbum()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+        Me.album = New Album(albumAux.albumID)
         Try
             album.readMySongs()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End Try
-        For Each songAux In Me.album.AlbumDAO.albums
+        For Each songAux In Me.album.songs
             Me.SongList.Items.Add(songAux.sName)
             InfoLabel.Text = "Info song"
         Next

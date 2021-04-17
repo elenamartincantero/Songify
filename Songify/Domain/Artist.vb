@@ -13,6 +13,10 @@
     Public Sub New(name As String)
         Me.ArtistDAO = New ArtistDAO
         Me.name = name
+    End Sub
+    Public Sub New(id As Integer)
+        Me.ArtistDAO = New ArtistDAO
+        Me.id = id
         Me.albums = New Collection
     End Sub
 
