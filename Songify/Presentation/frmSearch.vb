@@ -5,9 +5,11 @@ Public Class frmSearch
     Property user As User
     Private Sub List_SelectedIndexChanged(sender As Object, e As EventArgs) Handles List.SelectedIndexChanged
         readAlbum()
+        aArtist()
     End Sub
     Private Sub AlbumList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AlbumList.SelectedIndexChanged
         readSong()
+        aAlbum()
     End Sub
     Private Sub readArtists()
         Dim artistAux As Artist
@@ -21,7 +23,6 @@ Public Class frmSearch
         For Each artistAux In Me.artist.ArtistDAO.artists
             Me.List.Items.Add(artistAux.name)
         Next
-        aArtist()
     End Sub
     Private Sub readAlbum()
         Dim albumAux As Album
@@ -43,7 +44,6 @@ Public Class frmSearch
             Me.AlbumList.Items.Add(albumAux.name)
             InfoLabel.Text = "Info album"
         Next
-        aAlbum()
     End Sub
     Private Sub readSong()
         Dim songAux As Song
@@ -65,11 +65,10 @@ Public Class frmSearch
             Me.SongList.Items.Add(songAux.sName)
             InfoLabel.Text = "Info song"
         Next
-        aSong()
         ShowButtons()
     End Sub
     Private Sub aSong()
-        Me.song = New Song()
+        Me.song = New Song(SongList.SelectedItem.ToString)
         Try
             song.readSong()
         Catch ex As Exception
@@ -81,7 +80,7 @@ Public Class frmSearch
         Me.InfoList.Items.Add(Me.song.length)
     End Sub
     Private Sub aAlbum()
-        Me.album = New Album()
+        Me.album = New Album(AlbumList.SelectedItem.ToString)
         Try
             album.readAlbum()
         Catch ex As Exception
@@ -93,7 +92,7 @@ Public Class frmSearch
         Me.InfoList.Items.Add(Me.album.releaseDate)
     End Sub
     Private Sub aArtist()
-        Me.artist = New Artist()
+        Me.artist = New Artist(List.SelectedItem.ToString)
         Try
             artist.readArtist()
         Catch ex As Exception
