@@ -210,7 +210,7 @@
     Private Sub listAlbum()
         Me.album = New Album(InfoListBox.SelectedItem.ToString) 'name
         Try
-            Me.album.readAlbumWithoutSongs()
+            Me.album.readAlbum()
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
@@ -342,7 +342,7 @@
     End Sub
 
     Private Sub readAlbumInSong()
-        Me.album = New album
+        Me.album = New Album
         Dim albumAux As Album
         Try
             Me.album.readAllAlbums()
