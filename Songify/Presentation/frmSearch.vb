@@ -63,7 +63,6 @@ Public Class frmSearch
         End Try
         For Each songAux In Me.album.songs
             Me.SongList.Items.Add(songAux.sName)
-            InfoLabel.Text = "Info song"
         Next
         ShowButtons()
     End Sub
@@ -75,9 +74,29 @@ Public Class frmSearch
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        Me.InfoList.Items.Clear()
-        Me.InfoList.Items.Add(Me.song.album)
-        Me.InfoList.Items.Add(Me.song.length)
+        ShowInfo()
+        Me.Label1.Text = "Album"
+        Me.Label2.Text = "Duration"
+        Me.Label3.Text = "ID song"
+        Me.TextBox.Text = Me.song.album.name
+        Me.TextBox1.Text = CStr(Me.song.length)
+        Me.TextBox2.Text = CStr(Me.song.idSong)
+    End Sub
+    Private Sub HideINfo()
+        Label1.Visible = False
+        Label2.Visible = False
+        Label3.Visible = False
+        Me.TextBox.Visible = False
+        Me.TextBox1.Visible = False
+        Me.TextBox2.Visible = False
+    End Sub
+    Private Sub ShowInfo()
+        Label1.Visible = True
+        Label2.Visible = True
+        Label3.Visible = True
+        Me.TextBox.Visible = True
+        Me.TextBox1.Visible = True
+        Me.TextBox2.Visible = True
     End Sub
     Private Sub aAlbum()
         Me.album = New Album(AlbumList.SelectedItem.ToString)
@@ -87,9 +106,13 @@ Public Class frmSearch
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        Me.InfoList.Items.Clear()
-        Me.InfoList.Items.Add(Me.album.length)
-        Me.InfoList.Items.Add(Me.album.releaseDate)
+        ShowInfo()
+        Me.Label1.Text = "Album ID"
+        Me.Label2.Text = "Release date"
+        Me.Label3.Text = "Cover"
+        Me.TextBox.Text = CStr(Me.album.albumID)
+        Me.TextBox1.Text = CStr(Me.album.releaseDate)
+        Me.TextBox2.Text = Me.album.cover
     End Sub
     Private Sub aArtist()
         Me.artist = New Artist(List.SelectedItem.ToString)
@@ -99,9 +122,13 @@ Public Class frmSearch
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        Me.InfoList.Items.Clear()
-        Me.InfoList.Items.Add(Me.artist.image)
-        Me.InfoList.Items.Add(Me.artist.country)
+        ShowInfo()
+        Me.Label1.Text = "Artist ID"
+        Me.Label2.Text = "Release date"
+        Me.Label3.Visible = False
+        Me.TextBox2.Visible = False
+        Me.TextBox.Text = CStr(Me.artist.id)
+        Me.TextBox1.Text = Me.artist.country
     End Sub
     Private Sub Play_Click(sender As Object, e As EventArgs) Handles Start.Click
         readArtists()
@@ -109,6 +136,9 @@ Public Class frmSearch
     End Sub
     Private Sub Hiddebuttons()
         PlayButton.Visible = False
+        Label1.Visible = False
+        Label2.Visible = False
+        Label3.Visible = False
         HistoryButton.Visible = False
         FavButton.Visible = False
         InfoLabel.Visible = False
@@ -134,8 +164,6 @@ Public Class frmSearch
     Private Sub HistoryButton_Click(sender As Object, e As EventArgs) Handles HistoryButton.Click
         Dim song As Song = New Song(Me.SongList.SelectedItem.ToString)
         InfoLabel.Text = "Info Playbacks"
-        InfoList.Items.Clear()
-        InfoList.Items.Add(song.readPlayblacks)
     End Sub
 
     Private Sub FavButton_Click(sender As Object, e As EventArgs) Handles FavButton.Click
@@ -147,5 +175,9 @@ Public Class frmSearch
     Private Sub UnFav_Click(sender As Object, e As EventArgs) Handles UnFav.Click
         Dim artist As Artist = New Artist(Me.List.SelectedItem.ToString)
         artist.not_favArtist(Me.user)
+    End Sub
+
+    Private Sub SongList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SongList.SelectedIndexChanged
+        aSong()
     End Sub
 End Class

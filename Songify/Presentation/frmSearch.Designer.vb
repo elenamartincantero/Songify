@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmSearch
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmSearch
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.List = New System.Windows.Forms.ListBox()
         Me.InfoLabel = New System.Windows.Forms.Label()
@@ -32,7 +32,12 @@ Partial Class frmSearch
         Me.SongList = New System.Windows.Forms.ListBox()
         Me.Start = New System.Windows.Forms.Button()
         Me.UnFav = New System.Windows.Forms.Button()
-        Me.InfoList = New System.Windows.Forms.ListBox()
+        Me.TextBox = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'List
@@ -47,7 +52,7 @@ Partial Class frmSearch
         'InfoLabel
         '
         Me.InfoLabel.AutoSize = True
-        Me.InfoLabel.Location = New System.Drawing.Point(661, 57)
+        Me.InfoLabel.Location = New System.Drawing.Point(793, 23)
         Me.InfoLabel.Name = "InfoLabel"
         Me.InfoLabel.Size = New System.Drawing.Size(31, 17)
         Me.InfoLabel.TabIndex = 1
@@ -83,7 +88,7 @@ Partial Class frmSearch
         'HistoryLabel
         '
         Me.HistoryLabel.AutoSize = True
-        Me.HistoryLabel.Location = New System.Drawing.Point(661, 251)
+        Me.HistoryLabel.Location = New System.Drawing.Point(652, 305)
         Me.HistoryLabel.Name = "HistoryLabel"
         Me.HistoryLabel.Size = New System.Drawing.Size(52, 17)
         Me.HistoryLabel.TabIndex = 5
@@ -125,21 +130,71 @@ Partial Class frmSearch
         Me.UnFav.Text = "UnFav"
         Me.UnFav.UseVisualStyleBackColor = True
         '
-        'InfoList
+        'TextBox
         '
-        Me.InfoList.FormattingEnabled = True
-        Me.InfoList.ItemHeight = 16
-        Me.InfoList.Location = New System.Drawing.Point(675, 98)
-        Me.InfoList.Name = "InfoList"
-        Me.InfoList.Size = New System.Drawing.Size(193, 148)
-        Me.InfoList.TabIndex = 10
+        Me.TextBox.Location = New System.Drawing.Point(705, 100)
+        Me.TextBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox.Name = "TextBox"
+        Me.TextBox.Size = New System.Drawing.Size(197, 22)
+        Me.TextBox.TabIndex = 10
+        Me.TextBox.Visible = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(705, 176)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(197, 22)
+        Me.TextBox1.TabIndex = 11
+        Me.TextBox1.Visible = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(702, 70)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(31, 17)
+        Me.Label1.TabIndex = 12
+        Me.Label1.Text = "Info"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(702, 144)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(31, 17)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "Info"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(705, 270)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(197, 22)
+        Me.TextBox2.TabIndex = 14
+        Me.TextBox2.Visible = False
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(702, 229)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(31, 17)
+        Me.Label3.TabIndex = 15
+        Me.Label3.Text = "Info"
         '
         'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(914, 480)
-        Me.Controls.Add(Me.InfoList)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TextBox)
         Me.Controls.Add(Me.UnFav)
         Me.Controls.Add(Me.Start)
         Me.Controls.Add(Me.SongList)
@@ -172,5 +227,10 @@ Partial Class frmSearch
     Friend WithEvents SongList As ListBox
     Friend WithEvents Start As Button
     Friend WithEvents UnFav As Button
-    Friend WithEvents InfoList As ListBox
+    Friend WithEvents TextBox As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label3 As Label
 End Class
