@@ -30,7 +30,6 @@ Partial Class frmSearch
         Me.HistoryLabel = New System.Windows.Forms.Label()
         Me.AlbumList = New System.Windows.Forms.ListBox()
         Me.SongList = New System.Windows.Forms.ListBox()
-        Me.Start = New System.Windows.Forms.Button()
         Me.UnFav = New System.Windows.Forms.Button()
         Me.TextBox = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -38,6 +37,8 @@ Partial Class frmSearch
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.PlaybackList = New System.Windows.Forms.ListBox()
+        Me.BACK_TO_MENU = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'List
@@ -52,7 +53,7 @@ Partial Class frmSearch
         'InfoLabel
         '
         Me.InfoLabel.AutoSize = True
-        Me.InfoLabel.Location = New System.Drawing.Point(793, 23)
+        Me.InfoLabel.Location = New System.Drawing.Point(787, 21)
         Me.InfoLabel.Name = "InfoLabel"
         Me.InfoLabel.Size = New System.Drawing.Size(31, 17)
         Me.InfoLabel.TabIndex = 1
@@ -60,7 +61,7 @@ Partial Class frmSearch
         '
         'PlayButton
         '
-        Me.PlayButton.Location = New System.Drawing.Point(62, 385)
+        Me.PlayButton.Location = New System.Drawing.Point(603, 13)
         Me.PlayButton.Name = "PlayButton"
         Me.PlayButton.Size = New System.Drawing.Size(79, 38)
         Me.PlayButton.TabIndex = 2
@@ -69,7 +70,7 @@ Partial Class frmSearch
         '
         'HistoryButton
         '
-        Me.HistoryButton.Location = New System.Drawing.Point(192, 387)
+        Me.HistoryButton.Location = New System.Drawing.Point(206, 12)
         Me.HistoryButton.Name = "HistoryButton"
         Me.HistoryButton.Size = New System.Drawing.Size(176, 35)
         Me.HistoryButton.TabIndex = 3
@@ -78,7 +79,7 @@ Partial Class frmSearch
         '
         'FavButton
         '
-        Me.FavButton.Location = New System.Drawing.Point(408, 385)
+        Me.FavButton.Location = New System.Drawing.Point(410, 11)
         Me.FavButton.Name = "FavButton"
         Me.FavButton.Size = New System.Drawing.Size(72, 37)
         Me.FavButton.TabIndex = 4
@@ -88,7 +89,7 @@ Partial Class frmSearch
         'HistoryLabel
         '
         Me.HistoryLabel.AutoSize = True
-        Me.HistoryLabel.Location = New System.Drawing.Point(652, 305)
+        Me.HistoryLabel.Location = New System.Drawing.Point(293, 412)
         Me.HistoryLabel.Name = "HistoryLabel"
         Me.HistoryLabel.Size = New System.Drawing.Size(52, 17)
         Me.HistoryLabel.TabIndex = 5
@@ -112,18 +113,9 @@ Partial Class frmSearch
         Me.SongList.Size = New System.Drawing.Size(134, 308)
         Me.SongList.TabIndex = 7
         '
-        'Start
-        '
-        Me.Start.Location = New System.Drawing.Point(62, 12)
-        Me.Start.Name = "Start"
-        Me.Start.Size = New System.Drawing.Size(92, 39)
-        Me.Start.TabIndex = 8
-        Me.Start.Text = "Start"
-        Me.Start.UseVisualStyleBackColor = True
-        '
         'UnFav
         '
-        Me.UnFav.Location = New System.Drawing.Point(516, 387)
+        Me.UnFav.Location = New System.Drawing.Point(509, 13)
         Me.UnFav.Name = "UnFav"
         Me.UnFav.Size = New System.Drawing.Size(75, 36)
         Me.UnFav.TabIndex = 9
@@ -184,11 +176,31 @@ Partial Class frmSearch
         Me.Label3.TabIndex = 15
         Me.Label3.Text = "Info"
         '
+        'PlaybackList
+        '
+        Me.PlaybackList.FormattingEnabled = True
+        Me.PlaybackList.ItemHeight = 16
+        Me.PlaybackList.Location = New System.Drawing.Point(62, 432)
+        Me.PlaybackList.Name = "PlaybackList"
+        Me.PlaybackList.Size = New System.Drawing.Size(550, 36)
+        Me.PlaybackList.TabIndex = 16
+        '
+        'BACK_TO_MENU
+        '
+        Me.BACK_TO_MENU.Location = New System.Drawing.Point(724, 362)
+        Me.BACK_TO_MENU.Name = "BACK_TO_MENU"
+        Me.BACK_TO_MENU.Size = New System.Drawing.Size(152, 106)
+        Me.BACK_TO_MENU.TabIndex = 17
+        Me.BACK_TO_MENU.Text = "Back to menu"
+        Me.BACK_TO_MENU.UseVisualStyleBackColor = True
+        '
         'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(914, 480)
+        Me.Controls.Add(Me.BACK_TO_MENU)
+        Me.Controls.Add(Me.PlaybackList)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label2)
@@ -196,7 +208,6 @@ Partial Class frmSearch
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.TextBox)
         Me.Controls.Add(Me.UnFav)
-        Me.Controls.Add(Me.Start)
         Me.Controls.Add(Me.SongList)
         Me.Controls.Add(Me.AlbumList)
         Me.Controls.Add(Me.HistoryLabel)
@@ -225,7 +236,6 @@ Partial Class frmSearch
 
     Friend WithEvents AlbumList As ListBox
     Friend WithEvents SongList As ListBox
-    Friend WithEvents Start As Button
     Friend WithEvents UnFav As Button
     Friend WithEvents TextBox As TextBox
     Friend WithEvents TextBox1 As TextBox
@@ -233,4 +243,6 @@ Partial Class frmSearch
     Friend WithEvents Label2 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents PlaybackList As ListBox
+    Friend WithEvents BACK_TO_MENU As Button
 End Class

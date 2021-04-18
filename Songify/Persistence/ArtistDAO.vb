@@ -53,7 +53,7 @@
         DBBroker.GetBroker.Change("INSERT INTO FAV_ARTISTS VALUES ('" & us.email & "', " & a.id & "," & Date.Today & ");")
     End Sub
     Public Sub not_fav(us As User, a As Artist)
-        DBBroker.GetBroker.Change("DELETE FROM PLAYABACKS WHERE user='" & us.email & "'AND artist=" & a.id & ");")
+        DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE user='" & us.email & "'AND artist=" & a.id & ";")
     End Sub
 
     Public Sub artistsSorted(ar As Artist)

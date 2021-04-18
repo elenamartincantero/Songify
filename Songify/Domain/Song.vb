@@ -12,6 +12,10 @@
         Me.SongDAO = New SongDAO
         Me.sName = sName
     End Sub
+    Public Sub New(id As Integer)
+        Me.SongDAO = New SongDAO
+        Me.idSong = id
+    End Sub
 
     Public Sub New(sName As String, length As Integer, album As String)
         Me.SongDAO = New SongDAO
