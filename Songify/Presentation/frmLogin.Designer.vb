@@ -85,6 +85,7 @@ Partial Class frmLogin
         '
         'ConnectButton
         '
+        Me.ConnectButton.Enabled = False
         Me.ConnectButton.Location = New System.Drawing.Point(159, 191)
         Me.ConnectButton.Name = "ConnectButton"
         Me.ConnectButton.Size = New System.Drawing.Size(75, 42)
