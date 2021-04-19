@@ -22,86 +22,133 @@ Partial Class frmStatistics
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.DateTimeBegin = New System.Windows.Forms.DateTimePicker()
         Me.BeginLabel = New System.Windows.Forms.Label()
         Me.EndLabel = New System.Windows.Forms.Label()
         Me.DateTimeEnd = New System.Windows.Forms.DateTimePicker()
-        Me.InfoLabel = New System.Windows.Forms.Label()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.ArtistSorted = New System.Windows.Forms.Button()
+        Me.UserSorted = New System.Windows.Forms.Button()
+        Me.SongSorted = New System.Windows.Forms.Button()
+        Me.ListenedArtist = New System.Windows.Forms.Button()
+        Me.Playbacktime = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"List of artists sorted by number of playbacks", "List of songs sorted by number of playbacks", "List of artists most listened to by a user", "List of users sorted by time using the application", "Playback time of a user's favorite artists"})
-        Me.ComboBox1.Location = New System.Drawing.Point(64, 42)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(174, 23)
-        Me.ComboBox1.TabIndex = 0
         '
         'DateTimeBegin
         '
-        Me.DateTimeBegin.Location = New System.Drawing.Point(64, 124)
+        Me.DateTimeBegin.Location = New System.Drawing.Point(73, 132)
         Me.DateTimeBegin.Name = "DateTimeBegin"
-        Me.DateTimeBegin.Size = New System.Drawing.Size(246, 23)
+        Me.DateTimeBegin.Size = New System.Drawing.Size(281, 22)
         Me.DateTimeBegin.TabIndex = 1
         '
         'BeginLabel
         '
         Me.BeginLabel.AutoSize = True
-        Me.BeginLabel.Location = New System.Drawing.Point(64, 87)
+        Me.BeginLabel.Location = New System.Drawing.Point(73, 93)
         Me.BeginLabel.Name = "BeginLabel"
-        Me.BeginLabel.Size = New System.Drawing.Size(64, 15)
+        Me.BeginLabel.Size = New System.Drawing.Size(78, 17)
         Me.BeginLabel.TabIndex = 2
         Me.BeginLabel.Text = "Begin Date"
         '
         'EndLabel
         '
         Me.EndLabel.AutoSize = True
-        Me.EndLabel.Location = New System.Drawing.Point(369, 87)
+        Me.EndLabel.Location = New System.Drawing.Point(422, 93)
         Me.EndLabel.Name = "EndLabel"
-        Me.EndLabel.Size = New System.Drawing.Size(54, 15)
+        Me.EndLabel.Size = New System.Drawing.Size(67, 17)
         Me.EndLabel.TabIndex = 3
         Me.EndLabel.Text = "End Date"
         '
         'DateTimeEnd
         '
-        Me.DateTimeEnd.Location = New System.Drawing.Point(369, 124)
+        Me.DateTimeEnd.Location = New System.Drawing.Point(422, 132)
         Me.DateTimeEnd.Name = "DateTimeEnd"
-        Me.DateTimeEnd.Size = New System.Drawing.Size(244, 23)
+        Me.DateTimeEnd.Size = New System.Drawing.Size(278, 22)
         Me.DateTimeEnd.TabIndex = 4
         '
-        'InfoLabel
+        'ListBox1
         '
-        Me.InfoLabel.AutoSize = True
-        Me.InfoLabel.Location = New System.Drawing.Point(64, 171)
-        Me.InfoLabel.Name = "InfoLabel"
-        Me.InfoLabel.Size = New System.Drawing.Size(41, 15)
-        Me.InfoLabel.TabIndex = 5
-        Me.InfoLabel.Text = "Label1"
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 16
+        Me.ListBox1.Location = New System.Drawing.Point(88, 204)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(230, 212)
+        Me.ListBox1.TabIndex = 5
+        '
+        'ArtistSorted
+        '
+        Me.ArtistSorted.Location = New System.Drawing.Point(76, 26)
+        Me.ArtistSorted.Name = "ArtistSorted"
+        Me.ArtistSorted.Size = New System.Drawing.Size(75, 31)
+        Me.ArtistSorted.TabIndex = 6
+        Me.ArtistSorted.Text = "ArtistSorted"
+        Me.ArtistSorted.UseVisualStyleBackColor = True
+        '
+        'UserSorted
+        '
+        Me.UserSorted.Location = New System.Drawing.Point(435, 26)
+        Me.UserSorted.Name = "UserSorted"
+        Me.UserSorted.Size = New System.Drawing.Size(99, 31)
+        Me.UserSorted.TabIndex = 7
+        Me.UserSorted.Text = "UserSorted"
+        Me.UserSorted.UseVisualStyleBackColor = True
+        '
+        'SongSorted
+        '
+        Me.SongSorted.Location = New System.Drawing.Point(187, 26)
+        Me.SongSorted.Name = "SongSorted"
+        Me.SongSorted.Size = New System.Drawing.Size(94, 31)
+        Me.SongSorted.TabIndex = 8
+        Me.SongSorted.Text = "SongSorted"
+        Me.SongSorted.UseVisualStyleBackColor = True
+        '
+        'ListenedArtist
+        '
+        Me.ListenedArtist.Location = New System.Drawing.Point(310, 26)
+        Me.ListenedArtist.Name = "ListenedArtist"
+        Me.ListenedArtist.Size = New System.Drawing.Size(104, 31)
+        Me.ListenedArtist.TabIndex = 9
+        Me.ListenedArtist.Text = "ListenedArtist"
+        Me.ListenedArtist.UseVisualStyleBackColor = True
+        '
+        'Playbacktime
+        '
+        Me.Playbacktime.Location = New System.Drawing.Point(567, 26)
+        Me.Playbacktime.Name = "Playbacktime"
+        Me.Playbacktime.Size = New System.Drawing.Size(118, 31)
+        Me.Playbacktime.TabIndex = 10
+        Me.Playbacktime.Text = "PlaybackTime"
+        Me.Playbacktime.UseVisualStyleBackColor = True
         '
         'frmStatistics
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.InfoLabel)
+        Me.ClientSize = New System.Drawing.Size(914, 480)
+        Me.Controls.Add(Me.Playbacktime)
+        Me.Controls.Add(Me.ListenedArtist)
+        Me.Controls.Add(Me.SongSorted)
+        Me.Controls.Add(Me.UserSorted)
+        Me.Controls.Add(Me.ArtistSorted)
+        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.DateTimeEnd)
         Me.Controls.Add(Me.EndLabel)
         Me.Controls.Add(Me.BeginLabel)
         Me.Controls.Add(Me.DateTimeBegin)
-        Me.Controls.Add(Me.ComboBox1)
         Me.Name = "frmStatistics"
         Me.Text = "End Date"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents DateTimeBegin As DateTimePicker
     Friend WithEvents BeginLabel As Label
     Friend WithEvents EndLabel As Label
     Friend WithEvents DateTimeEnd As DateTimePicker
-    Friend WithEvents InfoLabel As Label
+    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents ArtistSorted As Button
+    Friend WithEvents UserSorted As Button
+    Friend WithEvents SongSorted As Button
+    Friend WithEvents ListenedArtist As Button
+    Friend WithEvents Playbacktime As Button
 End Class
