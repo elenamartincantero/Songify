@@ -32,7 +32,8 @@
         DBBroker.GetBroker.Change("INSERT INTO ARTISTS VALUES ('" & a.name & "', '" & a.country & "','" & a.image & "');")
     End Sub
     Public Sub update(a As Artist)
-        DBBroker.GetBroker.Change("UPDATE ARTISTS SET aName='" & a.name & "',country='" & a.country & "',image='" & a.image & "' WHERE IdArtist=" & a.id & ";")
+        DBBroker.GetBroker.Change("UPDATE ARTISTS SET country='" & a.country & "',image='" & a.image & "' WHERE aName='" & a.name & "';")
+
     End Sub
     Public Sub delete(a As Artist)
         DBBroker.GetBroker.Change("DELETE FROM ARTISTS WHERE aName='" & a.name & "';")

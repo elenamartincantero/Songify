@@ -394,13 +394,11 @@
     End Sub
 
     Private Sub updateArtist()
-        Dim artistAux As Artist
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
-            artistAux = New Artist(NameTextBox.Text)
-            artistAux.country = InfoTextBox2.Text
-            artistAux.image = ImageFileDialog.FileName
+            Me.artist.country = InfoTextBox2.Text
+            Me.artist.image = ImageFileDialog.FileName.ToString
             Try
-                artistAux.updateArtist()
+                Me.artist.updateArtist()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
