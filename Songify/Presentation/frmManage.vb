@@ -262,7 +262,7 @@
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Albums" Then
             updateAlbum()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Songs" Then
-            'updateSong()
+            updateSong()
         End If
     End Sub
 
@@ -405,20 +405,42 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
+            resetElements()
+            readAlbums()
+            readArtistInAlbum()
         End If
     End Sub
 
     Private Sub updateArtist()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
+            Me.artist.name = NameTextBox.Text
             Me.artist.country = InfoTextBox2.Text
             Me.artist.image = ImageFileDialog.FileName.ToString
             Try
                 Me.artist.updateArtist()
-                ImageBox.ImageLocation = Me.artist.image
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
+            ImageBox.ImageLocation = Me.artist.image
+            resetElements()
+            readArtists()
+        End If
+    End Sub
+
+    Private Sub updateSong()
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
+            Me.song.sName = NameTextBox.Text
+            Me.song.length = Integer.Parse(InfoTextBox2.Text)
+            Try
+                Me.song.updateSong()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            resetElements()
+            readSongs()
+            readAlbumInSong()
         End If
     End Sub
 
