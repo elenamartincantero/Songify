@@ -52,7 +52,7 @@
     Public Sub usersSortedByTime()
         Dim col As Collection : Dim aux As Collection
         Dim user As User
-        col = DBBroker.GetBroker().Read("select p.user, sum(s.length) From playbacks p, songs s where p.song = s.IdSong group by p.user order by sum(s.length);")
+        col = DBBroker.GetBroker().Read("select p.user, sum(s.length) from playbacks p, songs s where p.song = s.IdSong group by p.user order by sum(s.length);")
         If col.Count = 0 Then
             Throw New Exception()
         End If
@@ -62,9 +62,15 @@
         Next
     End Sub
 
-    Public Sub readArtistsMostListened(beginDate As Date, endDate As Date, user As User)
-
-    End Sub
+    Public Function readArtistsMostListened(beginDate As Date, endDate As Date, user As User) As String
+        Dim col As Collection : Dim aux As Collection
+        Dim txt As String = ""
+        col = DBBroker.GetBroker().Read("select aName from artists where IdArtist in ( select artist from albums where IdAlbum in (select album from songs where IdSong in (select song from playbacks where user like '" & user.email & "' and plDate between" & beginDate & "and" & endDate & ")));")
+        For Each aux In col
+            txt += aux(1).ToString + "\n"
+        Next
+        Return txt
+    End Function
     Public Function playbackFavArtists(u As User) As String
         Dim col As Collection : Dim aux As Collection
         Dim txt As String = ""
