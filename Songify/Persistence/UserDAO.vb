@@ -35,6 +35,7 @@
         DBBroker.GetBroker.Change("UPDATE USERS SET uName='" & u.uName & "',uSurname='" & u.uSurname & "',birthdate='" & u.birthday & "' WHERE Email='" & u.email & "';")
     End Sub
     Public Sub delete(u As User)
+        DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE user='" & u.email & "';")
         DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.email & "';")
     End Sub
     Public Sub readMyArtists(ByRef u As User)

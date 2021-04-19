@@ -182,64 +182,76 @@
     End Sub
 
     Private Sub listUser()
-        Me.user = New User(InfoListBox.SelectedItem.ToString) 'email
-        Try
-            Me.user.readUser()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Exit Sub
-        End Try
-        NameTextBox.Enabled = False
-        NameTextBox.Text = Me.user.uName
-        InfoTextBox2.Text = Me.user.uSurname
-        InfoTextBox3.Text = Me.user.email
-        DateBox.Value = Me.user.birthday
+        If InfoListBox.SelectedItem IsNot Nothing Then
+            Me.user = New User(InfoListBox.SelectedItem.ToString) 'email
+            Try
+                Me.user.readUser()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            InfoTextBox3.Enabled = False
+            NameTextBox.Text = Me.user.uName
+            InfoTextBox2.Text = Me.user.uSurname
+            InfoTextBox3.Text = Me.user.email
+            DateBox.Value = Me.user.birthday
+        End If
+
     End Sub
 
     Private Sub listArtist()
-        Me.artist = New Artist(InfoListBox.SelectedItem.ToString)  'name
-        Try
-            Me.artist.readArtist()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Exit Sub
-        End Try
-        NameTextBox.Text = Me.artist.name
-        InfoTextBox2.Text = Me.artist.country
-        InfoTextBox3.Text = Me.artist.image
-        ImageBox.ImageLocation = Me.artist.image
-        ImageBox.Visible = True
+        If InfoListBox.SelectedItem IsNot Nothing Then
+            Me.artist = New Artist(InfoListBox.SelectedItem.ToString)  'name
+            Try
+                Me.artist.readArtist()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            NameTextBox.Text = Me.artist.name
+            InfoTextBox2.Text = Me.artist.country
+            InfoTextBox3.Text = Me.artist.image
+            ImageBox.ImageLocation = Me.artist.image
+            ImageBox.Visible = True
+        End If
+
     End Sub
 
     Private Sub listAlbum()
-        Me.album = New Album(InfoListBox.SelectedItem.ToString) 'name
-        Try
-            Me.album.readAlbum()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Exit Sub
-        End Try
-        NameTextBox.Text = Me.album.name
-        InfoTextBox2.Text = Me.album.cover
-        DateBox.Value = Me.album.releaseDate
-        ImageBox.ImageLocation = Me.album.cover
-        ImageBox.Visible = True
-        SelectionComboBox.SelectedItem = Me.album.artist.name.ToString
+        If InfoListBox.SelectedItem IsNot Nothing Then
+            Me.album = New Album(InfoListBox.SelectedItem.ToString) 'name
+            Try
+                Me.album.readAlbum()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            NameTextBox.Text = Me.album.name
+            InfoTextBox2.Text = Me.album.cover
+            DateBox.Value = Me.album.releaseDate
+            ImageBox.ImageLocation = Me.album.cover
+            ImageBox.Visible = True
+            SelectionComboBox.SelectedItem = Me.album.artist.name.ToString
+        End If
+
 
     End Sub
 
     Private Sub listSong()
-        Me.song = New Song(InfoListBox.SelectedItem.ToString)
-        Try
-            Me.song.readSong()
-            Me.song.album.readAlbum()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Exit Sub
-        End Try
-        NameTextBox.Text = Me.song.sName
-        InfoTextBox2.Text = Me.song.length.ToString
-        SelectionComboBox.SelectedItem = Me.song.album.name
+        If InfoListBox.SelectedItem IsNot Nothing Then
+            Me.song = New Song(InfoListBox.SelectedItem.ToString)
+            Try
+                Me.song.readSong()
+                Me.song.album.readAlbum()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            NameTextBox.Text = Me.song.sName
+            InfoTextBox2.Text = Me.song.length.ToString
+            SelectionComboBox.SelectedItem = Me.song.album.name
+        End If
+
     End Sub
 
     Private Sub InsertButton_Click(sender As Object, e As EventArgs) Handles InsertButton.Click
@@ -268,13 +280,83 @@
 
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
         If DataTypeComboBox.SelectedItem.ToString = "Users" Then
-            'deleteUser()
+            deleteUser()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
-            'deleteArtist()
+            deleteArtist()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Albums" Then
-            'deleteAlbum()
+            deleteAlbum()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Songs" Then
-            'deleteSong()
+            deleteSong()
+        End If
+    End Sub
+
+    Private Sub deleteSong()
+        If InfoListBox.SelectedItem IsNot Nothing Then
+            Try
+                Me.song.deleteSong()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            InfoListBox.Items.Remove(InfoListBox.SelectedItem.ToString)
+            NameTextBox.Text = String.Empty
+            InfoTextBox2.Text = String.Empty
+        End If
+    End Sub
+
+    Private Sub deleteAlbum()
+        If InfoListBox.SelectedItem IsNot Nothing Then
+            Try
+                Me.album.readMySongs()
+                Me.album.deleteAlbum()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            InfoListBox.Items.Remove(InfoListBox.SelectedItem.ToString)
+            NameTextBox.Text = String.Empty
+            InfoTextBox2.Text = String.Empty
+        End If
+    End Sub
+
+    Private Sub deleteArtist()
+        If InfoListBox.SelectedItem IsNot Nothing Then
+
+            Try
+
+                Me.artist.deleteArtist()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            InfoListBox.Items.Remove(InfoListBox.SelectedItem.ToString)
+            NameTextBox.Text = String.Empty
+            InfoTextBox2.Text = String.Empty
+            ImageBox.ImageLocation = ""
+
+
+
+        End If
+    End Sub
+
+    Private Sub deleteUser()
+        If InfoListBox.SelectedItem IsNot Nothing Then
+            If user.email = myUser.email Then
+                MessageBox.Show("You cannot delete yourself", "Delete yourself", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Else
+                Try
+                    Me.user.deleteUser()
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End Try
+                InfoListBox.Items.Remove(InfoListBox.SelectedItem.ToString)
+                NameTextBox.Text = String.Empty
+                InfoTextBox2.Text = String.Empty
+                InfoTextBox3.Text = String.Empty
+                DateBox.ResetText()
+            End If
+
         End If
     End Sub
 

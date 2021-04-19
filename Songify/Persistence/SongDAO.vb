@@ -39,6 +39,7 @@
         DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "',Album=" & s.album.albumID & ",length=" & s.length & " WHERE IdSong=" & s.idSong & ";")
     End Sub
     Public Sub delete(s As Song)
+        DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE song=" & s.idSong & ";")
         DBBroker.GetBroker.Change("DELETE FROM SONGS WHERE sName='" & s.sName & "';")
     End Sub
     Public Function convertLength(s As Song) As String

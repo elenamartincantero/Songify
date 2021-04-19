@@ -13,6 +13,7 @@
     Public Sub New(name As String)
         Me.ArtistDAO = New ArtistDAO
         Me.name = name
+        Me.albums = New Collection
     End Sub
     Public Sub New(id As Integer)
         Me.ArtistDAO = New ArtistDAO
@@ -42,6 +43,7 @@
         Me.ArtistDAO.update(Me)
     End Sub
     Public Sub deleteArtist()
+        Me.ArtistDAO.readMyAlbums(Me)
         Me.ArtistDAO.delete(Me)
     End Sub
     Public Sub favArtist(us As User)

@@ -37,6 +37,10 @@
         DBBroker.GetBroker.Change("UPDATE ALBUMS SET aName='" & a.name & "',releaseDate='" & a.releaseDate & "',artist=" & a.artist.id & ",[cover]='" & a.cover & "' WHERE IdAlbum=" & a.albumID & ";")
     End Sub
     Public Sub delete(a As Album)
+        Dim songAux As Song
+        For Each songAux In a.songs
+            songAux.deleteSong()
+        Next
         DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE aName='" & a.name & "';")
     End Sub
     Public Sub readMySongs(ByRef a As Album)

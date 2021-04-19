@@ -35,6 +35,10 @@
         DBBroker.GetBroker.Change("UPDATE ARTISTS SET aName='" & a.name & "',country='" & a.country & "',[image]='" & a.image & "' WHERE IdArtist=" & a.id & ";")
     End Sub
     Public Sub delete(a As Artist)
+        Dim albumAux As Album
+        For Each albumAux In a.albums
+            albumAux.deleteAlbum()
+        Next
         DBBroker.GetBroker.Change("DELETE FROM ARTISTS WHERE aName='" & a.name & "';")
     End Sub
     Public Sub readMyAlbums(ByRef a As Artist)
@@ -46,6 +50,7 @@
         End If
         For Each aux In col
             album = New Album(aux(1).ToString)
+            album.readAlbum()
             a.albums.Add(album)
         Next
     End Sub

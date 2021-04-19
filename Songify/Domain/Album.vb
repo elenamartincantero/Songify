@@ -47,6 +47,7 @@
         Me.AlbumDAO.update(Me)
     End Sub
     Public Sub deleteAlbum()
+        Me.AlbumDAO.readMySongs(Me)
         Me.AlbumDAO.delete(Me)
     End Sub
     Public Function convertLength() As String
