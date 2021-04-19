@@ -47,9 +47,9 @@
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End Try
-        For Each userAux In Me.song
-            Me.ListBox1.Items.Add(songAux.sName)
-        Next
+        ' For Each userAux In Me.song
+        'Me.ListBox1.Items.Add(songAux.sName)
+        'Next
     End Sub
 
     Private Sub ListenedArtist_Click(sender As Object, e As EventArgs) Handles ListenedArtist.Click
@@ -63,9 +63,9 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End Try
-            For Each userAux In Me.user
-                Me.ListBox1.Items.Add(userAux.uName)
-            Next
+            'For Each userAux In Me.user
+            'Me.ListBox1.Items.Add(userAux.uName)
+            ' Next
         End If
     End Sub
 
