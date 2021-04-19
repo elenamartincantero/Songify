@@ -32,7 +32,7 @@
         DBBroker.GetBroker.Change("INSERT INTO USERS VALUES ('" & u.email & "', '" & u.uName & "','" & u.uSurname & "', '" & u.birthday & "');")
     End Sub
     Public Sub update(u As User)
-        DBBroker.GetBroker.Change("UPDATE USERS SET uName='" & u.uName & "',uSurname='" & u.uSurname & "',birthdate=" & u.birthday & " WHERE Email='" & u.email & "';")
+        DBBroker.GetBroker.Change("UPDATE USERS SET uName='" & u.uName & "',uSurname='" & u.uSurname & "',birthdate='" & u.birthday & "' WHERE Email='" & u.email & "';")
     End Sub
     Public Sub delete(u As User)
         DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.email & "';")

@@ -33,7 +33,7 @@
         Next
     End Sub
     Public Sub insert(s As Song)
-        DBBroker.GetBroker.Change("INSERT INTO SONGS VALUES ('" & s.sName & "', " & s.album.albumID & "," & s.length & ");")
+        DBBroker.GetBroker.Change("INSERT INTO SONGS (sName, Album, length) VALUES ('" & s.sName & "', " & s.album.albumID & "," & s.length & ");")
     End Sub
     Public Sub update(s As Song)
         DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "',Album=" & s.album.albumID & ",length=" & s.length & " WHERE IdSong=" & s.idSong & ";")
