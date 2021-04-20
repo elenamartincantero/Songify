@@ -113,6 +113,7 @@
         InfoListBox.Items.Clear()
         SelectionComboBox.Items.Clear()
         SelectionComboBox.Text = String.Empty
+        ImageBox.ImageLocation = String.Empty
         DateBox.ResetText()
     End Sub
 
