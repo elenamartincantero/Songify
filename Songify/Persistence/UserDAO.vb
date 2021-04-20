@@ -36,6 +36,7 @@
     End Function
     Public Function delete(u As User) As Integer
         DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE user='" & u.email & "';")
+        DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE user='" & u.email & "';")
         Return DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.email & "';")
     End Function
     Public Sub readMyArtists(ByRef u As User)
@@ -46,7 +47,7 @@
             Throw New Exception()
         End If
         For Each aux1 In col1
-            artist = New Artist(aux1(1).ToString)
+            artist = New Artist()
             artist.readArtist()
             u.fav_artists.Add(artist)
         Next

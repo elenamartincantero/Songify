@@ -21,12 +21,7 @@
         Me.idSong = id
     End Sub
 
-    Public Sub New(sName As String, length As Integer, album As String)
-        Me.SongDAO = New SongDAO
-        Me.sName = sName
-        Me.length = length
-        Me.album = New Album(album)
-    End Sub
+
 
     Public Sub readAllSongs()
         Me.SongDAO.readAll()

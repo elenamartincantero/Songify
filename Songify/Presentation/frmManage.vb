@@ -204,17 +204,17 @@
 
     Private Sub listArtist()
         If InfoListBox.SelectedItem IsNot Nothing Then
-            Me.artist = New Artist(InfoListBox.SelectedItem.ToString)  'name
+            Dim artistAux As Artist = CType(Me.artist.ArtistDAO.artists(InfoListBox.SelectedIndex + 1), Artist)
             Try
-                Me.artist.readArtist()
+                artistAux.readArtist()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            NameTextBox.Text = Me.artist.name
-            InfoTextBox2.Text = Me.artist.country
-            InfoTextBox3.Text = Me.artist.image
-            ImageBox.ImageLocation = Me.artist.image
+            NameTextBox.Text = artistAux.name
+            InfoTextBox2.Text = artistAux.country
+            InfoTextBox3.Text = artistAux.image
+            ImageBox.ImageLocation = artistAux.image
             ImageBox.Visible = True
         End If
 
@@ -222,19 +222,19 @@
 
     Private Sub listAlbum()
         If InfoListBox.SelectedItem IsNot Nothing Then
-            Me.album = New Album(InfoListBox.SelectedItem.ToString) 'name
+            Dim albumAux As Album = CType(Me.album.AlbumDAO.albums(InfoListBox.SelectedIndex + 1), Album)
             Try
-                Me.album.readAlbum()
+                albumAux.readAlbum()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            NameTextBox.Text = Me.album.name
-            InfoTextBox2.Text = Me.album.cover
-            DateBox.Value = Me.album.releaseDate
-            ImageBox.ImageLocation = Me.album.cover
+            NameTextBox.Text = albumAux.name
+            InfoTextBox2.Text = albumAux.cover
+            DateBox.Value = albumAux.releaseDate
+            ImageBox.ImageLocation = albumAux.cover
             ImageBox.Visible = True
-            SelectionComboBox.SelectedItem = Me.album.artist.name.ToString
+            SelectionComboBox.SelectedItem = albumAux.artist.name.ToString
         End If
 
 
@@ -395,7 +395,7 @@
 
     Private Sub insertArtist()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
-            Me.artist = New Artist(NameTextBox.Text)
+            Me.artist = New Artist()
             Me.artist.country = InfoTextBox2.Text
             Me.artist.image = InfoTextBox3.Text
             Try
@@ -412,9 +412,9 @@
 
     Private Sub insertAlbum()
         If NameTextBox.Text IsNot String.Empty Then
-            Me.album = New Album(NameTextBox.Text)
+            Me.album = New Album()
             Me.album.cover = ImageFileDialog.FileName
-            Dim artist = New Artist(SelectionComboBox.SelectedItem.ToString())
+            Dim artist = New Artist()
             Me.album.artist = artist
             Me.album.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try
@@ -433,7 +433,7 @@
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
             Me.song = New Song()
             Me.song.length = Integer.Parse(InfoTextBox2.Text)
-            Dim album = New Album(SelectionComboBox.SelectedItem.ToString())
+            Dim album = New Album()
             Me.song.album = album
             Try
                 If Me.song.insertSong() <> 1 Then
@@ -502,7 +502,7 @@
         If NameTextBox.Text IsNot String.Empty Then
             Me.album.name = NameTextBox.Text
             Me.album.cover = ImageFileDialog.FileName
-            Dim artist = New Artist(SelectionComboBox.SelectedItem.ToString())
+            Dim artist = New Artist()
             Me.album.artist = artist
             Me.album.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try

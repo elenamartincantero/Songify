@@ -25,7 +25,7 @@
             s.length = Integer.Parse(aux1(4).ToString)
             col2 = DBBroker.GetBroker().Read("SELECT aName FROM ALBUMS WHERE IdAlbum=" & aux1(3).ToString & ";")
             For Each aux2 In col2
-                s.album = New Album(aux2(1).ToString)
+                s.album = New Album()
             Next
 
         Next

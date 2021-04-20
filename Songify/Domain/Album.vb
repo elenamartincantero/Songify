@@ -12,18 +12,11 @@
     Public Sub New()
         Me.AlbumDAO = New AlbumDAO
     End Sub
-    Public Sub New(name As String, releaseDate As String, artist As String, cover As String)
-        Me.AlbumDAO = New AlbumDAO
-        Me.name = name
-        Me.releaseDate = CDate(releaseDate)
-        Me.artist = New Artist(artist)
-        Me.cover = cover
-        Me.songs = New Collection
-    End Sub
 
-    Public Sub New(name As String)
+    Public Sub New(albumID As Integer, name As String)
         Me.AlbumDAO = New AlbumDAO
         Me.name = name
+        Me.albumID = albumID
         Me.songs = New Collection
     End Sub
     Public Sub New(albumID As Integer)

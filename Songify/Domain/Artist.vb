@@ -10,24 +10,16 @@
     Public Sub New()
         Me.ArtistDAO = New ArtistDAO
     End Sub
-    Public Sub New(name As String)
+    Public Sub New(id As Integer, name As String)
         Me.ArtistDAO = New ArtistDAO
         Me.name = name
+        Me.id = id
         Me.albums = New Collection
     End Sub
     Public Sub New(id As Integer)
         Me.ArtistDAO = New ArtistDAO
         Me.id = id
         Me.albums = New Collection
-    End Sub
-
-    Public Sub New(name As String, country As String, image As String)
-        Me.ArtistDAO = New ArtistDAO
-        Me.name = name
-        Me.country = country
-        Me.image = image
-        Me.albums = New Collection
-
     End Sub
 
     Public Sub readAllArtists()

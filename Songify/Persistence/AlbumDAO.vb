@@ -6,24 +6,23 @@
     Public Sub readAll()
         Dim album As Album
         Dim col, aux As Collection
-        col = DBBroker.GetBroker().Read("SELECT aName FROM ALBUMS")
+        col = DBBroker.GetBroker().Read("SELECT IdAlbum, aName FROM ALBUMS")
         For Each aux In col
-            album = New Album(aux(1).ToString)
+            album = New Album(Integer.Parse(aux(1).ToString), aux(2).ToString)
             Me.albums.Add(album)
         Next
     End Sub
     Public Sub read(ByRef a As Album)
         Dim col1 As Collection : Dim aux1 As Collection
         Dim col2 As Collection : Dim aux2 As Collection
-        col1 = DBBroker.GetBroker().Read("SELECT * FROM ALBUMS WHERE aName='" & a.name & "';")
+        col1 = DBBroker.GetBroker().Read("SELECT * FROM ALBUMS WHERE IdAlbum=" & a.albumID & ";")
 
         For Each aux1 In col1
-            a.albumID = Integer.Parse(aux1(1).ToString)
             a.releaseDate = Date.Parse(aux1(3).ToString)
             a.cover = aux1(5).ToString
             col2 = DBBroker.GetBroker().Read("SELECT aName FROM ARTISTS WHERE IdArtist=" & aux1(4).ToString & ";")
             For Each aux2 In col2
-                a.artist = New Artist(aux2(1).ToString)
+                a.artist = New Artist()
             Next
 
         Next
