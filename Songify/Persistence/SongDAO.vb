@@ -22,19 +22,19 @@
 
         For Each aux1 In col1
             s.idSong = Integer.Parse(aux1(1).ToString)
-            s.length = Integer.Parse(aux1(4).ToString)
-            col2 = DBBroker.GetBroker().Read("SELECT aName FROM ALBUMS WHERE IdAlbum=" & aux1(3).ToString & ";")
+            s.sLength = Integer.Parse(aux1(4).ToString)
+            col2 = DBBroker.GetBroker().Read("SELECT IdAlbum, aName FROM ALBUMS WHERE IdAlbum=" & aux1(3).ToString & ";")
             For Each aux2 In col2
-                s.album = New Album()
+                s.sAlbum = New Album(Integer.Parse(aux2(1).ToString), aux2(2).ToString)
             Next
 
         Next
     End Sub
     Public Function insert(s As Song) As Integer
-        Return DBBroker.GetBroker.Change("INSERT INTO SONGS (sName, Album, length) VALUES ('" & s.sName & "', " & s.album.albumID & "," & s.length & ");")
+        Return DBBroker.GetBroker.Change("INSERT INTO SONGS (sName, Album, length) VALUES ('" & s.sName & "', " & s.sAlbum.dAlbum & "," & s.sLength & ");")
     End Function
     Public Function update(s As Song) As Integer
-        Return DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "',Album=" & s.album.albumID & ",length=" & s.length & " WHERE IdSong=" & s.idSong & ";")
+        Return DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "',Album=" & s.sAlbum.dAlbum & ",length=" & s.sLength & " WHERE IdSong=" & s.idSong & ";")
     End Function
     Public Function delete(s As Song) As Integer
         DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE song=" & s.idSong & ";")
@@ -43,8 +43,8 @@
     Public Function convertLength(s As Song) As String
         Dim seg As Integer
         Dim min As Double
-        seg = s.length Mod 60
-        min = Integer.Parse(((s.length - seg) / 60).ToString)
+        seg = s.sLength Mod 60
+        min = Integer.Parse(((s.sLength - seg) / 60).ToString)
 
         Return min.ToString() & ":" & seg.ToString()
     End Function

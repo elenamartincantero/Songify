@@ -113,6 +113,7 @@
         InfoListBox.Items.Clear()
         SelectionComboBox.Items.Clear()
         SelectionComboBox.Text = String.Empty
+        DateBox.ResetText()
     End Sub
 
     Private Sub invisibleElements()
@@ -151,8 +152,8 @@
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        For Each artistAux In Me.artist.ArtistDAO.artists
-            Me.InfoListBox.Items.Add(artistAux.name)
+        For Each artistAux In Me.artist.ArtistDAO.allArtists
+            Me.InfoListBox.Items.Add(artistAux.aName)
         Next
     End Sub
 
@@ -179,8 +180,8 @@
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        For Each albumAux In Me.album.AlbumDAO.albums
-            Me.InfoListBox.Items.Add(albumAux.name)
+        For Each albumAux In Me.album.AlbumDAO.allAlbums
+            Me.InfoListBox.Items.Add(albumAux.aName)
         Next
     End Sub
 
@@ -204,17 +205,17 @@
 
     Private Sub listArtist()
         If InfoListBox.SelectedItem IsNot Nothing Then
-            Dim artistAux As Artist = CType(Me.artist.ArtistDAO.artists(InfoListBox.SelectedIndex + 1), Artist)
+            Dim artistAux As Artist = CType(Me.artist.ArtistDAO.allArtists(InfoListBox.SelectedIndex + 1), Artist)
             Try
                 artistAux.readArtist()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            NameTextBox.Text = artistAux.name
-            InfoTextBox2.Text = artistAux.country
-            InfoTextBox3.Text = artistAux.image
-            ImageBox.ImageLocation = artistAux.image
+            NameTextBox.Text = artistAux.aName
+            InfoTextBox2.Text = artistAux.aCountry
+            InfoTextBox3.Text = artistAux.aImage
+            ImageBox.ImageLocation = artistAux.aImage
             ImageBox.Visible = True
         End If
 
@@ -222,19 +223,19 @@
 
     Private Sub listAlbum()
         If InfoListBox.SelectedItem IsNot Nothing Then
-            Dim albumAux As Album = CType(Me.album.AlbumDAO.albums(InfoListBox.SelectedIndex + 1), Album)
+            Dim albumAux As Album = CType(Me.album.AlbumDAO.allAlbums(InfoListBox.SelectedIndex + 1), Album)
             Try
                 albumAux.readAlbum()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            NameTextBox.Text = albumAux.name
-            InfoTextBox2.Text = albumAux.cover
-            DateBox.Value = albumAux.releaseDate
-            ImageBox.ImageLocation = albumAux.cover
+            NameTextBox.Text = albumAux.aName
+            InfoTextBox2.Text = albumAux.aCover
+            DateBox.Value = albumAux.aReleaseDate
+            ImageBox.ImageLocation = albumAux.aCover
             ImageBox.Visible = True
-            SelectionComboBox.SelectedItem = albumAux.artist.name.ToString
+            SelectionComboBox.SelectedItem = albumAux.aArtist.aName.ToString
         End If
 
 
@@ -242,18 +243,18 @@
 
     Private Sub listSong()
         If InfoListBox.SelectedItem IsNot Nothing Then
-            Dim songAux As Song = CType(Me.song.SongDAO.allSongs(InfoListBox.SelectedIndex + 1),Song)
+            Dim songAux As Song = CType(Me.song.SongDAO.allSongs(InfoListBox.SelectedIndex + 1), Song)
 
             Try
                 songAux.readSong()
-                songAux.album.readAlbum()
+                songAux.sAlbum.readAlbum()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
             NameTextBox.Text = songAux.sName
-            InfoTextBox2.Text = songAux.length.ToString
-            SelectionComboBox.SelectedItem = songAux.album.name
+            InfoTextBox2.Text = songAux.sLength.ToString
+            SelectionComboBox.SelectedItem = songAux.sAlbum.aName
         End If
 
     End Sub
@@ -396,8 +397,8 @@
     Private Sub insertArtist()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
             Me.artist = New Artist()
-            Me.artist.country = InfoTextBox2.Text
-            Me.artist.image = InfoTextBox3.Text
+            Me.artist.aCountry = InfoTextBox2.Text
+            Me.artist.aImage = InfoTextBox3.Text
             Try
                 If Me.artist.insertArtist() <> 1 Then
                     MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -406,17 +407,17 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            Me.InfoListBox.Items.Add(Me.artist.name)
+            Me.InfoListBox.Items.Add(Me.artist.aName)
         End If
     End Sub
 
     Private Sub insertAlbum()
         If NameTextBox.Text IsNot String.Empty Then
             Me.album = New Album()
-            Me.album.cover = ImageFileDialog.FileName
+            Me.album.aCover = ImageFileDialog.FileName
             Dim artist = New Artist()
-            Me.album.artist = artist
-            Me.album.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
+            Me.album.aArtist = artist
+            Me.album.aReleaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try
                 If Me.album.insertAlbum() <> 1 Then
                     MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -425,16 +426,16 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            InfoListBox.Items.Add(Me.album.name)
+            InfoListBox.Items.Add(Me.album.aName)
         End If
     End Sub
 
     Private Sub insertSong()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
             Me.song = New Song()
-            Me.song.length = Integer.Parse(InfoTextBox2.Text)
+            Me.song.sLength = Integer.Parse(InfoTextBox2.Text)
             Dim album = New Album()
-            Me.song.album = album
+            Me.song.sAlbum = album
             Try
                 If Me.song.insertSong() <> 1 Then
                     MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -456,8 +457,8 @@
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        For Each artistAux In Me.artist.ArtistDAO.artists()
-            Me.SelectionComboBox.Items.Add(artistAux.name.ToString)
+        For Each artistAux In Me.artist.ArtistDAO.allArtists()
+            Me.SelectionComboBox.Items.Add(artistAux.aName.ToString)
         Next
     End Sub
 
@@ -470,8 +471,8 @@
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
-        For Each albumAux In Me.album.AlbumDAO.albums()
-            Me.SelectionComboBox.Items.Add(albumAux.name.ToString)
+        For Each albumAux In Me.album.AlbumDAO.allAlbums()
+            Me.SelectionComboBox.Items.Add(albumAux.aName.ToString)
         Next
     End Sub
 
@@ -522,18 +523,19 @@
 
     Private Sub updateArtist()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
-            Me.artist.name = NameTextBox.Text
-            Me.artist.country = InfoTextBox2.Text
-            Me.artist.image = ImageFileDialog.FileName.ToString
+            Dim artistAux As Artist = CType(Me.artist.ArtistDAO.allArtists(InfoListBox.SelectedIndex + 1), Artist)
+            artistAux.aName = NameTextBox.Text
+            artistAux.aCountry = InfoTextBox2.Text
+            artistAux.aImage = ImageFileDialog.FileName.ToString
             Try
-                If Me.artist.updateArtist() <> 1 Then
+                If artistAux.updateArtist() <> 1 Then
                     MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            ImageBox.ImageLocation = Me.artist.image
+            ImageBox.ImageLocation = artistAux.aImage
             resetElements()
             readArtists()
         End If

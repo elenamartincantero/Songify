@@ -1,9 +1,9 @@
 ﻿Public Class Artist
-    Public Property id As Integer
-    Public Property name As String
-    Public Property country As String
-    Public Property image As String
-    Public Property albums As Collection
+    Public Property idArtist As Integer
+    Public Property aName As String
+    Public Property aCountry As String
+    Public Property aImage As String
+    Public Property aAlbums As Collection
 
     Public ReadOnly Property ArtistDAO As ArtistDAO
 
@@ -12,14 +12,14 @@
     End Sub
     Public Sub New(id As Integer, name As String)
         Me.ArtistDAO = New ArtistDAO
-        Me.name = name
-        Me.id = id
-        Me.albums = New Collection
+        Me.aName = name
+        Me.idArtist = id
+        Me.aAlbums = New Collection
     End Sub
     Public Sub New(id As Integer)
         Me.ArtistDAO = New ArtistDAO
-        Me.id = id
-        Me.albums = New Collection
+        Me.idArtist = id
+        Me.aAlbums = New Collection
     End Sub
 
     Public Sub readAllArtists()

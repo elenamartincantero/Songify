@@ -1,11 +1,11 @@
 ﻿Public Class Album
-    Public Property albumID As Integer
-    Public Property name As String
-    Public Property releaseDate As Date
-    Public Property artist As Artist
-    Public Property cover As String
-    Public Property length As Integer
-    Public Property songs As Collection
+    Public Property dAlbum As Integer
+    Public Property aName As String
+    Public Property aReleaseDate As Date
+    Public Property aArtist As Artist
+    Public Property aCover As String
+    Public Property aLength As Integer
+    Public Property aSongs As Collection
 
     Public ReadOnly Property AlbumDAO As AlbumDAO
 
@@ -15,14 +15,14 @@
 
     Public Sub New(albumID As Integer, name As String)
         Me.AlbumDAO = New AlbumDAO
-        Me.name = name
-        Me.albumID = albumID
-        Me.songs = New Collection
+        Me.aName = name
+        Me.dAlbum = albumID
+        Me.aSongs = New Collection
     End Sub
     Public Sub New(albumID As Integer)
         Me.AlbumDAO = New AlbumDAO
-        Me.albumID = albumID
-        Me.songs = New Collection
+        Me.dAlbum = albumID
+        Me.aSongs = New Collection
     End Sub
     Public Sub readAllAlbums()
         Me.AlbumDAO.readAll()
@@ -32,11 +32,11 @@
     End Sub
 
     Public Function insertAlbum() As Integer
-        Me.artist.readArtist()
+        Me.aArtist.readArtist()
         Return Me.AlbumDAO.insert(Me)
     End Function
     Public Function updateAlbum() As Integer
-        Me.artist.readArtist()
+        Me.aArtist.readArtist()
         Return Me.AlbumDAO.update(Me)
     End Function
     Public Function deleteAlbum() As Integer
