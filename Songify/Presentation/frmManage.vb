@@ -565,11 +565,11 @@
     Private Sub ImageButton_Click(sender As Object, e As EventArgs) Handles ImageButton.Click
         If DataTypeComboBox.SelectedItem.ToString = "Artists" Then
             ImageFileDialog.InitialDirectory = Application.StartupPath.ToString + "\ArtistsImages"
-
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Albums" Then
             ImageFileDialog.InitialDirectory = Application.StartupPath.ToString + "\AlbumsImages"
         End If
         ImageFileDialog.ShowDialog()
+        ImageBox.ImageLocation = ImageFileDialog.FileName
     End Sub
 
     Private Sub NameTextBox_TextChanged(sender As Object, e As EventArgs) Handles NameTextBox.TextChanged, InfoTextBox2.TextChanged, InfoTextBox3.TextChanged
