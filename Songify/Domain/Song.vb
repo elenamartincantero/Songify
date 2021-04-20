@@ -13,7 +13,12 @@
         Me.idSong = id
         Me.sName = sName
         Me.sName = Me.sName.Replace("'", "''")
+    End Sub
 
+    Public Sub New(sname As String)
+        Me.SongDAO = New SongDAO
+        Me.sName = sname
+        Me.sName = Me.sName.Replace("'", "''")
     End Sub
 
     Public Sub readAllSongs()

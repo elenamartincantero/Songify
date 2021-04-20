@@ -434,20 +434,22 @@
     End Sub
 
     Private Sub insertSong()
-        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
-            Me.song = New Song()
-            Me.song.sLength = Integer.Parse(InfoTextBox2.Text)
-            Dim album = New Album()
-            Me.song.sAlbum = album
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
+            Dim songAux As Song = New Song(NameTextBox.Text)
+            songAux.sLength = Integer.Parse(InfoTextBox2.Text)
+            Dim album As Album = CType(Me.album.AlbumDAO.allAlbums(SelectionComboBox.SelectedIndex + 1), Album)
+            songAux.sAlbum = album
             Try
-                If Me.song.insertSong() <> 1 Then
+                If songAux.insertSong() <> 1 Then
                     MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            InfoListBox.Items.Add(Me.song.sName)
+            resetElements()
+            readSongs()
+            readAlbumInSong()
         End If
     End Sub
 
