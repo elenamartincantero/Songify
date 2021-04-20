@@ -540,11 +540,14 @@
     End Sub
 
     Private Sub updateSong()
-        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
-            Me.song.sName = NameTextBox.Text
-            Me.song.length = Integer.Parse(InfoTextBox2.Text)
+        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
+            Dim songAux As Song = CType(Me.song.SongDAO.allSongs(InfoListBox.SelectedIndex + 1), Song)
+            songAux.sName = NameTextBox.Text
+            songAux.length = Integer.Parse(InfoTextBox2.Text)
+            Dim album As Album = CType(Me.album.AlbumDAO.albums(SelectionComboBox.SelectedIndex + 1), Album)
+            songAux.album = album
             Try
-                If Me.song.updateSong() <> 1 Then
+                If songAux.updateSong() <> 1 Then
                     MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
