@@ -501,12 +501,12 @@
 
     Private Sub updateAlbum()
         If NameTextBox.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
-            Dim albumAux As Album = CType(Me.album.AlbumDAO.albums(InfoListBox.SelectedIndex + 1), Album)
-            albumAux.name = NameTextBox.Text
-            albumAux.cover = ImageFileDialog.FileName
-            Dim artist As Artist = CType(Me.artist.ArtistDAO.artists(SelectionComboBox.SelectedIndex + 1), Artist)
-            albumAux.artist = artist
-            albumAux.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
+            Dim albumAux As Album = CType(Me.album.AlbumDAO.allAlbums(InfoListBox.SelectedIndex + 1), Album)
+            albumAux.aName = NameTextBox.Text
+            albumAux.aCover = ImageFileDialog.FileName
+            Dim artist As Artist = CType(Me.artist.ArtistDAO.allArtists(SelectionComboBox.SelectedIndex + 1), Artist)
+            albumAux.aArtist = artist
+            albumAux.aReleaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try
                 If albumAux.updateAlbum() <> 1 Then
                     MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
