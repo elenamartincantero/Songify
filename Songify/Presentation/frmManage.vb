@@ -298,17 +298,18 @@
 
     Private Sub DeleteSong()
         If InfoListBox.SelectedItem IsNot Nothing Then
+            Dim songAux As Song = CType(Me.song.SongDAO.allSongs(InfoListBox.SelectedIndex + 1), Song)
             Try
-                If Me.song.deleteSong() <> 1 Then
+                If songAux.deleteSong() <> 1 Then
                     MessageBox.Show("DELETE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            InfoListBox.Items.Remove(InfoListBox.SelectedItem.ToString)
-            NameTextBox.Text = String.Empty
-            InfoTextBox2.Text = String.Empty
+            resetElements()
+            readSongs()
+            readAlbumInSong()
         End If
     End Sub
 
@@ -316,38 +317,32 @@
         If InfoListBox.SelectedItem IsNot Nothing Then
             Dim albumAux As Album = CType(Me.album.AlbumDAO.allAlbums(InfoListBox.SelectedIndex + 1), Album)
             Try
-                If Me.album.deleteAlbum() <> 1 Then
+                If albumAux.deleteAlbum() <> 1 Then
                     MessageBox.Show("DELETE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            InfoListBox.Items.Remove(InfoListBox.SelectedItem.ToString)
-            NameTextBox.Text = String.Empty
-            InfoTextBox2.Text = String.Empty
-            SelectionComboBox.Text = String.Empty
-            ImageBox.ImageLocation = String.Empty
-            DateBox.ResetText()
+            resetElements()
+            readAlbums()
+            readArtistInAlbum()
         End If
     End Sub
 
     Private Sub DeleteArtist()
         If InfoListBox.SelectedItem IsNot Nothing Then
+            Dim artistAux As Artist = CType(Me.artist.ArtistDAO.allArtists(InfoListBox.SelectedIndex + 1), Artist)
             Try
-                If Me.artist.deleteArtist() <> 1 Then
+                If artistAux.deleteArtist() <> 1 Then
                     MessageBox.Show("DELETE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            InfoListBox.Items.Remove(InfoListBox.SelectedItem.ToString)
-            NameTextBox.Text = String.Empty
-            InfoTextBox2.Text = String.Empty
-            ImageBox.ImageLocation = ""
-
-
+            resetElements()
+            readArtists()
 
         End If
     End Sub

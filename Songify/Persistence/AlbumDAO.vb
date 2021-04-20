@@ -43,12 +43,10 @@
     Public Sub readMySongs(ByRef a As Album)
         Dim col As Collection : Dim aux As Collection
         Dim song As Song
-        col = DBBroker.GetBroker().Read("SELECT sName FROM SONGS WHERE Album=" & a.idAlbum & ";")
+        col = DBBroker.GetBroker().Read("SELECT IdSong, sName FROM SONGS WHERE Album=" & a.idAlbum & ";")
 
         For Each aux In col
-            song = New Song()
-            aux(1).ToString.Replace("'", "''")
-            song = New Song()
+            song = New Song(Integer.Parse(aux(1).ToString), aux(2).ToString)
             song.readSong()
             a.aSongs.Add(song)
         Next
