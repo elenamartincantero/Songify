@@ -15,7 +15,7 @@
     Public Sub read(ByRef a As Album)
         Dim col1 As Collection : Dim aux1 As Collection
         Dim col2 As Collection : Dim aux2 As Collection
-        col1 = DBBroker.GetBroker().Read("SELECT * FROM ALBUMS WHERE IdAlbum=" & a.dAlbum & ";")
+        col1 = DBBroker.GetBroker().Read("SELECT * FROM ALBUMS WHERE IdAlbum=" & a.idAlbum & ";")
 
         For Each aux1 In col1
             a.aReleaseDate = Date.Parse(aux1(3).ToString)
@@ -31,19 +31,19 @@
         Return DBBroker.GetBroker.Change("INSERT INTO ALBUMS (aName, releaseDate, artist, cover) VALUES ('" & a.aName & "', '" & a.aReleaseDate & "', " & a.aArtist.idArtist & ",'" & a.aCover & "');")
     End Function
     Public Function update(a As Album) As Integer
-        Return DBBroker.GetBroker.Change("UPDATE ALBUMS SET aName='" & a.aName & "',releaseDate='" & a.aReleaseDate & "',artist=" & a.aArtist.idArtist & ",[cover]='" & a.aCover & "' WHERE IdAlbum=" & a.dAlbum & ";")
+        Return DBBroker.GetBroker.Change("UPDATE ALBUMS SET aName='" & a.aName & "',releaseDate='" & a.aReleaseDate & "',artist=" & a.aArtist.idArtist & ",[cover]='" & a.aCover & "' WHERE IdAlbum=" & a.idAlbum & ";")
     End Function
     Public Function delete(a As Album) As Integer
         Dim songAux As Song
         For Each songAux In a.aSongs
             songAux.deleteSong()
         Next
-        Return DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE IdAlbum=" & a.dAlbum & ";")
+        Return DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE IdAlbum=" & a.idAlbum & ";")
     End Function
     Public Sub readMySongs(ByRef a As Album)
         Dim col As Collection : Dim aux As Collection
         Dim song As Song
-        col = DBBroker.GetBroker().Read("SELECT sName FROM SONGS WHERE Album=" & a.dAlbum & ";")
+        col = DBBroker.GetBroker().Read("SELECT sName FROM SONGS WHERE Album=" & a.idAlbum & ";")
 
         For Each aux In col
             song = New Song()

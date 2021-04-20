@@ -1,5 +1,5 @@
 ﻿Public Class Album
-    Public Property dAlbum As Integer
+    Public Property idAlbum As Integer
     Public Property aName As String
     Public Property aReleaseDate As Date
     Public Property aArtist As Artist
@@ -16,12 +16,12 @@
     Public Sub New(albumID As Integer, name As String)
         Me.AlbumDAO = New AlbumDAO
         Me.aName = name
-        Me.dAlbum = albumID
+        Me.idAlbum = albumID
         Me.aSongs = New Collection
     End Sub
     Public Sub New(albumID As Integer)
         Me.AlbumDAO = New AlbumDAO
-        Me.dAlbum = albumID
+        Me.idAlbum = albumID
         Me.aSongs = New Collection
     End Sub
     Public Sub readAllAlbums()

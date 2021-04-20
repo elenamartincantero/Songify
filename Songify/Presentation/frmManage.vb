@@ -545,9 +545,9 @@
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
             Dim songAux As Song = CType(Me.song.SongDAO.allSongs(InfoListBox.SelectedIndex + 1), Song)
             songAux.sName = NameTextBox.Text
-            songAux.length = Integer.Parse(InfoTextBox2.Text)
-            Dim album As Album = CType(Me.album.AlbumDAO.albums(SelectionComboBox.SelectedIndex + 1), Album)
-            songAux.album = album
+            songAux.sLength = Integer.Parse(InfoTextBox2.Text)
+            Dim album As Album = CType(Me.album.AlbumDAO.allAlbums(SelectionComboBox.SelectedIndex + 1), Album)
+            songAux.sAlbum = album
             Try
                 If songAux.updateSong() <> 1 Then
                     MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)

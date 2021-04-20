@@ -31,10 +31,10 @@
         Next
     End Sub
     Public Function insert(s As Song) As Integer
-        Return DBBroker.GetBroker.Change("INSERT INTO SONGS (sName, Album, length) VALUES ('" & s.sName & "', " & s.sAlbum.dAlbum & "," & s.sLength & ");")
+        Return DBBroker.GetBroker.Change("INSERT INTO SONGS (sName, Album, length) VALUES ('" & s.sName & "', " & s.sAlbum.idAlbum & "," & s.sLength & ");")
     End Function
     Public Function update(s As Song) As Integer
-        Return DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "',Album=" & s.sAlbum.dAlbum & ",length=" & s.sLength & " WHERE IdSong=" & s.idSong & ";")
+        Return DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "',Album=" & s.sAlbum.idAlbum & ",length=" & s.sLength & " WHERE IdSong=" & s.idSong & ";")
     End Function
     Public Function delete(s As Song) As Integer
         DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE song=" & s.idSong & ";")
