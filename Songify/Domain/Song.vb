@@ -9,12 +9,12 @@
 
         Me.SongDAO = New SongDAO
     End Sub
-    Public Sub New(sName As String)
+    Public Sub New(id As Integer, sName As String)
         Me.SongDAO = New SongDAO
+        Me.idSong = id
         Me.sName = sName
-        If sName.Contains("'") Then
-            'Me.sName = Me.sName.Replace("'", "''")
-        End If
+        Me.sName = Me.sName.Replace("'", "''")
+
     End Sub
     Public Sub New(id As Integer)
         Me.SongDAO = New SongDAO

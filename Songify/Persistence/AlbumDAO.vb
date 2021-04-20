@@ -47,9 +47,9 @@
         col = DBBroker.GetBroker().Read("SELECT sName FROM SONGS WHERE Album=" & a.albumID & ";")
 
         For Each aux In col
-            song = New Song(aux(1).ToString)
+            song = New Song()
             aux(1).ToString.Replace("'", "''")
-            song = New Song(aux(1).ToString)
+            song = New Song()
             song.readSong()
             a.songs.Add(song)
         Next

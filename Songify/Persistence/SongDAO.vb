@@ -9,16 +9,16 @@
     Public Sub readAll()
         Dim song As Song
         Dim col, aux As Collection
-        col = DBBroker.GetBroker().Read("SELECT sName FROM SONGS")
+        col = DBBroker.GetBroker().Read("SELECT IdSong, sName FROM SONGS")
         For Each aux In col
-            song = New Song(aux(1).ToString)
+            song = New Song(Integer.Parse(aux(1).ToString), aux(2).ToString)
             Me.allSongs.Add(song)
         Next
     End Sub
     Public Sub read(ByRef s As Song)
         Dim col1 As Collection : Dim aux1 As Collection
         Dim col2 As Collection : Dim aux2 As Collection
-        col1 = DBBroker.GetBroker().Read("SELECT * FROM SONGS WHERE sName='" & s.sName & "';")
+        col1 = DBBroker.GetBroker().Read("SELECT * FROM SONGS WHERE IdSong=" & s.idSong & ";")
 
         For Each aux1 In col1
             s.idSong = Integer.Parse(aux1(1).ToString)

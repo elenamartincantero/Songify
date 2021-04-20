@@ -242,18 +242,18 @@
 
     Private Sub listSong()
         If InfoListBox.SelectedItem IsNot Nothing Then
-            Me.song = New Song(InfoListBox.SelectedItem.ToString)
+            Dim songAux As Song = CType(Me.song.SongDAO.allSongs(InfoListBox.SelectedIndex + 1),Song)
 
             Try
-                Me.song.readSong()
-                Me.song.album.readAlbum()
+                songAux.readSong()
+                songAux.album.readAlbum()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            NameTextBox.Text = Me.song.sName
-            InfoTextBox2.Text = Me.song.length.ToString
-            SelectionComboBox.SelectedItem = Me.song.album.name
+            NameTextBox.Text = songAux.sName
+            InfoTextBox2.Text = songAux.length.ToString
+            SelectionComboBox.SelectedItem = songAux.album.name
         End If
 
     End Sub
@@ -431,7 +431,7 @@
 
     Private Sub insertSong()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
-            Me.song = New Song(NameTextBox.Text)
+            Me.song = New Song()
             Me.song.length = Integer.Parse(InfoTextBox2.Text)
             Dim album = New Album(SelectionComboBox.SelectedItem.ToString())
             Me.song.album = album
