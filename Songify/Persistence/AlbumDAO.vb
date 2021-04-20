@@ -16,9 +16,7 @@
         Dim col1 As Collection : Dim aux1 As Collection
         Dim col2 As Collection : Dim aux2 As Collection
         col1 = DBBroker.GetBroker().Read("SELECT * FROM ALBUMS WHERE aName='" & a.name & "';")
-        If col1.Count = 0 Then
-            Throw New Exception()
-        End If
+
         For Each aux1 In col1
             a.albumID = Integer.Parse(aux1(1).ToString)
             a.releaseDate = Date.Parse(aux1(3).ToString)
@@ -30,27 +28,27 @@
 
         Next
     End Sub
-    Public Sub insert(a As Album)
-        DBBroker.GetBroker.Change("INSERT INTO ALBUMS (aName, releaseDate, artist, cover) VALUES ('" & a.name & "', '" & a.releaseDate & "', " & a.artist.id & ",'" & a.cover & "');")
-    End Sub
-    Public Sub update(a As Album)
-        DBBroker.GetBroker.Change("UPDATE ALBUMS SET aName='" & a.name & "',releaseDate='" & a.releaseDate & "',artist=" & a.artist.id & ",[cover]='" & a.cover & "' WHERE IdAlbum=" & a.albumID & ";")
-    End Sub
-    Public Sub delete(a As Album)
+    Public Function insert(a As Album) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO ALBUMS (aName, releaseDate, artist, cover) VALUES ('" & a.name & "', '" & a.releaseDate & "', " & a.artist.id & ",'" & a.cover & "');")
+    End Function
+    Public Function update(a As Album) As Integer
+        Return DBBroker.GetBroker.Change("UPDATE ALBUMS SET aName='" & a.name & "',releaseDate='" & a.releaseDate & "',artist=" & a.artist.id & ",[cover]='" & a.cover & "' WHERE IdAlbum=" & a.albumID & ";")
+    End Function
+    Public Function delete(a As Album) As Integer
         Dim songAux As Song
         For Each songAux In a.songs
             songAux.deleteSong()
         Next
-        DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE aName='" & a.name & "';")
-    End Sub
+        Return DBBroker.GetBroker.Change("DELETE FROM ALBUMS WHERE IdAlbum=" & a.albumID & ";")
+    End Function
     Public Sub readMySongs(ByRef a As Album)
         Dim col As Collection : Dim aux As Collection
         Dim song As Song
         col = DBBroker.GetBroker().Read("SELECT sName FROM SONGS WHERE Album=" & a.albumID & ";")
-        If col.Count = 0 Then
-            Throw New Exception()
-        End If
+
         For Each aux In col
+            song = New Song(aux(1).ToString)
+            aux(1).ToString.Replace("'", "''")
             song = New Song(aux(1).ToString)
             song.readSong()
             a.songs.Add(song)

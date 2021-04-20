@@ -17,6 +17,9 @@
         InfoTextBox2.Text = String.Empty
         InfoTextBox3.Text = String.Empty
         InfoTextBox3.Enabled = True
+        SelectionComboBox.Text = String.Empty
+        DateBox.ResetText()
+        ImageBox.ImageLocation = ""
     End Sub
 
     Private Sub ListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles InfoListBox.SelectedIndexChanged
@@ -240,6 +243,7 @@
     Private Sub listSong()
         If InfoListBox.SelectedItem IsNot Nothing Then
             Me.song = New Song(InfoListBox.SelectedItem.ToString)
+
             Try
                 Me.song.readSong()
                 Me.song.album.readAlbum()
@@ -280,20 +284,22 @@
 
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
         If DataTypeComboBox.SelectedItem.ToString = "Users" Then
-            deleteUser()
+            DeleteUser()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
-            deleteArtist()
+            DeleteArtist()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Albums" Then
-            deleteAlbum()
+            DeleteAlbum()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Songs" Then
-            deleteSong()
+            DeleteSong()
         End If
     End Sub
 
-    Private Sub deleteSong()
+    Private Sub DeleteSong()
         If InfoListBox.SelectedItem IsNot Nothing Then
             Try
-                Me.song.deleteSong()
+                If Me.song.deleteSong() <> 1 Then
+                    MessageBox.Show("DELETE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -304,11 +310,12 @@
         End If
     End Sub
 
-    Private Sub deleteAlbum()
+    Private Sub DeleteAlbum()
         If InfoListBox.SelectedItem IsNot Nothing Then
             Try
-                Me.album.readMySongs()
-                Me.album.deleteAlbum()
+                If Me.album.deleteAlbum() <> 1 Then
+                    MessageBox.Show("DELETE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -316,15 +323,18 @@
             InfoListBox.Items.Remove(InfoListBox.SelectedItem.ToString)
             NameTextBox.Text = String.Empty
             InfoTextBox2.Text = String.Empty
+            SelectionComboBox.Text = String.Empty
+            ImageBox.ImageLocation = ""
+            DateBox.ResetText()
         End If
     End Sub
 
-    Private Sub deleteArtist()
+    Private Sub DeleteArtist()
         If InfoListBox.SelectedItem IsNot Nothing Then
-
             Try
-
-                Me.artist.deleteArtist()
+                If Me.artist.deleteArtist() <> 1 Then
+                    MessageBox.Show("DELETE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -339,13 +349,16 @@
         End If
     End Sub
 
-    Private Sub deleteUser()
+    Private Sub DeleteUser()
+
         If InfoListBox.SelectedItem IsNot Nothing Then
             If user.email = myUser.email Then
-                MessageBox.Show("You cannot delete yourself", "Delete yourself", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                MessageBox.Show("You cannot delete yourself", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Else
                 Try
-                    Me.user.deleteUser()
+                    If Me.user.deleteUser() <> 1 Then
+                        MessageBox.Show("DELETE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    End If
                 Catch ex As Exception
                     MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
@@ -354,6 +367,7 @@
                 NameTextBox.Text = String.Empty
                 InfoTextBox2.Text = String.Empty
                 InfoTextBox3.Text = String.Empty
+                InfoTextBox3.Enabled = True
                 DateBox.ResetText()
             End If
 
@@ -368,7 +382,9 @@
             Me.user.uSurname = InfoTextBox2.Text
             Me.user.birthday = Date.Parse(DateBox.Value.ToShortDateString)
             Try
-                Me.user.insertUser()
+                If Me.user.insertUser() <> 1 Then
+                    MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -383,7 +399,9 @@
             Me.artist.country = InfoTextBox2.Text
             Me.artist.image = InfoTextBox3.Text
             Try
-                Me.artist.insertArtist()
+                If Me.artist.insertArtist() <> 1 Then
+                    MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -393,14 +411,16 @@
     End Sub
 
     Private Sub insertAlbum()
-        If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
+        If NameTextBox.Text IsNot String.Empty Then
             Me.album = New Album(NameTextBox.Text)
-            Me.album.cover = InfoTextBox2.Text
+            Me.album.cover = ImageFileDialog.FileName
             Dim artist = New Artist(SelectionComboBox.SelectedItem.ToString())
             Me.album.artist = artist
             Me.album.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try
-                Me.album.insertAlbum()
+                If Me.album.insertAlbum() <> 1 Then
+                    MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -416,7 +436,9 @@
             Dim album = New Album(SelectionComboBox.SelectedItem.ToString())
             Me.song.album = album
             Try
-                Me.song.insertSong()
+                If Me.song.insertSong() <> 1 Then
+                    MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -466,7 +488,9 @@
             userAux.uSurname = InfoTextBox2.Text
             userAux.birthday = Date.Parse(DateBox.Value.ToShortDateString)
             Try
-                userAux.updateUser()
+                If userAux.updateUser() <> 1 Then
+                    MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -482,7 +506,9 @@
             Me.album.artist = artist
             Me.album.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try
-                Me.album.updateAlbum()
+                If Me.album.updateAlbum() <> 1 Then
+                    MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -499,7 +525,9 @@
             Me.artist.country = InfoTextBox2.Text
             Me.artist.image = ImageFileDialog.FileName.ToString
             Try
-                Me.artist.updateArtist()
+                If Me.artist.updateArtist() <> 1 Then
+                    MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -515,7 +543,9 @@
             Me.song.sName = NameTextBox.Text
             Me.song.length = Integer.Parse(InfoTextBox2.Text)
             Try
-                Me.song.updateSong()
+                If Me.song.updateSong() <> 1 Then
+                    MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
@@ -536,4 +566,7 @@
         ImageFileDialog.ShowDialog()
     End Sub
 
+    Private Sub NameTextBox_TextChanged(sender As Object, e As EventArgs) Handles NameTextBox.TextChanged, InfoTextBox2.TextChanged, InfoTextBox3.TextChanged
+        ClearButton.Enabled = True
+    End Sub
 End Class

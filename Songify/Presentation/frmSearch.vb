@@ -85,7 +85,7 @@ Public Class frmSearch
         Me.TextBox2.Visible = True
     End Sub
     Private Sub aSong()
-        Me.song = New Song(SongList.SelectedItem.ToString)
+        'Me.song = New Song(SongList.SelectedItem.ToString)
         Try
             song.readSong()
         Catch ex As Exception
@@ -163,14 +163,14 @@ Public Class frmSearch
 
     Private Sub PlayButton_Click(sender As Object, e As EventArgs) Handles PlayButton.Click
         If SongList.SelectedItem IsNot String.Empty Then
-            Dim songAux As Song = New Song(SongList.SelectedItem.ToString)
+            'Dim songAux As Song = New Song(SongList.SelectedItem.ToString)
             Try
-                songAux.readSong()
+                'songAux.readSong()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End Try
-            Me.song = New Song(songAux.idSong)
+            'Me.song = New Song(songAux.idSong)
             Try
                 song.play(Me.myUser)
             Catch ex As Exception
@@ -183,14 +183,14 @@ Public Class frmSearch
     Private Sub HistoryButton_Click(sender As Object, e As EventArgs) Handles HistoryButton.Click
         If SongList.SelectedItem IsNot String.Empty Then
             Dim txt As String = ""
-            Dim songAux As Song = New Song(SongList.SelectedItem.ToString)
+            'Dim songAux As Song = New Song(SongList.SelectedItem.ToString)
             Try
-                songAux.readSong()
+                'songAux.readSong()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
             End Try
-            Me.song = New Song(songAux.idSong)
+            'Me.song = New Song(songAux.idSong)
             Try
                 txt = song.readPlayblacks()
             Catch ex As Exception

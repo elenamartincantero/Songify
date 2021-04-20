@@ -19,9 +19,7 @@
         Dim col1 As Collection : Dim aux1 As Collection
         Dim col2 As Collection : Dim aux2 As Collection
         col1 = DBBroker.GetBroker().Read("SELECT * FROM SONGS WHERE sName='" & s.sName & "';")
-        If col1.Count = 0 Then
-            Throw New Exception()
-        End If
+
         For Each aux1 In col1
             s.idSong = Integer.Parse(aux1(1).ToString)
             s.length = Integer.Parse(aux1(4).ToString)
@@ -32,16 +30,16 @@
 
         Next
     End Sub
-    Public Sub insert(s As Song)
-        DBBroker.GetBroker.Change("INSERT INTO SONGS (sName, Album, length) VALUES ('" & s.sName & "', " & s.album.albumID & "," & s.length & ");")
-    End Sub
-    Public Sub update(s As Song)
-        DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "',Album=" & s.album.albumID & ",length=" & s.length & " WHERE IdSong=" & s.idSong & ";")
-    End Sub
-    Public Sub delete(s As Song)
+    Public Function insert(s As Song) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO SONGS (sName, Album, length) VALUES ('" & s.sName & "', " & s.album.albumID & "," & s.length & ");")
+    End Function
+    Public Function update(s As Song) As Integer
+        Return DBBroker.GetBroker.Change("UPDATE SONGS SET sName='" & s.sName & "',Album=" & s.album.albumID & ",length=" & s.length & " WHERE IdSong=" & s.idSong & ";")
+    End Function
+    Public Function delete(s As Song) As Integer
         DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE song=" & s.idSong & ";")
-        DBBroker.GetBroker.Change("DELETE FROM SONGS WHERE sName='" & s.sName & "';")
-    End Sub
+        Return DBBroker.GetBroker.Change("DELETE FROM SONGS WHERE IdSong=" & s.idSong & ";")
+    End Function
     Public Function convertLength(s As Song) As String
         Dim seg As Integer
         Dim min As Double
@@ -50,9 +48,9 @@
 
         Return min.ToString() & ":" & seg.ToString()
     End Function
-    Public Sub play(us As User, s As Song)
-        DBBroker.GetBroker.Change("INSERT INTO PLAYABACKS VALUES ('" & us.email & "', " & s.idSong & "," & Date.Today & ");")
-    End Sub
+    Public Function play(us As User, s As Song) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO PLAYABACKS VALUES ('" & us.email & "', " & s.idSong & "," & Date.Today & ");")
+    End Function
     Public Function readPlayblacks(s As Song) As String
         Dim col1 As Collection : Dim aux1 As Collection
         Dim txt As String = ""

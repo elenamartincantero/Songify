@@ -28,16 +28,16 @@
 
         Next
     End Sub
-    Public Sub insert(u As User)
-        DBBroker.GetBroker.Change("INSERT INTO USERS VALUES ('" & u.email & "', '" & u.uName & "','" & u.uSurname & "', '" & u.birthday & "');")
-    End Sub
-    Public Sub update(u As User)
-        DBBroker.GetBroker.Change("UPDATE USERS SET uName='" & u.uName & "',uSurname='" & u.uSurname & "',birthdate='" & u.birthday & "' WHERE Email='" & u.email & "';")
-    End Sub
-    Public Sub delete(u As User)
+    Public Function insert(u As User) As Integer
+        Return DBBroker.GetBroker.Change("INSERT INTO USERS VALUES ('" & u.email & "', '" & u.uName & "','" & u.uSurname & "', '" & u.birthday & "');")
+    End Function
+    Public Function update(u As User) As Integer
+        Return DBBroker.GetBroker.Change("UPDATE USERS SET uName='" & u.uName & "',uSurname='" & u.uSurname & "',birthdate='" & u.birthday & "' WHERE Email='" & u.email & "';")
+    End Function
+    Public Function delete(u As User) As Integer
         DBBroker.GetBroker.Change("DELETE FROM PLAYBACKS WHERE user='" & u.email & "';")
-        DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.email & "';")
-    End Sub
+        Return DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.email & "';")
+    End Function
     Public Sub readMyArtists(ByRef u As User)
         Dim col1 As Collection : Dim aux1 As Collection
         Dim artist As Artist
@@ -47,7 +47,8 @@
         End If
         For Each aux1 In col1
             artist = New Artist(aux1(1).ToString)
-            u.fav_artists.Add(artist, artist.name)
+            artist.readArtist()
+            u.fav_artists.Add(artist)
         Next
     End Sub
     Public Sub usersSortedByTime()

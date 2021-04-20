@@ -38,18 +38,18 @@
         Me.AlbumDAO.read(Me)
     End Sub
 
-    Public Sub insertAlbum()
+    Public Function insertAlbum() As Integer
         Me.artist.readArtist()
-        Me.AlbumDAO.insert(Me)
-    End Sub
-    Public Sub updateAlbum()
+        Return Me.AlbumDAO.insert(Me)
+    End Function
+    Public Function updateAlbum() As Integer
         Me.artist.readArtist()
-        Me.AlbumDAO.update(Me)
-    End Sub
-    Public Sub deleteAlbum()
+        Return Me.AlbumDAO.update(Me)
+    End Function
+    Public Function deleteAlbum() As Integer
         Me.AlbumDAO.readMySongs(Me)
-        Me.AlbumDAO.delete(Me)
-    End Sub
+        Return Me.AlbumDAO.delete(Me)
+    End Function
     Public Function convertLength() As String
         Return Me.AlbumDAO.convertLength(Me)
     End Function

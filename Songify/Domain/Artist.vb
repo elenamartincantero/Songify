@@ -36,22 +36,22 @@
     Public Sub readArtist()
         Me.ArtistDAO.read(Me)
     End Sub
-    Public Sub insertArtist()
-        Me.ArtistDAO.insert(Me)
-    End Sub
-    Public Sub updateArtist()
-        Me.ArtistDAO.update(Me)
-    End Sub
-    Public Sub deleteArtist()
+    Public Function insertArtist() As Integer
+        Return Me.ArtistDAO.insert(Me)
+    End Function
+    Public Function updateArtist() As Integer
+        Return Me.ArtistDAO.update(Me)
+    End Function
+    Public Function deleteArtist() As Integer
         Me.ArtistDAO.readMyAlbums(Me)
-        Me.ArtistDAO.delete(Me)
-    End Sub
-    Public Sub favArtist(us As User)
-        Me.ArtistDAO.fav(us, Me)
-    End Sub
-    Public Sub not_favArtist(us As User)
-        Me.ArtistDAO.not_fav(us, Me)
-    End Sub
+        Return Me.ArtistDAO.delete(Me)
+    End Function
+    Public Function favArtist(us As User) As Integer
+        Return Me.ArtistDAO.fav(us, Me)
+    End Function
+    Public Function not_favArtist(us As User) As Integer
+        Return Me.ArtistDAO.not_fav(us, Me)
+    End Function
     Public Sub artistsSorted()
         Me.ArtistDAO.artistsSorted(Me)
     End Sub

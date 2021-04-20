@@ -35,15 +35,15 @@
         Me.UserDAO.read(Me)
 
     End Sub
-    Public Sub insertUser()
-        Me.UserDAO.insert(Me)
-    End Sub
-    Public Sub updateUser()
-        Me.UserDAO.update(Me)
-    End Sub
-    Public Sub deleteUser()
-        Me.UserDAO.delete(Me)
-    End Sub
+    Public Function insertUser() As Integer
+        Return Me.UserDAO.insert(Me)
+    End Function
+    Public Function updateUser() As Integer
+        Return Me.UserDAO.update(Me)
+    End Function
+    Public Function deleteUser() As Integer
+        Return Me.UserDAO.delete(Me)
+    End Function
 
     Public Sub usersSortedByTime()
         Me.UserDAO.usersSortedByTime()
@@ -52,9 +52,9 @@
     Public Function playbackFavArtists() As String
         Return Me.UserDAO.playbackFavArtists(Me)
     End Function
-    Public Sub readArtistsMostListened(beginDate As Date, endDate As Date, user As User)
-        Me.UserDAO.readArtistsMostListened(beginDate, endDate, Me)
-    End Sub
+    Public Function readArtistsMostListened(beginDate As Date, endDate As Date, user As User) As String
+        Return Me.UserDAO.readArtistsMostListened(beginDate, endDate, Me)
+    End Function
 
     Public Sub readMyArtists()
         Me.UserDAO.readMyArtists(Me)
