@@ -15,16 +15,6 @@
         Me.fav_artists = New Collection
     End Sub
 
-    Public Sub New(email As String, uName As String, uSurname As String, birthday As String)
-        Me.UserDAO = New UserDAO
-        Me.email = email
-        Me.uName = uName
-        Me.uSurname = uSurname
-        Me.birthday = CDate(birthday)
-        Me.fav_artists = New Collection
-
-    End Sub
-
     Public Sub readAllUsers()
         Me.UserDAO.readAll()
     End Sub
@@ -33,7 +23,6 @@
     End Sub
     Public Sub readUser()
         Me.UserDAO.read(Me)
-
     End Sub
     Public Function insertUser() As Integer
         Return Me.UserDAO.insert(Me)

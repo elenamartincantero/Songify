@@ -6,8 +6,8 @@
             Me.user = frmLogin.user
         ElseIf frmManage.myUser IsNot Nothing Then
             Me.user = frmManage.myUser
-            'ElseIf frmSearch.user IsNot Nothing Then
-            '    Me.user = frmSearch.user
+        ElseIf frmSearch.user IsNot Nothing Then
+            Me.user = frmSearch.user
         ElseIf frmStatistics.user IsNot Nothing Then
             Me.user = frmStatistics.user
         End If

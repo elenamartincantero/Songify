@@ -11,6 +11,7 @@
 
     Public Sub New()
         Me.AlbumDAO = New AlbumDAO
+        Me.aSongs = New Collection
     End Sub
 
     Public Sub New(albumID As Integer, name As String)

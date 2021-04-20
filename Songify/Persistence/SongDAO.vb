@@ -49,7 +49,7 @@
         Return min.ToString() & ":" & seg.ToString()
     End Function
     Public Function play(us As User, s As Song) As Integer
-        Return DBBroker.GetBroker.Change("INSERT INTO PLAYABACKS VALUES ('" & us.email & "', " & s.idSong & "," & Date.Today & ");")
+        Return DBBroker.GetBroker.Change("INSERT INTO PLAYBACKS (user, song, plDate) VALUES ('" & us.email & "', " & s.idSong & ", SYSDATE);")
     End Function
     Public Function readPlayblacks(s As Song) As String
         Dim col1 As Collection : Dim aux1 As Collection

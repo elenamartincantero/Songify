@@ -40,16 +40,16 @@
         Return DBBroker.GetBroker.Change("DELETE FROM USERS WHERE Email='" & u.email & "';")
     End Function
     Public Sub readMyArtists(ByRef u As User)
-        Dim col1 As Collection : Dim aux1 As Collection
+        Dim col As Collection : Dim aux As Collection
         Dim artist As Artist
-        col1 = DBBroker.GetBroker().Read("SELECT aName FROM ARTISTS WHERE IdArtist In (Select artist FROM FAV_ARTISTS WHERE user='" & u.email & "');")
-        If col1.Count = 0 Then
+        col = DBBroker.GetBroker().Read("SELECT IdArtist, aName FROM ARTISTS WHERE IdArtist In (Select artist FROM FAV_ARTISTS WHERE user='" & u.email & "');")
+        If col.Count = 0 Then
             Throw New Exception()
         End If
-        For Each aux1 In col1
-            artist = New Artist()
+        For Each aux In col
+            artist = New Artist(Integer.Parse(aux(1).ToString), aux(2).ToString)
             artist.readArtist()
-            u.fav_artists.Add(artist)
+            u.fav_artists.Add(artist, aux(1).ToString)
         Next
     End Sub
     Public Sub usersSortedByTime()
