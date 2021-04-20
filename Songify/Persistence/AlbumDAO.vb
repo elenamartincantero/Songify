@@ -20,9 +20,9 @@
         For Each aux1 In col1
             a.releaseDate = Date.Parse(aux1(3).ToString)
             a.cover = aux1(5).ToString
-            col2 = DBBroker.GetBroker().Read("SELECT aName FROM ARTISTS WHERE IdArtist=" & aux1(4).ToString & ";")
+            col2 = DBBroker.GetBroker().Read("SELECT IdArtist, aName FROM ARTISTS WHERE IdArtist=" & aux1(4).ToString & ";")
             For Each aux2 In col2
-                a.artist = New Artist()
+                a.artist = New Artist(Integer.Parse(aux2(1).ToString), aux2(2).ToString)
             Next
 
         Next

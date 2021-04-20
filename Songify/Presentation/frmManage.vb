@@ -499,14 +499,15 @@
     End Sub
 
     Private Sub updateAlbum()
-        If NameTextBox.Text IsNot String.Empty Then
-            Me.album.name = NameTextBox.Text
-            Me.album.cover = ImageFileDialog.FileName
-            Dim artist = New Artist()
-            Me.album.artist = artist
-            Me.album.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
+        If NameTextBox.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
+            Dim albumAux As Album = CType(Me.album.AlbumDAO.albums(InfoListBox.SelectedIndex + 1), Album)
+            albumAux.name = NameTextBox.Text
+            albumAux.cover = ImageFileDialog.FileName
+            Dim artist As Artist = CType(Me.artist.ArtistDAO.artists(SelectionComboBox.SelectedIndex + 1), Artist)
+            albumAux.artist = artist
+            albumAux.releaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try
-                If Me.album.updateAlbum() <> 1 Then
+                If albumAux.updateAlbum() <> 1 Then
                     MessageBox.Show("UPDATE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
