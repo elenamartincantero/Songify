@@ -314,6 +314,7 @@
 
     Private Sub DeleteAlbum()
         If InfoListBox.SelectedItem IsNot Nothing Then
+            Dim albumAux As Album = CType(Me.album.AlbumDAO.allAlbums(InfoListBox.SelectedIndex + 1), Album)
             Try
                 If Me.album.deleteAlbum() <> 1 Then
                     MessageBox.Show("DELETE <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -326,7 +327,7 @@
             NameTextBox.Text = String.Empty
             InfoTextBox2.Text = String.Empty
             SelectionComboBox.Text = String.Empty
-            ImageBox.ImageLocation = ""
+            ImageBox.ImageLocation = String.Empty
             DateBox.ResetText()
         End If
     End Sub
@@ -397,18 +398,19 @@
 
     Private Sub insertArtist()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
-            Me.artist = New Artist()
-            Me.artist.aCountry = InfoTextBox2.Text
-            Me.artist.aImage = InfoTextBox3.Text
+            Dim artistAux As Artist = New Artist(NameTextBox.Text)
+            artistAux.aCountry = InfoTextBox2.Text
+            artistAux.aImage = ImageFileDialog.FileName
             Try
-                If Me.artist.insertArtist() <> 1 Then
+                If artistAux.insertArtist() <> 1 Then
                     MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            Me.InfoListBox.Items.Add(Me.artist.aName)
+            resetElements()
+            readArtists()
         End If
     End Sub
 

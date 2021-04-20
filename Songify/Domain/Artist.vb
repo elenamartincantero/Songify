@@ -16,9 +16,9 @@
         Me.idArtist = id
         Me.aAlbums = New Collection
     End Sub
-    Public Sub New(id As Integer)
+    Public Sub New(name As String)
         Me.ArtistDAO = New ArtistDAO
-        Me.idArtist = id
+        Me.aName = name
         Me.aAlbums = New Collection
     End Sub
 
