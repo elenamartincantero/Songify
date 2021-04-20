@@ -413,21 +413,23 @@
     End Sub
 
     Private Sub insertAlbum()
-        If NameTextBox.Text IsNot String.Empty Then
-            Me.album = New Album()
-            Me.album.aCover = ImageFileDialog.FileName
-            Dim artist = New Artist()
-            Me.album.aArtist = artist
-            Me.album.aReleaseDate = Date.Parse(DateBox.Value.ToShortDateString)
+        If NameTextBox.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
+            Dim albumAux As Album = New Album(NameTextBox.Text)
+            albumAux.aCover = ImageFileDialog.FileName
+            Dim artist As Artist = CType(Me.artist.ArtistDAO.allArtists(SelectionComboBox.SelectedIndex + 1), Artist)
+            albumAux.aArtist = artist
+            albumAux.aReleaseDate = Date.Parse(DateBox.Value.ToShortDateString)
             Try
-                If Me.album.insertAlbum() <> 1 Then
+                If albumAux.insertAlbum() <> 1 Then
                     MessageBox.Show("INSERT <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            InfoListBox.Items.Add(Me.album.aName)
+            resetElements()
+            readAlbums()
+            readArtistInAlbum()
         End If
     End Sub
 

@@ -19,9 +19,9 @@
         Me.idAlbum = albumID
         Me.aSongs = New Collection
     End Sub
-    Public Sub New(albumID As Integer)
+    Public Sub New(aName As String)
         Me.AlbumDAO = New AlbumDAO
-        Me.idAlbum = albumID
+        Me.aName = aName
         Me.aSongs = New Collection
     End Sub
     Public Sub readAllAlbums()
