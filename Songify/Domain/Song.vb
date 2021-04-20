@@ -1,12 +1,11 @@
 ﻿Public Class Song
     Public Property idSong As Integer
     Public Property sName As String
-    Public Property length As Integer
-    Public Property album As Album
+    Public Property sLength As Integer
+    Public Property sAlbum As Album
     Public ReadOnly Property SongDAO As SongDAO
 
     Public Sub New()
-
         Me.SongDAO = New SongDAO
     End Sub
     Public Sub New(id As Integer, sName As String)
@@ -16,12 +15,6 @@
         Me.sName = Me.sName.Replace("'", "''")
 
     End Sub
-    Public Sub New(id As Integer)
-        Me.SongDAO = New SongDAO
-        Me.idSong = id
-    End Sub
-
-
 
     Public Sub readAllSongs()
         Me.SongDAO.readAll()
@@ -30,11 +23,11 @@
         Me.SongDAO.read(Me)
     End Sub
     Public Function insertSong() As Integer
-        Me.album.readAlbum()
+        Me.sAlbum.readAlbum()
         Return Me.SongDAO.insert(Me)
     End Function
     Public Function updateSong() As Integer
-        Me.album.readAlbum()
+        Me.sAlbum.readAlbum()
         Return Me.SongDAO.update(Me)
     End Function
     Public Function deleteSong() As Integer

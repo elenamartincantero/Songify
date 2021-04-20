@@ -18,7 +18,7 @@
             Exit Sub
         End Try
         For Each artistAux In Me.user.UserDAO.usersByTime
-            Me.ListBox1.Items.Add(artistAux.name)
+            Me.ListBox1.Items.Add(artistAux.aName)
         Next
     End Sub
 
