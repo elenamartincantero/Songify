@@ -51,7 +51,7 @@
         Next
     End Sub
     Public Function fav(us As User, a As Artist) As Integer
-        Return DBBroker.GetBroker.Change("INSERT INTO FAV_ARTISTS VALUES ('" & us.email & "', " & a.idArtist & "," & Date.Today & ");")
+        Return DBBroker.GetBroker.Change("INSERT INTO FAV_ARTISTS VALUES ('" & us.email & "', " & a.idArtist & ",'" & Date.Today & "');")
     End Function
     Public Function not_fav(us As User, a As Artist) As Integer
         Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE user='" & us.email & "'AND artist=" & a.idArtist & ";")

@@ -60,7 +60,7 @@ Partial Class frmLogin
         Me.LoginButton.Enabled = False
         Me.LoginButton.Location = New System.Drawing.Point(264, 191)
         Me.LoginButton.Name = "LoginButton"
-        Me.LoginButton.Size = New System.Drawing.Size(86, 40)
+        Me.LoginButton.Size = New System.Drawing.Size(86, 42)
         Me.LoginButton.TabIndex = 2
         Me.LoginButton.Text = "Log in"
         Me.LoginButton.UseVisualStyleBackColor = True

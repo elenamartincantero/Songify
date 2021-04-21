@@ -47,7 +47,7 @@ Partial Class frmManage
         'InsertButton
         '
         Me.InsertButton.Enabled = False
-        Me.InsertButton.Location = New System.Drawing.Point(349, 228)
+        Me.InsertButton.Location = New System.Drawing.Point(180, 275)
         Me.InsertButton.Margin = New System.Windows.Forms.Padding(2)
         Me.InsertButton.Name = "InsertButton"
         Me.InsertButton.Size = New System.Drawing.Size(54, 41)
@@ -58,7 +58,7 @@ Partial Class frmManage
         'UpdateButton
         '
         Me.UpdateButton.Enabled = False
-        Me.UpdateButton.Location = New System.Drawing.Point(349, 282)
+        Me.UpdateButton.Location = New System.Drawing.Point(180, 329)
         Me.UpdateButton.Margin = New System.Windows.Forms.Padding(2)
         Me.UpdateButton.Name = "UpdateButton"
         Me.UpdateButton.Size = New System.Drawing.Size(54, 41)
@@ -69,7 +69,7 @@ Partial Class frmManage
         'DeleteButton
         '
         Me.DeleteButton.Enabled = False
-        Me.DeleteButton.Location = New System.Drawing.Point(406, 282)
+        Me.DeleteButton.Location = New System.Drawing.Point(238, 329)
         Me.DeleteButton.Margin = New System.Windows.Forms.Padding(2)
         Me.DeleteButton.Name = "DeleteButton"
         Me.DeleteButton.Size = New System.Drawing.Size(54, 41)
@@ -79,45 +79,49 @@ Partial Class frmManage
         '
         'DataTypeComboBox
         '
+        Me.DataTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.DataTypeComboBox.FormattingEnabled = True
         Me.DataTypeComboBox.Items.AddRange(New Object() {"Users", "Songs", "Albums", "Artists"})
         Me.DataTypeComboBox.Location = New System.Drawing.Point(36, 24)
         Me.DataTypeComboBox.Margin = New System.Windows.Forms.Padding(2)
         Me.DataTypeComboBox.Name = "DataTypeComboBox"
-        Me.DataTypeComboBox.Size = New System.Drawing.Size(173, 21)
+        Me.DataTypeComboBox.Size = New System.Drawing.Size(125, 21)
         Me.DataTypeComboBox.TabIndex = 4
         '
         'NameLabel
         '
         Me.NameLabel.AutoSize = True
-        Me.NameLabel.Location = New System.Drawing.Point(190, 67)
+        Me.NameLabel.Location = New System.Drawing.Point(213, 67)
         Me.NameLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.NameLabel.Name = "NameLabel"
         Me.NameLabel.Size = New System.Drawing.Size(35, 13)
         Me.NameLabel.TabIndex = 3
         Me.NameLabel.Text = "Name"
+        Me.NameLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.NameLabel.Visible = False
         '
         'InfoLabel2
         '
         Me.InfoLabel2.AutoSize = True
-        Me.InfoLabel2.Location = New System.Drawing.Point(190, 98)
+        Me.InfoLabel2.Location = New System.Drawing.Point(209, 98)
         Me.InfoLabel2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.InfoLabel2.Name = "InfoLabel2"
         Me.InfoLabel2.Size = New System.Drawing.Size(39, 13)
         Me.InfoLabel2.TabIndex = 5
         Me.InfoLabel2.Text = "Label2"
+        Me.InfoLabel2.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.InfoLabel2.Visible = False
         '
         'InfoLabel3
         '
         Me.InfoLabel3.AutoSize = True
-        Me.InfoLabel3.Location = New System.Drawing.Point(190, 128)
+        Me.InfoLabel3.Location = New System.Drawing.Point(209, 128)
         Me.InfoLabel3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.InfoLabel3.Name = "InfoLabel3"
         Me.InfoLabel3.Size = New System.Drawing.Size(39, 13)
         Me.InfoLabel3.TabIndex = 6
         Me.InfoLabel3.Text = "Label3"
+        Me.InfoLabel3.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.InfoLabel3.Visible = False
         '
         'NameTextBox
@@ -158,10 +162,10 @@ Partial Class frmManage
         '
         'MainMenuButton
         '
-        Me.MainMenuButton.Location = New System.Drawing.Point(349, 342)
+        Me.MainMenuButton.Location = New System.Drawing.Point(389, 24)
         Me.MainMenuButton.Margin = New System.Windows.Forms.Padding(2)
         Me.MainMenuButton.Name = "MainMenuButton"
-        Me.MainMenuButton.Size = New System.Drawing.Size(118, 27)
+        Me.MainMenuButton.Size = New System.Drawing.Size(120, 21)
         Me.MainMenuButton.TabIndex = 14
         Me.MainMenuButton.Text = "Return to main menu"
         Me.MainMenuButton.UseVisualStyleBackColor = True
@@ -169,7 +173,7 @@ Partial Class frmManage
         'ClearButton
         '
         Me.ClearButton.Enabled = False
-        Me.ClearButton.Location = New System.Drawing.Point(406, 228)
+        Me.ClearButton.Location = New System.Drawing.Point(237, 275)
         Me.ClearButton.Margin = New System.Windows.Forms.Padding(2)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(54, 41)
@@ -179,10 +183,11 @@ Partial Class frmManage
         '
         'ImageBox
         '
-        Me.ImageBox.Location = New System.Drawing.Point(187, 227)
+        Me.ImageBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.ImageBox.Location = New System.Drawing.Point(309, 200)
         Me.ImageBox.Margin = New System.Windows.Forms.Padding(2)
         Me.ImageBox.Name = "ImageBox"
-        Me.ImageBox.Size = New System.Drawing.Size(136, 146)
+        Me.ImageBox.Size = New System.Drawing.Size(136, 170)
         Me.ImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.ImageBox.TabIndex = 16
         Me.ImageBox.TabStop = False
@@ -193,7 +198,7 @@ Partial Class frmManage
         Me.DateBox.CustomFormat = "dd/mm/yyyy"
         Me.DateBox.Location = New System.Drawing.Point(275, 157)
         Me.DateBox.Name = "DateBox"
-        Me.DateBox.Size = New System.Drawing.Size(192, 20)
+        Me.DateBox.Size = New System.Drawing.Size(170, 20)
         Me.DateBox.TabIndex = 18
         Me.DateBox.Value = New Date(2021, 4, 14, 18, 14, 42, 0)
         Me.DateBox.Visible = False
@@ -201,15 +206,17 @@ Partial Class frmManage
         'DateLabel
         '
         Me.DateLabel.AutoSize = True
-        Me.DateLabel.Location = New System.Drawing.Point(190, 161)
+        Me.DateLabel.Location = New System.Drawing.Point(218, 161)
         Me.DateLabel.Name = "DateLabel"
         Me.DateLabel.Size = New System.Drawing.Size(30, 13)
         Me.DateLabel.TabIndex = 19
         Me.DateLabel.Text = "Date"
+        Me.DateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.DateLabel.Visible = False
         '
         'SelectionComboBox
         '
+        Me.SelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.SelectionComboBox.FormattingEnabled = True
         Me.SelectionComboBox.Location = New System.Drawing.Point(275, 125)
         Me.SelectionComboBox.Margin = New System.Windows.Forms.Padding(2)
@@ -218,9 +225,13 @@ Partial Class frmManage
         Me.SelectionComboBox.TabIndex = 20
         Me.SelectionComboBox.Visible = False
         '
+        'ImageFileDialog
+        '
+        Me.ImageFileDialog.Filter = "(Picture | *jpg, *.jpeg, *.png)"
+        '
         'ImageButton
         '
-        Me.ImageButton.Location = New System.Drawing.Point(192, 188)
+        Me.ImageButton.Location = New System.Drawing.Point(180, 200)
         Me.ImageButton.Margin = New System.Windows.Forms.Padding(2)
         Me.ImageButton.Name = "ImageButton"
         Me.ImageButton.Size = New System.Drawing.Size(90, 25)
@@ -233,6 +244,7 @@ Partial Class frmManage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(520, 390)
         Me.Controls.Add(Me.ImageButton)
         Me.Controls.Add(Me.SelectionComboBox)

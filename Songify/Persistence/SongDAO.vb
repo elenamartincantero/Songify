@@ -55,11 +55,9 @@
         Dim col1 As Collection : Dim aux1 As Collection
         Dim txt As String = ""
         col1 = DBBroker.GetBroker().Read("SELECT * FROM PLAYBACKS WHERE song=" & s.idSong & ";")
-        If col1.Count = 0 Then
-            Throw New Exception()
-        End If
+
         For Each aux1 In col1
-            txt += aux1(2).ToString + " played on " + aux1(4).ToString
+            txt += aux1(2).ToString + " played it on " + aux1(4).ToString + vbCrLf
         Next
         Return txt
     End Function
