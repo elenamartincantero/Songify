@@ -28,8 +28,8 @@ Partial Class frmLogin
         Me.DatabaseButton = New System.Windows.Forms.Button()
         Me.LoginButton = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ConnectButton = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,16 +41,20 @@ Partial Class frmLogin
         'LoginBox
         '
         Me.LoginBox.Enabled = False
-        Me.LoginBox.Location = New System.Drawing.Point(79, 141)
+        Me.LoginBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.861538!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LoginBox.Location = New System.Drawing.Point(105, 185)
+        Me.LoginBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LoginBox.Name = "LoginBox"
-        Me.LoginBox.Size = New System.Drawing.Size(244, 20)
+        Me.LoginBox.Size = New System.Drawing.Size(324, 26)
         Me.LoginBox.TabIndex = 0
         '
         'DatabaseButton
         '
-        Me.DatabaseButton.Location = New System.Drawing.Point(38, 191)
+        Me.DatabaseButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DatabaseButton.Location = New System.Drawing.Point(37, 239)
+        Me.DatabaseButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DatabaseButton.Name = "DatabaseButton"
-        Me.DatabaseButton.Size = New System.Drawing.Size(87, 42)
+        Me.DatabaseButton.Size = New System.Drawing.Size(116, 55)
         Me.DatabaseButton.TabIndex = 1
         Me.DatabaseButton.Text = "Choose Database"
         Me.DatabaseButton.UseVisualStyleBackColor = True
@@ -58,9 +62,11 @@ Partial Class frmLogin
         'LoginButton
         '
         Me.LoginButton.Enabled = False
-        Me.LoginButton.Location = New System.Drawing.Point(264, 191)
+        Me.LoginButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LoginButton.Location = New System.Drawing.Point(373, 239)
+        Me.LoginButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LoginButton.Name = "LoginButton"
-        Me.LoginButton.Size = New System.Drawing.Size(86, 40)
+        Me.LoginButton.Size = New System.Drawing.Size(116, 55)
         Me.LoginButton.TabIndex = 2
         Me.LoginButton.Text = "Log in"
         Me.LoginButton.UseVisualStyleBackColor = True
@@ -68,44 +74,50 @@ Partial Class frmLogin
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(65, 246)
+        Me.Label1.Location = New System.Drawing.Point(87, 311)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(285, 13)
+        Me.Label1.Size = New System.Drawing.Size(392, 18)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Welcome to Songify! Please select the database and log in"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(28, 12)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(339, 112)
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
         '
         'ConnectButton
         '
         Me.ConnectButton.Enabled = False
-        Me.ConnectButton.Location = New System.Drawing.Point(159, 191)
+        Me.ConnectButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ConnectButton.Location = New System.Drawing.Point(206, 239)
+        Me.ConnectButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ConnectButton.Name = "ConnectButton"
-        Me.ConnectButton.Size = New System.Drawing.Size(75, 42)
+        Me.ConnectButton.Size = New System.Drawing.Size(116, 55)
         Me.ConnectButton.TabIndex = 5
         Me.ConnectButton.Text = "Connect"
         Me.ConnectButton.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(37, 16)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(452, 147)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
+        '
         'frmLogin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(395, 278)
+        Me.ClientSize = New System.Drawing.Size(527, 363)
         Me.Controls.Add(Me.ConnectButton)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.LoginButton)
         Me.Controls.Add(Me.DatabaseButton)
         Me.Controls.Add(Me.LoginBox)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Name = "frmLogin"
         Me.Text = "Songify - Login"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

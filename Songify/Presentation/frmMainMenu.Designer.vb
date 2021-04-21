@@ -109,7 +109,7 @@ Partial Class frmMainMenu
         Me.Controls.Add(Me.ManageButton)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "frmMainMenu"
-        Me.Text = "frmMainMenu"
+        Me.Text = "Songify - Main menu"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

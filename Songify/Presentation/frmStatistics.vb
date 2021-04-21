@@ -7,7 +7,7 @@
     Private Sub frmMainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.myUser = frmMainMenu.user
     End Sub
-    Private Sub ArtistSorted_Click(sender As Object, e As EventArgs) Handles ArtistSorted.Click
+    Private Sub ArtistSorted_Click(sender As Object, e As EventArgs)
         ListBox1.Items.Clear()
         Dim artistAux As Artist = New Artist
         Me.artist = New Artist
@@ -22,7 +22,7 @@
         Next
     End Sub
 
-    Private Sub UserSorted_Click(sender As Object, e As EventArgs) Handles UserSorted.Click
+    Private Sub UserSorted_Click(sender As Object, e As EventArgs)
         ListBox1.Items.Clear()
         Dim userAux As User = New User
         Me.user = New User(Me.myUser.uName)
@@ -37,7 +37,7 @@
         Next
     End Sub
 
-    Private Sub SongSorted_Click(sender As Object, e As EventArgs) Handles SongSorted.Click
+    Private Sub SongSorted_Click(sender As Object, e As EventArgs)
         ListBox1.Items.Clear()
         Dim songAux As Song = New Song
         Me.song = New Song
@@ -52,13 +52,13 @@
         'Next
     End Sub
 
-    Private Sub ListenedArtist_Click(sender As Object, e As EventArgs) Handles ListenedArtist.Click
-        If DateTimeBegin IsNot String.Empty And DateTimeEnd IsNot String.Empty Then
+    Private Sub ListenedArtist_Click(sender As Object, e As EventArgs)
+        If frmDate.DateTimeBegin IsNot String.Empty And frmDate.DateTimeEnd IsNot String.Empty Then
             ListBox1.Items.Clear()
             Dim userAux As User = New User
             Me.user = New User
             Try
-                user.readArtistsMostListened(DateTimeBegin.Value, DateTimeEnd.Value, Me.myUser)
+                user.readArtistsMostListened(frmDate.DateTimeBegin.Value, frmDate.DateTimeEnd.Value, Me.myUser)
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
@@ -69,7 +69,7 @@
         End If
     End Sub
 
-    Private Sub Playbacktime_Click(sender As Object, e As EventArgs) Handles Playbacktime.Click
+    Private Sub Playbacktime_Click(sender As Object, e As EventArgs)
         Dim txt As String = ""
         Me.user = New User
         ListBox1.Items.Clear()

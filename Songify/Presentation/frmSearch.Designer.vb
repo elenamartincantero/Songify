@@ -42,6 +42,7 @@ Partial Class frmSearch
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -49,7 +50,7 @@ Partial Class frmSearch
         '
         Me.List.FormattingEnabled = True
         Me.List.Location = New System.Drawing.Point(46, 46)
-        Me.List.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.List.Margin = New System.Windows.Forms.Padding(2)
         Me.List.Name = "List"
         Me.List.Size = New System.Drawing.Size(134, 251)
         Me.List.TabIndex = 0
@@ -67,7 +68,7 @@ Partial Class frmSearch
         'PlayButton
         '
         Me.PlayButton.Location = New System.Drawing.Point(401, 7)
-        Me.PlayButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PlayButton.Margin = New System.Windows.Forms.Padding(2)
         Me.PlayButton.Name = "PlayButton"
         Me.PlayButton.Size = New System.Drawing.Size(59, 31)
         Me.PlayButton.TabIndex = 2
@@ -77,7 +78,7 @@ Partial Class frmSearch
         'HistoryButton
         '
         Me.HistoryButton.Location = New System.Drawing.Point(177, 10)
-        Me.HistoryButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.HistoryButton.Margin = New System.Windows.Forms.Padding(2)
         Me.HistoryButton.Name = "HistoryButton"
         Me.HistoryButton.Size = New System.Drawing.Size(132, 28)
         Me.HistoryButton.TabIndex = 3
@@ -87,7 +88,7 @@ Partial Class frmSearch
         'FavButton
         '
         Me.FavButton.Location = New System.Drawing.Point(327, 8)
-        Me.FavButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.FavButton.Margin = New System.Windows.Forms.Padding(2)
         Me.FavButton.Name = "FavButton"
         Me.FavButton.Size = New System.Drawing.Size(54, 30)
         Me.FavButton.TabIndex = 4
@@ -108,7 +109,7 @@ Partial Class frmSearch
         '
         Me.AlbumList.FormattingEnabled = True
         Me.AlbumList.Location = New System.Drawing.Point(211, 46)
-        Me.AlbumList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.AlbumList.Margin = New System.Windows.Forms.Padding(2)
         Me.AlbumList.Name = "AlbumList"
         Me.AlbumList.Size = New System.Drawing.Size(117, 251)
         Me.AlbumList.TabIndex = 6
@@ -117,7 +118,7 @@ Partial Class frmSearch
         '
         Me.SongList.FormattingEnabled = True
         Me.SongList.Location = New System.Drawing.Point(358, 46)
-        Me.SongList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SongList.Margin = New System.Windows.Forms.Padding(2)
         Me.SongList.Name = "SongList"
         Me.SongList.Size = New System.Drawing.Size(102, 251)
         Me.SongList.TabIndex = 7
@@ -125,7 +126,7 @@ Partial Class frmSearch
         'TextBox
         '
         Me.TextBox.Location = New System.Drawing.Point(529, 72)
-        Me.TextBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox.Name = "TextBox"
         Me.TextBox.Size = New System.Drawing.Size(149, 20)
         Me.TextBox.TabIndex = 10
@@ -134,7 +135,7 @@ Partial Class frmSearch
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(529, 111)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(149, 20)
         Me.TextBox1.TabIndex = 11
@@ -163,7 +164,7 @@ Partial Class frmSearch
         'TextBox2
         '
         Me.TextBox2.Location = New System.Drawing.Point(529, 150)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(149, 20)
         Me.TextBox2.TabIndex = 14
@@ -183,7 +184,7 @@ Partial Class frmSearch
         '
         Me.PlaybackList.FormattingEnabled = True
         Me.PlaybackList.Location = New System.Drawing.Point(46, 351)
-        Me.PlaybackList.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PlaybackList.Margin = New System.Windows.Forms.Padding(2)
         Me.PlaybackList.Name = "PlaybackList"
         Me.PlaybackList.Size = New System.Drawing.Size(414, 30)
         Me.PlaybackList.TabIndex = 16
@@ -191,7 +192,7 @@ Partial Class frmSearch
         'BACK_TO_MENU
         '
         Me.BACK_TO_MENU.Location = New System.Drawing.Point(561, 351)
-        Me.BACK_TO_MENU.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BACK_TO_MENU.Margin = New System.Windows.Forms.Padding(2)
         Me.BACK_TO_MENU.Name = "BACK_TO_MENU"
         Me.BACK_TO_MENU.Size = New System.Drawing.Size(114, 30)
         Me.BACK_TO_MENU.TabIndex = 17
@@ -236,11 +237,21 @@ Partial Class frmSearch
         Me.PictureBox1.TabIndex = 21
         Me.PictureBox1.TabStop = False
         '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(280, 329)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(83, 20)
+        Me.DateTimePicker1.TabIndex = 22
+        Me.DateTimePicker1.Value = New Date(2021, 4, 8, 0, 0, 0, 0)
+        Me.DateTimePicker1.Visible = False
+        '
         'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(686, 390)
+        Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -261,7 +272,7 @@ Partial Class frmSearch
         Me.Controls.Add(Me.PlayButton)
         Me.Controls.Add(Me.InfoLabel)
         Me.Controls.Add(Me.List)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmSearch"
         Me.Text = "frmSearch"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -295,4 +306,5 @@ Partial Class frmSearch
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class

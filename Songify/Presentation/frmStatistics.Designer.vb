@@ -22,133 +22,108 @@ Partial Class frmStatistics
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DateTimeBegin = New System.Windows.Forms.DateTimePicker()
-        Me.BeginLabel = New System.Windows.Forms.Label()
-        Me.EndLabel = New System.Windows.Forms.Label()
-        Me.DateTimeEnd = New System.Windows.Forms.DateTimePicker()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.ArtistSorted = New System.Windows.Forms.Button()
-        Me.UserSorted = New System.Windows.Forms.Button()
-        Me.SongSorted = New System.Windows.Forms.Button()
-        Me.ListenedArtist = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Playbacktime = New System.Windows.Forms.Button()
+        Me.ListenedArtist = New System.Windows.Forms.Button()
+        Me.SongSorted = New System.Windows.Forms.Button()
+        Me.UserSorted = New System.Windows.Forms.Button()
+        Me.ArtistSorted = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'DateTimeBegin
-        '
-        Me.DateTimeBegin.Location = New System.Drawing.Point(73, 132)
-        Me.DateTimeBegin.Name = "DateTimeBegin"
-        Me.DateTimeBegin.Size = New System.Drawing.Size(281, 22)
-        Me.DateTimeBegin.TabIndex = 1
-        '
-        'BeginLabel
-        '
-        Me.BeginLabel.AutoSize = True
-        Me.BeginLabel.Location = New System.Drawing.Point(73, 93)
-        Me.BeginLabel.Name = "BeginLabel"
-        Me.BeginLabel.Size = New System.Drawing.Size(78, 17)
-        Me.BeginLabel.TabIndex = 2
-        Me.BeginLabel.Text = "Begin Date"
-        '
-        'EndLabel
-        '
-        Me.EndLabel.AutoSize = True
-        Me.EndLabel.Location = New System.Drawing.Point(422, 93)
-        Me.EndLabel.Name = "EndLabel"
-        Me.EndLabel.Size = New System.Drawing.Size(67, 17)
-        Me.EndLabel.TabIndex = 3
-        Me.EndLabel.Text = "End Date"
-        '
-        'DateTimeEnd
-        '
-        Me.DateTimeEnd.Location = New System.Drawing.Point(422, 132)
-        Me.DateTimeEnd.Name = "DateTimeEnd"
-        Me.DateTimeEnd.Size = New System.Drawing.Size(278, 22)
-        Me.DateTimeEnd.TabIndex = 4
         '
         'ListBox1
         '
+        Me.ListBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.861538!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 16
-        Me.ListBox1.Location = New System.Drawing.Point(88, 204)
+        Me.ListBox1.ItemHeight = 20
+        Me.ListBox1.Location = New System.Drawing.Point(27, 28)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(230, 212)
+        Me.ListBox1.Size = New System.Drawing.Size(248, 404)
         Me.ListBox1.TabIndex = 5
         '
-        'ArtistSorted
+        'Button1
         '
-        Me.ArtistSorted.Location = New System.Drawing.Point(76, 26)
-        Me.ArtistSorted.Name = "ArtistSorted"
-        Me.ArtistSorted.Size = New System.Drawing.Size(75, 31)
-        Me.ArtistSorted.TabIndex = 6
-        Me.ArtistSorted.Text = "ArtistSorted"
-        Me.ArtistSorted.UseVisualStyleBackColor = True
-        '
-        'UserSorted
-        '
-        Me.UserSorted.Location = New System.Drawing.Point(435, 26)
-        Me.UserSorted.Name = "UserSorted"
-        Me.UserSorted.Size = New System.Drawing.Size(99, 31)
-        Me.UserSorted.TabIndex = 7
-        Me.UserSorted.Text = "UserSorted"
-        Me.UserSorted.UseVisualStyleBackColor = True
-        '
-        'SongSorted
-        '
-        Me.SongSorted.Location = New System.Drawing.Point(187, 26)
-        Me.SongSorted.Name = "SongSorted"
-        Me.SongSorted.Size = New System.Drawing.Size(94, 31)
-        Me.SongSorted.TabIndex = 8
-        Me.SongSorted.Text = "SongSorted"
-        Me.SongSorted.UseVisualStyleBackColor = True
-        '
-        'ListenedArtist
-        '
-        Me.ListenedArtist.Location = New System.Drawing.Point(310, 26)
-        Me.ListenedArtist.Name = "ListenedArtist"
-        Me.ListenedArtist.Size = New System.Drawing.Size(104, 31)
-        Me.ListenedArtist.TabIndex = 9
-        Me.ListenedArtist.Text = "ListenedArtist"
-        Me.ListenedArtist.UseVisualStyleBackColor = True
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(304, 28)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(160, 35)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "Return to main menu"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Playbacktime
         '
-        Me.Playbacktime.Location = New System.Drawing.Point(567, 26)
+        Me.Playbacktime.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Playbacktime.Location = New System.Drawing.Point(300, 387)
         Me.Playbacktime.Name = "Playbacktime"
-        Me.Playbacktime.Size = New System.Drawing.Size(118, 31)
-        Me.Playbacktime.TabIndex = 10
-        Me.Playbacktime.Text = "PlaybackTime"
+        Me.Playbacktime.Size = New System.Drawing.Size(164, 53)
+        Me.Playbacktime.TabIndex = 16
+        Me.Playbacktime.Text = "List my favorite artists playback time"
         Me.Playbacktime.UseVisualStyleBackColor = True
+        '
+        'ListenedArtist
+        '
+        Me.ListenedArtist.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListenedArtist.Location = New System.Drawing.Point(300, 249)
+        Me.ListenedArtist.Name = "ListenedArtist"
+        Me.ListenedArtist.Size = New System.Drawing.Size(164, 53)
+        Me.ListenedArtist.TabIndex = 15
+        Me.ListenedArtist.Text = "List my most listened to artist"
+        Me.ListenedArtist.UseVisualStyleBackColor = True
+        '
+        'SongSorted
+        '
+        Me.SongSorted.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SongSorted.Location = New System.Drawing.Point(300, 178)
+        Me.SongSorted.Name = "SongSorted"
+        Me.SongSorted.Size = New System.Drawing.Size(164, 53)
+        Me.SongSorted.TabIndex = 14
+        Me.SongSorted.Text = "Sort songs by number of playbacks"
+        Me.SongSorted.UseVisualStyleBackColor = True
+        '
+        'UserSorted
+        '
+        Me.UserSorted.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.UserSorted.Location = New System.Drawing.Point(300, 318)
+        Me.UserSorted.Name = "UserSorted"
+        Me.UserSorted.Size = New System.Drawing.Size(164, 53)
+        Me.UserSorted.TabIndex = 13
+        Me.UserSorted.Text = "List users by application time use"
+        Me.UserSorted.UseVisualStyleBackColor = True
+        '
+        'ArtistSorted
+        '
+        Me.ArtistSorted.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ArtistSorted.Location = New System.Drawing.Point(300, 109)
+        Me.ArtistSorted.Name = "ArtistSorted"
+        Me.ArtistSorted.Size = New System.Drawing.Size(164, 53)
+        Me.ArtistSorted.TabIndex = 12
+        Me.ArtistSorted.Text = "Sort artist by number of playbacks"
+        Me.ArtistSorted.UseVisualStyleBackColor = True
         '
         'frmStatistics
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(914, 480)
+        Me.ClientSize = New System.Drawing.Size(516, 471)
         Me.Controls.Add(Me.Playbacktime)
         Me.Controls.Add(Me.ListenedArtist)
         Me.Controls.Add(Me.SongSorted)
         Me.Controls.Add(Me.UserSorted)
         Me.Controls.Add(Me.ArtistSorted)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.DateTimeEnd)
-        Me.Controls.Add(Me.EndLabel)
-        Me.Controls.Add(Me.BeginLabel)
-        Me.Controls.Add(Me.DateTimeBegin)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frmStatistics"
-        Me.Text = "End Date"
+        Me.Text = "Songify - Statistics"
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents DateTimeBegin As DateTimePicker
-    Friend WithEvents BeginLabel As Label
-    Friend WithEvents EndLabel As Label
-    Friend WithEvents DateTimeEnd As DateTimePicker
     Friend WithEvents ListBox1 As ListBox
-    Friend WithEvents ArtistSorted As Button
-    Friend WithEvents UserSorted As Button
-    Friend WithEvents SongSorted As Button
-    Friend WithEvents ListenedArtist As Button
+    Friend WithEvents Button1 As Button
     Friend WithEvents Playbacktime As Button
+    Friend WithEvents ListenedArtist As Button
+    Friend WithEvents SongSorted As Button
+    Friend WithEvents UserSorted As Button
+    Friend WithEvents ArtistSorted As Button
 End Class
