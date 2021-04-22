@@ -8,7 +8,6 @@
 
     Private Sub MainMenuButton_Click(sender As Object, e As EventArgs) Handles MainMenuButton.Click
         frmMainMenu.Show()
-        frmMainMenu.user = Me.myUser
         Me.Close()
     End Sub
 
@@ -19,19 +18,23 @@
         InfoTextBox3.Enabled = True
         SelectionComboBox.Text = String.Empty
         DateBox.ResetText()
-        ImageBox.ImageLocation = ""
+        ImageBox.ImageLocation = String.Empty
     End Sub
 
     Private Sub ListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles InfoListBox.SelectedIndexChanged
-        If InfoListBox IsNot Nothing Then
+        If InfoListBox.SelectedItem IsNot Nothing Then
             ClearButton.Enabled = True
             DeleteButton.Enabled = True
             UpdateButton.Enabled = True
             If DataTypeComboBox.SelectedItem.ToString() = "Users" Then
                 listUser()
             ElseIf DataTypeComboBox.SelectedItem.ToString() = "Artists" Then
+                ImageButton.Visible = True
+                ImageButton.Text = "Change image"
                 listArtist()
             ElseIf DataTypeComboBox.SelectedItem.ToString() = "Albums" Then
+                ImageButton.Visible = True
+                ImageButton.Text = "Change cover"
                 listAlbum()
             ElseIf DataTypeComboBox.SelectedItem.ToString() = "Songs" Then
                 listSong()
@@ -68,8 +71,6 @@
             InfoTextBox2.Visible = True
             InfoLabel2.Visible = True
             InfoLabel2.Text = "Country"
-            ImageButton.Visible = True
-            ImageButton.Text = "Change image"
             readArtists()
 
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Albums" Then
@@ -83,8 +84,6 @@
             SelectionComboBox.Visible = True
             InfoLabel3.Visible = True
             InfoLabel3.Text = "Artist"
-            ImageButton.Visible = True
-            ImageButton.Text = "Change cover"
             readAlbums()
             readArtistInAlbum()
 
@@ -114,6 +113,9 @@
         SelectionComboBox.Items.Clear()
         SelectionComboBox.Text = String.Empty
         ImageBox.ImageLocation = String.Empty
+        ClearButton.Enabled = False
+        UpdateButton.Enabled = False
+        DeleteButton.Enabled = False
         DateBox.ResetText()
     End Sub
 

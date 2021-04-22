@@ -100,6 +100,7 @@ Partial Class frmManage
         Me.NameLabel.Size = New System.Drawing.Size(48, 18)
         Me.NameLabel.TabIndex = 3
         Me.NameLabel.Text = "Name"
+        Me.NameLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.NameLabel.Visible = False
         '
         'InfoLabel2
@@ -111,6 +112,7 @@ Partial Class frmManage
         Me.InfoLabel2.Size = New System.Drawing.Size(51, 18)
         Me.InfoLabel2.TabIndex = 5
         Me.InfoLabel2.Text = "Label2"
+        Me.InfoLabel2.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.InfoLabel2.Visible = False
         '
         'InfoLabel3
@@ -122,6 +124,7 @@ Partial Class frmManage
         Me.InfoLabel3.Size = New System.Drawing.Size(51, 18)
         Me.InfoLabel3.TabIndex = 6
         Me.InfoLabel3.Text = "Label3"
+        Me.InfoLabel3.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.InfoLabel3.Visible = False
         '
         'NameTextBox
@@ -210,6 +213,7 @@ Partial Class frmManage
         Me.DateLabel.Size = New System.Drawing.Size(39, 18)
         Me.DateLabel.TabIndex = 19
         Me.DateLabel.Text = "Date"
+        Me.DateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.DateLabel.Visible = False
         '
         'SelectionComboBox
@@ -222,6 +226,10 @@ Partial Class frmManage
         Me.SelectionComboBox.Size = New System.Drawing.Size(293, 28)
         Me.SelectionComboBox.TabIndex = 20
         Me.SelectionComboBox.Visible = False
+        '
+        'ImageFileDialog
+        '
+        Me.ImageFileDialog.Filter = "(Picture | *jpg, *.jpeg, *.png)"
         '
         'ImageButton
         '

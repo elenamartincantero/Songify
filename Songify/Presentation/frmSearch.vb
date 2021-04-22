@@ -7,27 +7,43 @@ Public Class frmSearch
     Property allArtists As Collection
 
     Private Sub frmMainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Hiddebuttons()
+        HiddeAll()
         Me.myUser = frmMainMenu.user
         Me.allArtists = New Collection
         readArtists()
     End Sub
     Private Sub List_SelectedIndexChanged(sender As Object, e As EventArgs) Handles List.SelectedIndexChanged
-        AlbumList.Items.Clear()
-        Me.artist = CType(Me.allArtists(List.SelectedIndex + 1), Artist)
-        If Me.myUser.fav_artists.Contains(Me.artist.idArtist.ToString) Then
-            FavButton.Text = "Un Fav"
-        Else
-            FavButton.Text = "Fav"
+        If List.SelectedItem IsNot Nothing Then
+            AlbumList.Items.Clear()
+            Me.artist = CType(Me.allArtists(List.SelectedIndex + 1), Artist)
+            Me.artist.aAlbums.Clear()
+            If Me.myUser.fav_artists.Contains(Me.artist.idArtist.ToString) Then
+                FavButton.Text = "Un Fav"
+            Else
+                FavButton.Text = "Fav"
+            End If
+            readAlbum()
+            infoArtist()
+            FavButton.Enabled = True
         End If
-        FavButton.Visible = True
-        readAlbum()
-        infoArtist()
+
     End Sub
     Private Sub AlbumList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AlbumList.SelectedIndexChanged
-        SongList.Items.Clear()
-        readSongs()
-        infoAlbum()
+        If AlbumList.SelectedItem IsNot Nothing Then
+            SongList.Items.Clear()
+            readSongs()
+            infoAlbum()
+        End If
+
+    End Sub
+    Private Sub SongList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SongList.SelectedIndexChanged
+        If SongList.SelectedItem IsNot Nothing Then
+            Me.song = CType(Me.album.aSongs(SongList.SelectedIndex + 1), Song)
+            infoSong()
+            PlayButton.Enabled = True
+            HistoryButton.Enabled = True
+        End If
+
     End Sub
     Private Sub readArtists()
         Dim artistAux As Artist = New Artist
@@ -73,15 +89,9 @@ Public Class frmSearch
             Me.SongList.Items.Add(songAux.sName)
         Next
     End Sub
-    Private Sub ShowInfo()
-        Label1.Visible = True
-        Label2.Visible = True
-        Label3.Visible = True
-        Me.TextBox.Visible = True
-        Me.TextBox1.Visible = True
-        Me.TextBox2.Visible = True
-    End Sub
+
     Private Sub infoSong()
+        HiddeAll()
         Try
             song.readSong()
         Catch ex As Exception
@@ -89,17 +99,25 @@ Public Class frmSearch
             Exit Sub
         End Try
         Me.InfoLabel.Text = "Song info"
-        Me.InfoLabel.Visible = True
-        Me.Label3.Visible = True
-        Me.TextBox2.Visible = True
         Me.Label1.Text = "Title"
         Me.Label2.Text = "Duration"
         Me.Label3.Text = "Album"
-        Me.TextBox.Text = Me.song.sName
-        Me.TextBox1.Text = Me.song.convertLength
-        Me.TextBox2.Text = Me.song.sAlbum.aName
+        Me.Label9.Text = Me.song.sName
+        Me.Label10.Text = Me.song.convertLength
+        Me.Label11.Text = Me.song.sAlbum.aName
+
+        Me.InfoLabel.Visible = True
+        Me.Label1.Visible = True
+        Me.Label2.Visible = True
+        Me.Label3.Visible = True
+        Me.Label11.Visible = True
+        Me.Label9.Visible = True
+        Me.Label10.Visible = True
+        Me.Label11.Visible = True
+
     End Sub
     Private Sub infoAlbum()
+        HiddeAll()
         Try
             album.calculateTotalLength()
         Catch ex As Exception
@@ -107,58 +125,73 @@ Public Class frmSearch
             Exit Sub
         End Try
         Me.InfoLabel.Text = "Album info"
-        Me.InfoLabel.Visible = True
-        Me.Label3.Visible = True
-        Me.TextBox2.Visible = True
-        Me.Label5.Visible = True
-        Me.Label1.Text = "Name"
+        Me.Label1.Text = "Title"
         Me.Label2.Text = "Release date"
         Me.Label3.Text = "Total length"
         Me.Label4.Text = "Artist"
         Me.Label5.Text = "Cover"
-        Me.TextBox.Text = Me.album.aName
-        Me.TextBox1.Text = Me.album.aReleaseDate.ToString
-        Me.TextBox2.Text = Me.album.convertLength()
-        Me.TextBox3.Text = Me.album.aArtist.aName
+        Me.Label9.Text = Me.album.aName
+        Me.Label10.Text = Me.album.aReleaseDate.ToShortDateString
+        Me.Label11.Text = Me.album.convertLength()
+        Me.Label12.Text = Me.album.aArtist.aName
         Me.PictureBox1.ImageLocation = Me.album.aCover
+
+        Me.InfoLabel.Visible = True
+        Me.Label1.Visible = True
+        Me.Label2.Visible = True
+        Me.Label3.Visible = True
+        Me.Label4.Visible = True
+        Me.Label5.Visible = True
+        Me.Label9.Visible = True
+        Me.Label10.Visible = True
+        Me.Label11.Visible = True
+        Me.Label12.Visible = True
+        Me.PictureBox1.Visible = True
+
     End Sub
     Private Sub infoArtist()
-        ShowInfo()
+        HiddeAll()
         Me.InfoLabel.Text = "Artist info"
-        Me.InfoLabel.Visible = True
         Me.Label1.Text = "Name"
         Me.Label2.Text = "Country"
-        Me.Label3.Visible = False
         Me.Label5.Text = "Image"
+        Me.Label9.Text = Me.artist.aName
+        Me.Label10.Text = Me.artist.aCountry
         Me.PictureBox1.ImageLocation = Me.artist.aImage
-        Me.TextBox2.Visible = False
-        Me.TextBox.Text = Me.artist.aName
-        Me.TextBox1.Text = Me.artist.aCountry
+
+        Me.InfoLabel.Visible = True
+        Me.Label1.Visible = True
+        Me.Label2.Visible = True
+        Me.Label5.Visible = True
+        Me.Label9.Visible = True
+        Me.Label10.Visible = True
+        Me.PictureBox1.Visible = True
     End Sub
-    Private Sub Hiddebuttons()
-        PlayButton.Visible = False
-        PlaybackList.Visible = False
+    Private Sub HiddeAll()
+        PlayButton.Enabled = False
+        HistoryButton.Enabled = False
+        FavButton.Enabled = False
+        InfoLabel.Visible = False
         Label1.Visible = False
         Label2.Visible = False
         Label3.Visible = False
-        HistoryButton.Visible = False
-        InfoLabel.Visible = False
-        HistoryLabel.Visible = False
-        HistoryLabel.Visible = False
+        Label4.Visible = False
+        Label5.Visible = False
+        Label9.Visible = False
+        Label10.Visible = False
+        Label11.Visible = False
+        Label12.Visible = False
+        Label13.Visible = False
+        PictureBox1.Visible = False
 
-    End Sub
-    Private Sub ShowButtons()
-        PlayButton.Visible = True
-        HistoryButton.Visible = True
-        FavButton.Visible = True
-        InfoLabel.Visible = True
-        HistoryLabel.Visible = True
     End Sub
 
     Private Sub PlayButton_Click(sender As Object, e As EventArgs) Handles PlayButton.Click
-        If SongList.SelectedItem IsNot String.Empty Then
+        If SongList.SelectedItem.ToString IsNot String.Empty Then
             Try
-                song.play(Me.myUser)
+                If song.play(Me.myUser) <> 1 Then
+                    MessageBox.Show("PLAY <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Exit Sub
@@ -167,55 +200,58 @@ Public Class frmSearch
     End Sub
 
     Private Sub HistoryButton_Click(sender As Object, e As EventArgs) Handles HistoryButton.Click
-        If SongList.SelectedItem IsNot String.Empty Then
-            Dim txt As String = ""
-            'Dim songAux As Song = New Song(SongList.SelectedItem.ToString)
-            Try
-                'songAux.readSong()
-            Catch ex As Exception
-                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Exit Sub
-            End Try
-            'Me.song = New Song(songAux.idSong)
+        If SongList.SelectedItem.ToString IsNot String.Empty Then
+            Dim txt As String
+            Dim songAux As Song = CType(Me.album.aSongs(List.SelectedIndex + 1), Song)
             Try
                 txt = song.readPlayblacks()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Question)
                 Exit Sub
             End Try
-            HistoryLabel.Text = "Info Playbacks"
-            PlaybackList.Items.Add(txt)
+            Label5.Visible = True
+            Label13.Visible = True
+            Label5.Text = "Playbacks history"
+            If txt Is String.Empty Then
+                Label13.Text = "There are not playbacks of this song"
+            Else
+                Label13.Text = txt
+            End If
+
         End If
     End Sub
 
     Private Sub FavButton_Click(sender As Object, e As EventArgs) Handles FavButton.Click
         If List.SelectedItem IsNot String.Empty Then
-            Dim artistAux As Artist = New Artist(Me.List.SelectedItem.ToString)
-            Try
-                artistAux.readArtist()
-            Catch ex As Exception
-                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                Exit Sub
-            End Try
-            Me.artist = New Artist(artistAux.idArtist, artistAux.aName)
-            Try
-                artist.favArtist(Me.myUser)
-            Catch ex As Exception
-                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                Exit Sub
-            End Try
-        End If
-    End Sub
+            If FavButton.Text = "Fav" Then
+                Try
+                    If artist.favArtist(Me.myUser) <> 1 Then
+                        MessageBox.Show("FAV <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    End If
+                    FavButton.Text = "Un fav"
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End Try
+            Else
+                Try
+                    If artist.not_favArtist(Me.myUser) <> 1 Then
+                        MessageBox.Show("UNFAV <> 1", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    End If
+                    FavButton.Text = "Fav"
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End Try
+            End If
 
-    Private Sub SongList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SongList.SelectedIndexChanged
-        Me.song = CType(Me.album.aSongs(SongList.SelectedIndex + 1), Song)
-        infoSong()
-        ShowButtons()
+        End If
     End Sub
 
     Private Sub BACK_TO_MENU_Click(sender As Object, e As EventArgs) Handles BACK_TO_MENU.Click
         frmMainMenu.Show()
-        frmMainMenu.user = Me.myUser
         Me.Close()
     End Sub
+
+
 End Class
