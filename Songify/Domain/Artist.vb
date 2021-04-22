@@ -44,8 +44,8 @@
     Public Function not_favArtist(us As User) As Integer
         Return Me.ArtistDAO.not_fav(us, Me)
     End Function
-    Public Sub artistsSorted()
-        Me.ArtistDAO.artistsSorted(Me)
+    Public Sub artistsSorted(filter As String)
+        Me.ArtistDAO.artistsSorted(Me, filter)
     End Sub
 
     Public Sub readMyAlbums()

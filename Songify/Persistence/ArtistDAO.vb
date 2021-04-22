@@ -57,7 +57,12 @@
         Return DBBroker.GetBroker.Change("DELETE FROM FAV_ARTISTS WHERE user='" & us.email & "'AND artist=" & a.idArtist & ";")
     End Function
 
-    Public Sub artistsSorted(ar As Artist)
+    Public Sub artistsSorted(ar As Artist, filter As String)
+        If filter.Equals(String.Empty) Then
+            DBBroker.GetBroker.Read("SELECT aName from ARTISTS ")
+        Else
+
+        End If
 
     End Sub
 End Class

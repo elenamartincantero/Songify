@@ -11,7 +11,7 @@
         Me.Close()
     End Sub
 
-    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs)
         NameTextBox.Text = String.Empty
         InfoTextBox2.Text = String.Empty
         InfoTextBox3.Text = String.Empty
@@ -262,7 +262,7 @@
 
     End Sub
 
-    Private Sub InsertButton_Click(sender As Object, e As EventArgs) Handles InsertButton.Click
+    Private Sub InsertButton_Click(sender As Object, e As EventArgs)
         If DataTypeComboBox.SelectedItem.ToString = "Users" Then
             insertUser()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
@@ -274,7 +274,7 @@
         End If
     End Sub
 
-    Private Sub UpdateButton_Click(sender As Object, e As EventArgs) Handles UpdateButton.Click
+    Private Sub UpdateButton_Click(sender As Object, e As EventArgs)
         If DataTypeComboBox.SelectedItem.ToString = "Users" Then
             updateUser()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
@@ -286,7 +286,7 @@
         End If
     End Sub
 
-    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs)
         If DataTypeComboBox.SelectedItem.ToString = "Users" Then
             DeleteUser()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
