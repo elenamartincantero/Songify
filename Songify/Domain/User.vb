@@ -38,12 +38,12 @@
         Me.UserDAO.usersSortedByTime()
     End Sub
 
-    Public Function playbackFavArtists() As String
-        Return Me.UserDAO.playbackFavArtists(Me)
-    End Function
-    Public Function readArtistsMostListened(beginDate As Date, endDate As Date, user As User) As String
-        Return Me.UserDAO.readArtistsMostListened(beginDate, endDate, Me)
-    End Function
+    Public Sub playbackFavArtists()
+        Me.UserDAO.playbackFavArtists(Me)
+    End Sub
+    Public Sub readArtistsMostListened(beginDate As Date, endDate As Date)
+        Me.UserDAO.readArtistsMostListened(beginDate, endDate, Me)
+    End Sub
 
     Public Sub readMyArtists()
         Me.UserDAO.readMyArtists(Me)

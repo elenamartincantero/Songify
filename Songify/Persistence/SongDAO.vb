@@ -52,16 +52,21 @@
         Return DBBroker.GetBroker.Change("INSERT INTO PLAYBACKS ([user], song, [plDate]) VALUES ('" & us.email & "', " & s.idSong & ", '" & Date.Today & "');")
     End Function
     Public Function readPlayblacks(s As Song) As String
-        Dim col1 As Collection : Dim aux1 As Collection
+        Dim col As Collection : Dim aux As Collection
         Dim txt As String = ""
-        col1 = DBBroker.GetBroker().Read("SELECT * FROM PLAYBACKS WHERE song=" & s.idSong & ";")
+        col = DBBroker.GetBroker().Read("SELECT * FROM PLAYBACKS WHERE song=" & s.idSong & ";")
 
-        For Each aux1 In col1
-            txt += aux1(2).ToString + " played it on " + aux1(4).ToString + vbCrLf
+        For Each aux In col
+            txt += aux(2).ToString + " played it on " + aux(4).ToString + vbCrLf
         Next
         Return txt
     End Function
     Public Sub songsSorted()
+        Dim col As Collection : Dim aux As Collection
+        col = DBBroker.GetBroker().Read("SELECT s.sName, count(p.song) FROM songs s, playbacks p WHERE s.IdSong=p.song GROUP BY s.sName ORDER BY count(p.song);")
 
+        For Each aux In col
+            sortedSongs.Add(aux(1).ToString + ": " + aux(2).ToString + " playbacks")
+        Next
     End Sub
 End Class

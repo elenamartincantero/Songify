@@ -44,6 +44,7 @@ Partial Class frmSearch
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.ChangeUserButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -60,7 +61,7 @@ Partial Class frmSearch
         'InfoLabel
         '
         Me.InfoLabel.AutoSize = True
-        Me.InfoLabel.Location = New System.Drawing.Point(478, 42)
+        Me.InfoLabel.Location = New System.Drawing.Point(478, 47)
         Me.InfoLabel.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.InfoLabel.Name = "InfoLabel"
         Me.InfoLabel.Size = New System.Drawing.Size(25, 13)
@@ -69,30 +70,30 @@ Partial Class frmSearch
         '
         'PlayButton
         '
-        Me.PlayButton.Location = New System.Drawing.Point(198, 11)
+        Me.PlayButton.Location = New System.Drawing.Point(198, 6)
         Me.PlayButton.Margin = New System.Windows.Forms.Padding(2)
         Me.PlayButton.Name = "PlayButton"
-        Me.PlayButton.Size = New System.Drawing.Size(59, 31)
+        Me.PlayButton.Size = New System.Drawing.Size(59, 40)
         Me.PlayButton.TabIndex = 2
         Me.PlayButton.Text = "Play"
         Me.PlayButton.UseVisualStyleBackColor = True
         '
         'HistoryButton
         '
-        Me.HistoryButton.Location = New System.Drawing.Point(261, 11)
+        Me.HistoryButton.Location = New System.Drawing.Point(261, 6)
         Me.HistoryButton.Margin = New System.Windows.Forms.Padding(2)
         Me.HistoryButton.Name = "HistoryButton"
-        Me.HistoryButton.Size = New System.Drawing.Size(132, 31)
+        Me.HistoryButton.Size = New System.Drawing.Size(132, 40)
         Me.HistoryButton.TabIndex = 3
         Me.HistoryButton.Text = "Show playbacks history"
         Me.HistoryButton.UseVisualStyleBackColor = True
         '
         'FavButton
         '
-        Me.FavButton.Location = New System.Drawing.Point(140, 11)
+        Me.FavButton.Location = New System.Drawing.Point(140, 6)
         Me.FavButton.Margin = New System.Windows.Forms.Padding(2)
         Me.FavButton.Name = "FavButton"
-        Me.FavButton.Size = New System.Drawing.Size(54, 31)
+        Me.FavButton.Size = New System.Drawing.Size(54, 40)
         Me.FavButton.TabIndex = 4
         Me.FavButton.Text = "Fav"
         Me.FavButton.UseVisualStyleBackColor = True
@@ -149,10 +150,10 @@ Partial Class frmSearch
         '
         'BACK_TO_MENU
         '
-        Me.BACK_TO_MENU.Location = New System.Drawing.Point(561, 11)
+        Me.BACK_TO_MENU.Location = New System.Drawing.Point(588, 6)
         Me.BACK_TO_MENU.Margin = New System.Windows.Forms.Padding(2)
         Me.BACK_TO_MENU.Name = "BACK_TO_MENU"
-        Me.BACK_TO_MENU.Size = New System.Drawing.Size(114, 30)
+        Me.BACK_TO_MENU.Size = New System.Drawing.Size(86, 40)
         Me.BACK_TO_MENU.TabIndex = 17
         Me.BACK_TO_MENU.Text = "Return to main menu"
         Me.BACK_TO_MENU.UseVisualStyleBackColor = True
@@ -261,12 +262,24 @@ Partial Class frmSearch
         Me.Label13.TabIndex = 31
         Me.Label13.Text = "Label13"
         '
+        'ChangeUserButton
+        '
+        Me.ChangeUserButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChangeUserButton.Location = New System.Drawing.Point(481, 6)
+        Me.ChangeUserButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.ChangeUserButton.Name = "ChangeUserButton"
+        Me.ChangeUserButton.Size = New System.Drawing.Size(86, 38)
+        Me.ChangeUserButton.TabIndex = 32
+        Me.ChangeUserButton.Text = "Change User"
+        Me.ChangeUserButton.UseVisualStyleBackColor = True
+        '
         'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(686, 390)
+        Me.Controls.Add(Me.ChangeUserButton)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label11)
@@ -325,4 +338,5 @@ Partial Class frmSearch
     Friend WithEvents Label11 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
+    Friend WithEvents ChangeUserButton As Button
 End Class

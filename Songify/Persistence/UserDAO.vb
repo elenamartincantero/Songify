@@ -1,9 +1,13 @@
 ﻿Public Class UserDAO
     Public ReadOnly Property usersByTime As Collection
+    Public ReadOnly Property artistsMostListened As Collection
     Public ReadOnly Property allUsers As Collection
+    Public ReadOnly Property playbacksFav As Collection
     Public Sub New()
         usersByTime = New Collection
+        artistsMostListened = New Collection
         allUsers = New Collection
+        playbacksFav = New Collection
     End Sub
     Public Sub connect(path As String)
         DBBroker.GetBroker(path)
@@ -54,38 +58,27 @@
     End Sub
     Public Sub usersSortedByTime()
         Dim col As Collection : Dim aux As Collection
-        Dim user As User
         col = DBBroker.GetBroker().Read("select p.user, sum(s.length) from playbacks p, songs s where p.song = s.IdSong group by p.user order by sum(s.length);")
         If col.Count = 0 Then
             Throw New Exception()
         End If
         For Each aux In col
-            user = New User(aux(1).ToString)
-            usersByTime.Add(user, aux(2).ToString)
+            usersByTime.Add(aux(1).ToString + ": " + aux(2).ToString + " seconds")
         Next
     End Sub
 
-    Public Function readArtistsMostListened(beginDate As Date, endDate As Date, user As User) As String
+    Public Sub readArtistsMostListened(beginDate As Date, endDate As Date, user As User)
         Dim col As Collection : Dim aux As Collection
-        Dim txt As String = ""
-        col = DBBroker.GetBroker().Read("select aName from artists where IdArtist in ( select artist from albums where IdAlbum in (select album from songs where IdSong in (select song from playbacks where user like '" & user.email & "' and plDate between" & beginDate & "and" & endDate & ")));")
+        col = DBBroker.GetBroker().Read("select a.[aName] from artists a, playbacks p, songs s, albums al where p.[plDate] between #" & beginDate & "# and #" & endDate & "# and p.song = s.IdSong and s.album = al.IdAlbum and al.artist = a.IdArtist and [user]='" & user.email & "' group by a.[aName] order by count(a.idartist) desc;")
         For Each aux In col
-            txt += aux(1).ToString + "\n"
+            artistsMostListened.Add(aux(1).ToString)
         Next
-        Return txt
-    End Function
-    Public Function playbackFavArtists(u As User) As String
+    End Sub
+    Public Sub playbackFavArtists(u As User)
         Dim col As Collection : Dim aux As Collection
-        Dim txt As String = ""
-        Dim i As Integer = 0, total = 0
-        col = DBBroker.GetBroker().Read("select a.aName, sum(s.length) from artists a, songs s where (a.IdArtist in (select artist from fav_artists where user like '" & u.email & "')) and s.album in (select IdAlbum from Albums where artist = a.IdArtist) and s.IdSong in (select song from playbacks where user like '" & u.email & "') group by a.aName;")
-        If col.Count = 0 Then
-            Throw New Exception()
-        End If
+        col = DBBroker.GetBroker().Read("select a.aName, sum(s.length) from artists a, songs s, albums al, playbacks p where (a.IdArtist in (select artist from fav_artists where user like '" & u.email & "')) and s.IdSong = p.song and s.album = al.IdAlbum and al.artist = a.IdArtist group by a.aName;")
         For Each aux In col
-            txt += aux(1).ToString + ": " + aux(2).ToString + "s\n"
+            playbacksFav.Add(aux(1).ToString & ": " & aux(2).ToString & " seconds")
         Next
-
-        Return txt
-    End Function
+    End Sub
 End Class

@@ -58,11 +58,15 @@
     End Function
 
     Public Sub artistsSorted(ar As Artist, filter As String)
+        Dim col As Collection : Dim aux As Collection
         If filter.Equals(String.Empty) Then
-            DBBroker.GetBroker.Read("SELECT aName from ARTISTS ")
+            col = DBBroker.GetBroker.Read("SELECT DISTINCT c.aName, count(c.aName) FROM songs s, playbacks p, albums a, artists c WHERE (p.song=s.IdSong AND s.album=a.IdAlbum AND a.artist=c.IdArtist) GROUP BY c.aName ORDER BY count(c.aName);")
         Else
-
+            col = DBBroker.GetBroker.Read("SELECT DISTINCT c.aName, count(c.aName) FROM songs s, playbacks p, albums a, artists c WHERE (p.song=s.IdSong AND s.album=a.IdAlbum AND a.artist=c.IdArtist AND c.country='" & filter & "') GROUP BY c.aName ORDER BY count(c.aName);")
         End If
 
+        For Each aux In col
+            artistsSortedCol.Add(aux(1).ToString + ": " + aux(2).ToString + " playbacks")
+        Next
     End Sub
 End Class

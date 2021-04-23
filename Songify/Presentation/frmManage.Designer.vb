@@ -41,6 +41,7 @@ Partial Class frmManage
         Me.DeleteButton = New System.Windows.Forms.Button()
         Me.UpdateButton = New System.Windows.Forms.Button()
         Me.InsertButton = New System.Windows.Forms.Button()
+        Me.ChangeUserButton = New System.Windows.Forms.Button()
         CType(Me.ImageBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -136,10 +137,10 @@ Partial Class frmManage
         'MainMenuButton
         '
         Me.MainMenuButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MainMenuButton.Location = New System.Drawing.Point(487, 22)
+        Me.MainMenuButton.Location = New System.Drawing.Point(510, 28)
         Me.MainMenuButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.MainMenuButton.Name = "MainMenuButton"
-        Me.MainMenuButton.Size = New System.Drawing.Size(157, 35)
+        Me.MainMenuButton.Size = New System.Drawing.Size(132, 35)
         Me.MainMenuButton.TabIndex = 14
         Me.MainMenuButton.Text = "Return to main menu"
         Me.MainMenuButton.UseVisualStyleBackColor = True
@@ -256,12 +257,24 @@ Partial Class frmManage
         Me.InsertButton.Text = "Insert"
         Me.InsertButton.UseVisualStyleBackColor = True
         '
+        'ChangeUserButton
+        '
+        Me.ChangeUserButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChangeUserButton.Location = New System.Drawing.Point(351, 28)
+        Me.ChangeUserButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.ChangeUserButton.Name = "ChangeUserButton"
+        Me.ChangeUserButton.Size = New System.Drawing.Size(132, 35)
+        Me.ChangeUserButton.TabIndex = 26
+        Me.ChangeUserButton.Text = "Change User"
+        Me.ChangeUserButton.UseVisualStyleBackColor = True
+        '
         'frmManage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(670, 510)
+        Me.Controls.Add(Me.ChangeUserButton)
         Me.Controls.Add(Me.ClearButton)
         Me.Controls.Add(Me.DeleteButton)
         Me.Controls.Add(Me.UpdateButton)
@@ -311,4 +324,5 @@ Partial Class frmManage
     Friend WithEvents DeleteButton As Button
     Friend WithEvents UpdateButton As Button
     Friend WithEvents InsertButton As Button
+    Friend WithEvents ChangeUserButton As Button
 End Class

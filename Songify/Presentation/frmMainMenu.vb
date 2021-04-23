@@ -8,8 +8,8 @@
             Me.user = frmManage.myUser
         ElseIf frmSearch.myUser IsNot Nothing Then
             Me.user = frmSearch.myUser
-        ElseIf frmStatistics.user IsNot Nothing Then
-            Me.user = frmStatistics.user
+        ElseIf frmStatistics.myUser IsNot Nothing Then
+            Me.user = frmStatistics.myUser
         End If
 
         LoggedUserLbl.Text = "User logged as: " + Me.user.email.ToString

@@ -43,16 +43,16 @@ Partial Class frmLogin
         Me.LoginBox.Enabled = False
         Me.LoginBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.861538!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LoginBox.Location = New System.Drawing.Point(105, 185)
-        Me.LoginBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LoginBox.Margin = New System.Windows.Forms.Padding(4)
         Me.LoginBox.Name = "LoginBox"
-        Me.LoginBox.Size = New System.Drawing.Size(324, 26)
+        Me.LoginBox.Size = New System.Drawing.Size(324, 21)
         Me.LoginBox.TabIndex = 0
         '
         'DatabaseButton
         '
-        Me.DatabaseButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DatabaseButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.75385!)
         Me.DatabaseButton.Location = New System.Drawing.Point(37, 239)
-        Me.DatabaseButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DatabaseButton.Margin = New System.Windows.Forms.Padding(4)
         Me.DatabaseButton.Name = "DatabaseButton"
         Me.DatabaseButton.Size = New System.Drawing.Size(116, 55)
         Me.DatabaseButton.TabIndex = 1
@@ -62,9 +62,9 @@ Partial Class frmLogin
         'LoginButton
         '
         Me.LoginButton.Enabled = False
-        Me.LoginButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LoginButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LoginButton.Location = New System.Drawing.Point(373, 239)
-        Me.LoginButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LoginButton.Margin = New System.Windows.Forms.Padding(4)
         Me.LoginButton.Name = "LoginButton"
         Me.LoginButton.Size = New System.Drawing.Size(116, 55)
         Me.LoginButton.TabIndex = 2
@@ -74,19 +74,22 @@ Partial Class frmLogin
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(87, 311)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.75385!)
+        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Label1.Location = New System.Drawing.Point(66, 321)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(392, 18)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Welcome to Songify! Please select the database and log in"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ConnectButton
         '
         Me.ConnectButton.Enabled = False
-        Me.ConnectButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ConnectButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.75385!)
         Me.ConnectButton.Location = New System.Drawing.Point(206, 239)
-        Me.ConnectButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ConnectButton.Margin = New System.Windows.Forms.Padding(4)
         Me.ConnectButton.Name = "ConnectButton"
         Me.ConnectButton.Size = New System.Drawing.Size(116, 55)
         Me.ConnectButton.TabIndex = 5
@@ -106,7 +109,7 @@ Partial Class frmLogin
         '
         'frmLogin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 17.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(527, 363)
@@ -117,7 +120,7 @@ Partial Class frmLogin
         Me.Controls.Add(Me.DatabaseButton)
         Me.Controls.Add(Me.LoginBox)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmLogin"
         Me.Text = "Songify - Login"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

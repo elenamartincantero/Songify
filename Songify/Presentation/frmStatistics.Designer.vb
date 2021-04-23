@@ -36,6 +36,7 @@ Partial Class frmStatistics
         Me.ButtoAccp = New System.Windows.Forms.Button()
         Me.ComboBoxCountry = New System.Windows.Forms.ComboBox()
         Me.LabelCountry = New System.Windows.Forms.Label()
+        Me.ChangeUserButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ListBox1
@@ -52,9 +53,9 @@ Partial Class frmStatistics
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(347, 7)
+        Me.Button1.Location = New System.Drawing.Point(406, 7)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(157, 35)
+        Me.Button1.Size = New System.Drawing.Size(98, 35)
         Me.Button1.TabIndex = 11
         Me.Button1.Text = "Return to main menu"
         Me.Button1.UseVisualStyleBackColor = True
@@ -167,6 +168,7 @@ Partial Class frmStatistics
         '
         Me.ComboBoxCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxCountry.FormattingEnabled = True
+        Me.ComboBoxCountry.Items.AddRange(New Object() {""})
         Me.ComboBoxCountry.Location = New System.Drawing.Point(25, 421)
         Me.ComboBoxCountry.Name = "ComboBoxCountry"
         Me.ComboBoxCountry.Size = New System.Drawing.Size(240, 21)
@@ -184,12 +186,24 @@ Partial Class frmStatistics
         Me.LabelCountry.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.LabelCountry.Visible = False
         '
+        'ChangeUserButton
+        '
+        Me.ChangeUserButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChangeUserButton.Location = New System.Drawing.Point(294, 7)
+        Me.ChangeUserButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.ChangeUserButton.Name = "ChangeUserButton"
+        Me.ChangeUserButton.Size = New System.Drawing.Size(98, 35)
+        Me.ChangeUserButton.TabIndex = 24
+        Me.ChangeUserButton.Text = "Change User"
+        Me.ChangeUserButton.UseVisualStyleBackColor = True
+        '
         'frmStatistics
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(516, 471)
+        Me.Controls.Add(Me.ChangeUserButton)
         Me.Controls.Add(Me.LabelCountry)
         Me.Controls.Add(Me.ComboBoxCountry)
         Me.Controls.Add(Me.ButtoAccp)
@@ -225,4 +239,5 @@ Partial Class frmStatistics
     Friend WithEvents ButtoAccp As Button
     Friend WithEvents ComboBoxCountry As ComboBox
     Friend WithEvents LabelCountry As Label
+    Friend WithEvents ChangeUserButton As Button
 End Class

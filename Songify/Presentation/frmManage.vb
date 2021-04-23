@@ -11,7 +11,7 @@
         Me.Close()
     End Sub
 
-    Private Sub ClearButton_Click(sender As Object, e As EventArgs)
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
         NameTextBox.Text = String.Empty
         InfoTextBox2.Text = String.Empty
         InfoTextBox3.Text = String.Empty
@@ -262,7 +262,7 @@
 
     End Sub
 
-    Private Sub InsertButton_Click(sender As Object, e As EventArgs)
+    Private Sub InsertButton_Click(sender As Object, e As EventArgs) Handles InsertButton.Click
         If DataTypeComboBox.SelectedItem.ToString = "Users" Then
             insertUser()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
@@ -274,7 +274,7 @@
         End If
     End Sub
 
-    Private Sub UpdateButton_Click(sender As Object, e As EventArgs)
+    Private Sub UpdateButton_Click(sender As Object, e As EventArgs) Handles UpdateButton.Click
         If DataTypeComboBox.SelectedItem.ToString = "Users" Then
             updateUser()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
@@ -286,7 +286,7 @@
         End If
     End Sub
 
-    Private Sub DeleteButton_Click(sender As Object, e As EventArgs)
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
         If DataTypeComboBox.SelectedItem.ToString = "Users" Then
             DeleteUser()
         ElseIf DataTypeComboBox.SelectedItem.ToString = "Artists" Then
@@ -579,4 +579,16 @@
     Private Sub NameTextBox_TextChanged(sender As Object, e As EventArgs) Handles NameTextBox.TextChanged, InfoTextBox2.TextChanged, InfoTextBox3.TextChanged
         ClearButton.Enabled = True
     End Sub
+
+    Private Sub ChangeUserButton_Click(sender As Object, e As EventArgs) Handles ChangeUserButton.Click
+        If MessageBox.Show("Are you sure you want to change user?", "Change user", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            frmLogin.Show()
+            frmLogin.user = Me.user
+            frmLogin.LoginButton.Enabled = True
+            frmLogin.ConnectButton.Enabled = False
+            frmLogin.LoginBox.Enabled = True
+            Me.Close()
+        End If
+    End Sub
+
 End Class

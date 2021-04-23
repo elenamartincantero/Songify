@@ -3,7 +3,6 @@ Public Class frmSearch
     Property album As Album
     Property artist As Artist
     Property song As Song
-    Property user As User
     Property allArtists As Collection
 
     Private Sub frmMainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -253,5 +252,14 @@ Public Class frmSearch
         Me.Close()
     End Sub
 
-
+    Private Sub ChangeUserButton_Click(sender As Object, e As EventArgs) Handles ChangeUserButton.Click
+        If MessageBox.Show("Are you sure you want to change user?", "Change user", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            frmLogin.Show()
+            frmLogin.user = Me.user
+            frmLogin.LoginButton.Enabled = True
+            frmLogin.ConnectButton.Enabled = False
+            frmLogin.LoginBox.Enabled = True
+            Me.Close()
+        End If
+    End Sub
 End Class
