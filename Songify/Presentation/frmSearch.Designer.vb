@@ -153,7 +153,7 @@ Partial Class frmSearch
         Me.BACK_TO_MENU.Location = New System.Drawing.Point(588, 6)
         Me.BACK_TO_MENU.Margin = New System.Windows.Forms.Padding(2)
         Me.BACK_TO_MENU.Name = "BACK_TO_MENU"
-        Me.BACK_TO_MENU.Size = New System.Drawing.Size(86, 40)
+        Me.BACK_TO_MENU.Size = New System.Drawing.Size(86, 38)
         Me.BACK_TO_MENU.TabIndex = 17
         Me.BACK_TO_MENU.Text = "Return to main menu"
         Me.BACK_TO_MENU.UseVisualStyleBackColor = True

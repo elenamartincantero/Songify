@@ -59,38 +59,39 @@ Partial Class frmManage
         '
         'NameLabel
         '
-        Me.NameLabel.AutoSize = True
         Me.NameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NameLabel.Location = New System.Drawing.Point(306, 87)
+        Me.NameLabel.Location = New System.Drawing.Point(249, 88)
+        Me.NameLabel.Margin = New System.Windows.Forms.Padding(3)
         Me.NameLabel.Name = "NameLabel"
-        Me.NameLabel.Size = New System.Drawing.Size(35, 13)
+        Me.NameLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.NameLabel.Size = New System.Drawing.Size(87, 16)
         Me.NameLabel.TabIndex = 3
         Me.NameLabel.Text = "Name"
-        Me.NameLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.NameLabel.Visible = False
         '
         'InfoLabel2
         '
-        Me.InfoLabel2.AutoSize = True
         Me.InfoLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.InfoLabel2.Location = New System.Drawing.Point(302, 129)
+        Me.InfoLabel2.Location = New System.Drawing.Point(249, 127)
         Me.InfoLabel2.Name = "InfoLabel2"
-        Me.InfoLabel2.Size = New System.Drawing.Size(39, 13)
+        Me.InfoLabel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.InfoLabel2.Size = New System.Drawing.Size(87, 16)
         Me.InfoLabel2.TabIndex = 5
         Me.InfoLabel2.Text = "Label2"
-        Me.InfoLabel2.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.InfoLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.InfoLabel2.Visible = False
         '
         'InfoLabel3
         '
-        Me.InfoLabel3.AutoSize = True
         Me.InfoLabel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.InfoLabel3.Location = New System.Drawing.Point(302, 169)
+        Me.InfoLabel3.Location = New System.Drawing.Point(249, 167)
         Me.InfoLabel3.Name = "InfoLabel3"
-        Me.InfoLabel3.Size = New System.Drawing.Size(39, 13)
+        Me.InfoLabel3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.InfoLabel3.Size = New System.Drawing.Size(87, 16)
         Me.InfoLabel3.TabIndex = 6
         Me.InfoLabel3.Text = "Label3"
-        Me.InfoLabel3.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.InfoLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.InfoLabel3.Visible = False
         '
         'NameTextBox
@@ -159,15 +160,15 @@ Partial Class frmManage
         '
         'DateLabel
         '
-        Me.DateLabel.AutoSize = True
         Me.DateLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.753846!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateLabel.Location = New System.Drawing.Point(311, 209)
+        Me.DateLabel.Location = New System.Drawing.Point(249, 207)
         Me.DateLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.DateLabel.Name = "DateLabel"
-        Me.DateLabel.Size = New System.Drawing.Size(30, 13)
+        Me.DateLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.DateLabel.Size = New System.Drawing.Size(87, 16)
         Me.DateLabel.TabIndex = 19
         Me.DateLabel.Text = "Date"
-        Me.DateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.DateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.DateLabel.Visible = False
         '
         'SelectionComboBox
@@ -184,7 +185,7 @@ Partial Class frmManage
         '
         'ImageFileDialog
         '
-        Me.ImageFileDialog.Filter = "(Picture | *jpg, *.jpeg, *.png)"
+        Me.ImageFileDialog.Filter = "(Picture | *jpg; *.jpeg; *.png)"
         '
         'ImageButton
         '

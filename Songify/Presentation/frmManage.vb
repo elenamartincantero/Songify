@@ -17,6 +17,7 @@
         InfoTextBox3.Text = String.Empty
         InfoTextBox3.Enabled = True
         SelectionComboBox.Text = String.Empty
+        SelectionComboBox.SelectedItem = Nothing
         DateBox.ResetText()
         ImageBox.ImageLocation = String.Empty
     End Sub
@@ -29,12 +30,8 @@
             If DataTypeComboBox.SelectedItem.ToString() = "Users" Then
                 listUser()
             ElseIf DataTypeComboBox.SelectedItem.ToString() = "Artists" Then
-                ImageButton.Visible = True
-                ImageButton.Text = "Change image"
                 listArtist()
             ElseIf DataTypeComboBox.SelectedItem.ToString() = "Albums" Then
-                ImageButton.Visible = True
-                ImageButton.Text = "Change cover"
                 listAlbum()
             ElseIf DataTypeComboBox.SelectedItem.ToString() = "Songs" Then
                 listSong()
@@ -66,6 +63,10 @@
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Artists" Then
             resetElements()
             invisibleElements()
+            ImageButton.Visible = True
+            ImageButton.Text = "Choose image"
+            ImageBox.ImageLocation = ImageFileDialog.FileName
+            ImageBox.Visible = True
             NameTextBox.Visible = True
             NameLabel.Visible = True
             InfoTextBox2.Visible = True
@@ -76,6 +77,10 @@
         ElseIf DataTypeComboBox.SelectedItem.ToString() = "Albums" Then
             resetElements()
             invisibleElements()
+            ImageButton.Visible = True
+            ImageButton.Text = "Choose cover"
+            ImageBox.ImageLocation = ImageFileDialog.FileName
+            ImageBox.Visible = True
             NameTextBox.Visible = True
             NameLabel.Visible = True
             DateBox.Visible = True
@@ -94,7 +99,7 @@
             NameLabel.Visible = True
             InfoTextBox2.Visible = True
             InfoLabel2.Visible = True
-            InfoLabel2.Text = "Length"
+            InfoLabel2.Text = "Length (in secs)"
             SelectionComboBox.Visible = True
             InfoLabel3.Visible = True
             InfoLabel3.Text = "Belonging album"
@@ -112,11 +117,12 @@
         InfoListBox.Items.Clear()
         SelectionComboBox.Items.Clear()
         SelectionComboBox.Text = String.Empty
-        ImageBox.ImageLocation = String.Empty
         ClearButton.Enabled = False
         UpdateButton.Enabled = False
         DeleteButton.Enabled = False
         DateBox.ResetText()
+        ImageFileDialog.FileName = String.Empty
+        ImageBox.Image = Nothing
     End Sub
 
     Private Sub invisibleElements()
@@ -219,7 +225,7 @@
             InfoTextBox2.Text = artistAux.aCountry
             InfoTextBox3.Text = artistAux.aImage
             ImageBox.ImageLocation = artistAux.aImage
-            ImageBox.Visible = True
+
         End If
 
     End Sub
@@ -606,5 +612,6 @@
             Me.Close()
         End If
     End Sub
+
 
 End Class

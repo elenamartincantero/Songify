@@ -21,11 +21,11 @@
                 frmMainMenu.Show()
                 Me.Close()
             Else
-                MessageBox.Show("Please, insert valid user", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                MessageBox.Show("Please, insert a valid user", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End If
 
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Catch ex As System.Data.OleDb.OleDbException
+            MessageBox.Show("Please, choose a valid database", ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End Try
 
@@ -33,7 +33,13 @@
 
     Private Sub ConnectButton_Click(sender As Object, e As EventArgs) Handles ConnectButton.Click
         user = New User()
-        Me.user.connect(ofdDB.FileName)
+        Try
+            Me.user.connect(ofdDB.FileName)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End Try
+
         Me.LoginBox.Enabled = True
 
     End Sub
