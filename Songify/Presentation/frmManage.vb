@@ -390,6 +390,8 @@
                 Exit Sub
             End Try
             Me.InfoListBox.Items.Add(Me.user.email)
+        Else
+            MessageBox.Show("Please introduce all the values", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 
@@ -408,6 +410,8 @@
             End Try
             resetElements()
             readArtists()
+        Else
+            MessageBox.Show("Please introduce all the values", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 
@@ -429,6 +433,8 @@
             resetElements()
             readAlbums()
             readArtistInAlbum()
+        Else
+            MessageBox.Show("Please introduce all the values", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 
@@ -449,6 +455,8 @@
             resetElements()
             readSongs()
             readAlbumInSong()
+        Else
+            MessageBox.Show("Please introduce all the values", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 
@@ -500,6 +508,8 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
+        Else
+            MessageBox.Show("Please introduce all the values", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 
@@ -522,6 +532,8 @@
             resetElements()
             readAlbums()
             readArtistInAlbum()
+        Else
+            MessageBox.Show("Please introduce all the values", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 
@@ -542,6 +554,8 @@
             ImageBox.ImageLocation = artistAux.aImage
             resetElements()
             readArtists()
+        Else
+            MessageBox.Show("Please introduce all the values", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 
@@ -563,6 +577,8 @@
             resetElements()
             readSongs()
             readAlbumInSong()
+        Else
+            MessageBox.Show("Please introduce all the values", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 
