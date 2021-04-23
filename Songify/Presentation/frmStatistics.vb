@@ -130,7 +130,7 @@
     Private Sub ChangeUserButton_Click(sender As Object, e As EventArgs) Handles ChangeUserButton.Click
         If MessageBox.Show("Are you sure you want to change user?", "Change user", MessageBoxButtons.YesNo) = DialogResult.Yes Then
             frmLogin.Show()
-            frmLogin.user = Me.user
+            frmLogin.user = Me.myUser
             frmLogin.LoginButton.Enabled = True
             frmLogin.ConnectButton.Enabled = False
             frmLogin.LoginBox.Enabled = True
