@@ -12,7 +12,7 @@
             Me.user = frmStatistics.myUser
         End If
 
-        LoggedUserLbl.Text = "User logged as: " + Me.user.email.ToString
+        LoggedUserLbl.Text = "User logged as: " + Me.user.email.Replace("''", "'")
     End Sub
 
     Private Sub ChangeUserButton_Click(sender As Object, e As EventArgs) Handles ChangeUserButton.Click

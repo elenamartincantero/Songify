@@ -104,12 +104,6 @@
     <Compile Include="Persistence\DBBroker.vb" />
     <Compile Include="Persistence\SongDAO.vb" />
     <Compile Include="Persistence\UserDAO.vb" />
-    <Compile Include="Presentation\frmDate.Designer.vb">
-      <DependentUpon>frmDate.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\frmDate.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Presentation\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -147,9 +141,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\frmDate.resx">
-      <DependentUpon>frmDate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>

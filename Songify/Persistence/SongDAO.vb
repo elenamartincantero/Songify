@@ -57,7 +57,7 @@
         col = DBBroker.GetBroker().Read("SELECT * FROM PLAYBACKS WHERE song=" & s.idSong & ";")
 
         For Each aux In col
-            txt += aux(2).ToString + " played it on " + aux(4).ToString + vbCrLf
+            txt += aux(2).ToString + " played it on " + CDate(aux(4).ToString).ToShortDateString + vbCrLf
         Next
         Return txt
     End Function

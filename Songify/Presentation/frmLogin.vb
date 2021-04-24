@@ -4,6 +4,7 @@
     Private Sub DatabaseButton_Click(sender As Object, e As EventArgs) Handles DatabaseButton.Click
         If Me.ofdDB.ShowDialog = DialogResult.OK Then
             ConnectButton.Enabled = True
+            LoginButton.Enabled = False
         End If
 
     End Sub

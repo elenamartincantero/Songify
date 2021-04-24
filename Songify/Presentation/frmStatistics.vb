@@ -29,6 +29,7 @@
         ComboBoxCountry.Visible = True
         Dim text As String
         Me.artist = New Artist
+        Me.artist.ArtistDAO.artistsSortedCol.Clear()
         Try
             If ComboBoxCountry.SelectedItem Is Nothing Then
                 artist.artistsSorted(String.Empty)
@@ -49,6 +50,7 @@
         resetElements()
         ListBox1.Items.Clear()
         Me.song = New Song
+        Me.song.SongDAO.sortedSongs.Clear()
         Dim text As String
         Try
             song.songsSorted()
@@ -75,6 +77,7 @@
         ListBox1.Items.Clear()
         resetElements()
         Dim text As String
+        Me.myUser.UserDAO.usersByTime.Clear()
         Try
             myUser.usersSortedByTime()
         Catch ex As Exception
@@ -90,6 +93,7 @@
         Dim text As String
         ListBox1.Items.Clear()
         resetElements()
+        Me.myUser.UserDAO.playbacksFav.Clear()
         Try
             myUser.playbackFavArtists()
         Catch ex As Exception
@@ -104,8 +108,10 @@
 
 
     Private Sub ButtoAccp_Click(sender As Object, e As EventArgs) Handles ButtoAccp.Click
+        resetElements()
         If BeginDate.Value.Date <= EndDate.Value.Date Then
             Dim text As String
+            Me.myUser.UserDAO.artistsMostListened.Clear()
             Try
                 Me.myUser.readArtistsMostListened(BeginDate.Value.Date, EndDate.Value.Date)
             Catch ex As Exception
@@ -115,6 +121,9 @@
             For Each text In Me.myUser.UserDAO.artistsMostListened
                 Me.ListBox1.Items.Add(text)
             Next
+        Else
+
+            MessageBox.Show("Please, check the dates", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 

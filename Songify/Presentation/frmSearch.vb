@@ -14,6 +14,7 @@ Public Class frmSearch
     Private Sub List_SelectedIndexChanged(sender As Object, e As EventArgs) Handles List.SelectedIndexChanged
         If List.SelectedItem IsNot Nothing Then
             AlbumList.Items.Clear()
+            SongList.Items.Clear()
             Me.artist = CType(Me.allArtists(List.SelectedIndex + 1), Artist)
             Me.artist.aAlbums.Clear()
             If Me.myUser.fav_artists.Contains(Me.artist.idArtist.ToString) Then
@@ -54,7 +55,7 @@ Public Class frmSearch
             Exit Sub
         End Try
         For Each artistAux In Me.artist.ArtistDAO.allArtists
-            Me.List.Items.Add(artistAux.aName)
+            Me.List.Items.Add(artistAux.aName.Replace("''", "'"))
             Me.allArtists.Add(artistAux)
         Next
     End Sub
@@ -69,13 +70,14 @@ Public Class frmSearch
         End Try
 
         For Each albumAux In Me.artist.aAlbums
-            Me.AlbumList.Items.Add(albumAux.aName)
+            Me.AlbumList.Items.Add(albumAux.aName.Replace("''", "'"))
         Next
         InfoLabel.Text = "Info album"
     End Sub
     Private Sub readSongs()
         Dim songAux As Song = New Song
         Me.album = CType(Me.artist.aAlbums(AlbumList.SelectedIndex + 1), Album)
+        Me.album.aSongs.Clear()
         Try
             Me.album.readAlbum()
             Me.album.readMySongs()
@@ -85,7 +87,7 @@ Public Class frmSearch
         End Try
 
         For Each songAux In Me.album.aSongs
-            Me.SongList.Items.Add(songAux.sName)
+            Me.SongList.Items.Add(songAux.sName.Replace("''", "'"))
         Next
     End Sub
 
@@ -201,7 +203,7 @@ Public Class frmSearch
     Private Sub HistoryButton_Click(sender As Object, e As EventArgs) Handles HistoryButton.Click
         If SongList.SelectedItem.ToString IsNot String.Empty Then
             Dim txt As String
-            Dim songAux As Song = CType(Me.album.aSongs(List.SelectedIndex + 1), Song)
+            Dim songAux As Song = CType(Me.album.aSongs(SongList.SelectedIndex + 1), Song)
             Try
                 txt = song.readPlayblacks()
             Catch ex As Exception

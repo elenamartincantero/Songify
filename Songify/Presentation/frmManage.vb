@@ -148,7 +148,7 @@
             Exit Sub
         End Try
         For Each uAux In Me.user.UserDAO.allUsers
-            Me.InfoListBox.Items.Add(uAux.email)
+            Me.InfoListBox.Items.Add(uAux.email.Replace("''", "'"))
         Next
     End Sub
 
@@ -162,7 +162,7 @@
             Exit Sub
         End Try
         For Each artistAux In Me.artist.ArtistDAO.allArtists
-            Me.InfoListBox.Items.Add(artistAux.aName)
+            Me.InfoListBox.Items.Add(artistAux.aName.Replace("''", "'"))
         Next
     End Sub
 
@@ -176,7 +176,7 @@
             Exit Sub
         End Try
         For Each songAux In Me.song.SongDAO.allSongs
-            Me.InfoListBox.Items.Add(songAux.sName)
+            Me.InfoListBox.Items.Add(songAux.sName.Replace("''", "'"))
         Next
     End Sub
 
@@ -190,7 +190,7 @@
             Exit Sub
         End Try
         For Each albumAux In Me.album.AlbumDAO.allAlbums
-            Me.InfoListBox.Items.Add(albumAux.aName)
+            Me.InfoListBox.Items.Add(albumAux.aName.Replace("''", "'"))
         Next
     End Sub
 
@@ -204,8 +204,8 @@
                 Exit Sub
             End Try
             InfoTextBox3.Enabled = False
-            NameTextBox.Text = Me.user.uName
-            InfoTextBox2.Text = Me.user.uSurname
+            NameTextBox.Text = Me.user.uName.Replace("''", "'")
+            InfoTextBox2.Text = Me.user.uSurname.Replace("''", "'")
             InfoTextBox3.Text = Me.user.email
             DateBox.Value = Me.user.birthday
         End If
@@ -221,8 +221,8 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            NameTextBox.Text = artistAux.aName
-            InfoTextBox2.Text = artistAux.aCountry
+            NameTextBox.Text = artistAux.aName.Replace("''", "'")
+            InfoTextBox2.Text = artistAux.aCountry.Replace("''", "'")
             InfoTextBox3.Text = artistAux.aImage
             ImageBox.ImageLocation = artistAux.aImage
 
@@ -239,12 +239,11 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            NameTextBox.Text = albumAux.aName
-            InfoTextBox2.Text = albumAux.aCover
+            NameTextBox.Text = albumAux.aName.Replace("''", "'")
             DateBox.Value = albumAux.aReleaseDate
             ImageBox.ImageLocation = albumAux.aCover
             ImageBox.Visible = True
-            SelectionComboBox.SelectedItem = albumAux.aArtist.aName.ToString
+            SelectionComboBox.SelectedItem = albumAux.aArtist.aName.Replace("''", "'")
         End If
 
 
@@ -261,9 +260,9 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End Try
-            NameTextBox.Text = songAux.sName
+            NameTextBox.Text = songAux.sName.Replace("''", "'")
             InfoTextBox2.Text = songAux.sLength.ToString
-            SelectionComboBox.SelectedItem = songAux.sAlbum.aName
+            SelectionComboBox.SelectedItem = songAux.sAlbum.aName.Replace("''", "'")
         End If
 
     End Sub
@@ -384,8 +383,8 @@
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
                 InfoTextBox3.Text IsNot String.Empty Then
             Me.user = New User(InfoTextBox3.Text)
-            Me.user.uName = NameTextBox.Text
-            Me.user.uSurname = InfoTextBox2.Text
+            Me.user.uName = NameTextBox.Text.Replace("'", "''")
+            Me.user.uSurname = InfoTextBox2.Text.Replace("'", "''")
             Me.user.birthday = Date.Parse(DateBox.Value.ToShortDateString)
             Try
                 If Me.user.insertUser() <> 1 Then
@@ -404,7 +403,7 @@
     Private Sub insertArtist()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
             Dim artistAux As Artist = New Artist(NameTextBox.Text)
-            artistAux.aCountry = InfoTextBox2.Text
+            artistAux.aCountry = InfoTextBox2.Text.Replace("'", "''")
             artistAux.aImage = ImageFileDialog.FileName
             Try
                 If artistAux.insertArtist() <> 1 Then
@@ -447,7 +446,13 @@
     Private Sub insertSong()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
             Dim songAux As Song = New Song(NameTextBox.Text)
-            songAux.sLength = Integer.Parse(InfoTextBox2.Text)
+            Try
+                songAux.sLength = Integer.Parse(InfoTextBox2.Text)
+            Catch ex As Exception
+                MessageBox.Show("Please introduce a number in length box", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+
             Dim album As Album = CType(Me.album.AlbumDAO.allAlbums(SelectionComboBox.SelectedIndex + 1), Album)
             songAux.sAlbum = album
             Try
@@ -476,7 +481,7 @@
             Exit Sub
         End Try
         For Each artistAux In Me.artist.ArtistDAO.allArtists()
-            Me.SelectionComboBox.Items.Add(artistAux.aName.ToString)
+            Me.SelectionComboBox.Items.Add(artistAux.aName.Replace("''", "'"))
         Next
     End Sub
 
@@ -490,7 +495,8 @@
             Exit Sub
         End Try
         For Each albumAux In Me.album.AlbumDAO.allAlbums()
-            Me.SelectionComboBox.Items.Add(albumAux.aName.ToString)
+
+            Me.SelectionComboBox.Items.Add(albumAux.aName.Replace("''", "'"))
         Next
     End Sub
 
@@ -503,8 +509,8 @@
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And
                 InfoTextBox3.Text IsNot String.Empty Then
             userAux = New User(InfoTextBox3.Text)
-            userAux.uName = NameTextBox.Text
-            userAux.uSurname = InfoTextBox2.Text
+            userAux.uName = NameTextBox.Text.Replace("'", "''")
+            userAux.uSurname = InfoTextBox2.Text.Replace("'", "''")
             userAux.birthday = Date.Parse(DateBox.Value.ToShortDateString)
             Try
                 If userAux.updateUser() <> 1 Then
@@ -522,7 +528,7 @@
     Private Sub updateAlbum()
         If NameTextBox.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
             Dim albumAux As Album = CType(Me.album.AlbumDAO.allAlbums(InfoListBox.SelectedIndex + 1), Album)
-            albumAux.aName = NameTextBox.Text
+            albumAux.aName = NameTextBox.Text.Replace("'", "''")
             albumAux.aCover = ImageFileDialog.FileName
             Dim artist As Artist = CType(Me.artist.ArtistDAO.allArtists(SelectionComboBox.SelectedIndex + 1), Artist)
             albumAux.aArtist = artist
@@ -546,8 +552,8 @@
     Private Sub updateArtist()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty Then
             Dim artistAux As Artist = CType(Me.artist.ArtistDAO.allArtists(InfoListBox.SelectedIndex + 1), Artist)
-            artistAux.aName = NameTextBox.Text
-            artistAux.aCountry = InfoTextBox2.Text
+            artistAux.aName = NameTextBox.Text.Replace("'", "''")
+            artistAux.aCountry = InfoTextBox2.Text.Replace("'", "''")
             artistAux.aImage = ImageFileDialog.FileName.ToString
             Try
                 If artistAux.updateArtist() <> 1 Then
@@ -568,8 +574,13 @@
     Private Sub updateSong()
         If NameTextBox.Text IsNot String.Empty And InfoTextBox2.Text IsNot String.Empty And SelectionComboBox.SelectedItem IsNot Nothing Then
             Dim songAux As Song = CType(Me.song.SongDAO.allSongs(InfoListBox.SelectedIndex + 1), Song)
-            songAux.sName = NameTextBox.Text
-            songAux.sLength = Integer.Parse(InfoTextBox2.Text)
+            songAux.sName = NameTextBox.Text.Replace("'", "''")
+            Try
+                songAux.sLength = Integer.Parse(InfoTextBox2.Text)
+            Catch ex As Exception
+                MessageBox.Show("Please introduce a number in length box", "Custom Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            End Try
+
             Dim album As Album = CType(Me.album.AlbumDAO.allAlbums(SelectionComboBox.SelectedIndex + 1), Album)
             songAux.sAlbum = album
             Try

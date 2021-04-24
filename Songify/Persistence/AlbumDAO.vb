@@ -68,6 +68,7 @@
         Return min.ToString() & ":" & seg.ToString()
     End Function
     Public Sub calculateTotalLength(ByRef a As Album)
+        a.aLength = 0
         Dim song As Song
         For Each song In a.aSongs
             a.aLength += song.sLength

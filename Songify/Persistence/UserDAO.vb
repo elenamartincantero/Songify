@@ -76,7 +76,7 @@
     End Sub
     Public Sub playbackFavArtists(u As User)
         Dim col As Collection : Dim aux As Collection
-        col = DBBroker.GetBroker().Read("select a.aName, sum(s.length) from artists a, songs s, albums al, playbacks p where (a.IdArtist in (select artist from fav_artists where user like '" & u.email & "')) and s.IdSong = p.song and s.album = al.IdAlbum and al.artist = a.IdArtist group by a.aName;")
+        col = DBBroker.GetBroker().Read("select a.aName, sum(s.length) from artists a, songs s, albums al, playbacks p where a.IdArtist in (select artist from fav_artists where user= '" & u.email & "') and p.user = '" & u.email & "'and s.IdSong = p.song and s.album = al.IdAlbum and al.artist = a.IdArtist group by a.aName;")
         For Each aux In col
             playbacksFav.Add(aux(1).ToString & ": " & aux(2).ToString & " seconds")
         Next

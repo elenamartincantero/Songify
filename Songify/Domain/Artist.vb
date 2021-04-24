@@ -12,13 +12,13 @@
     End Sub
     Public Sub New(id As Integer, name As String)
         Me.ArtistDAO = New ArtistDAO
-        Me.aName = name
+        Me.aName = name.Replace("'", "''")
         Me.idArtist = id
         Me.aAlbums = New Collection
     End Sub
     Public Sub New(name As String)
         Me.ArtistDAO = New ArtistDAO
-        Me.aName = name
+        Me.aName = name.Replace("'", "''")
         Me.aAlbums = New Collection
     End Sub
 

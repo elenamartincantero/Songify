@@ -11,7 +11,7 @@
     End Sub
     Public Sub New(email As String)
         Me.UserDAO = New UserDAO
-        Me.email = email
+        Me.email = email.Replace("'", "''")
         Me.fav_artists = New Collection
     End Sub
 

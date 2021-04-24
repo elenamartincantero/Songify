@@ -16,13 +16,13 @@
 
     Public Sub New(albumID As Integer, name As String)
         Me.AlbumDAO = New AlbumDAO
-        Me.aName = name
+        Me.aName = name.Replace("'", "''")
         Me.idAlbum = albumID
         Me.aSongs = New Collection
     End Sub
     Public Sub New(aName As String)
         Me.AlbumDAO = New AlbumDAO
-        Me.aName = aName
+        Me.aName = aName.Replace("'", "''")
         Me.aSongs = New Collection
     End Sub
     Public Sub readAllAlbums()
