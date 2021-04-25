@@ -103,9 +103,9 @@ Public Class frmSearch
         Me.Label1.Text = "Title"
         Me.Label2.Text = "Duration"
         Me.Label3.Text = "Album"
-        Me.Label9.Text = Me.song.sName
+        Me.Label9.Text = Me.song.sName.Replace("''", "'")
         Me.Label10.Text = Me.song.convertLength
-        Me.Label11.Text = Me.song.sAlbum.aName
+        Me.Label11.Text = Me.song.sAlbum.aName.Replace("''", "'")
 
         Me.InfoLabel.Visible = True
         Me.Label1.Visible = True
@@ -131,10 +131,10 @@ Public Class frmSearch
         Me.Label3.Text = "Total length"
         Me.Label4.Text = "Artist"
         Me.Label5.Text = "Cover"
-        Me.Label9.Text = Me.album.aName
+        Me.Label9.Text = Me.album.aName.Replace("''", "'")
         Me.Label10.Text = Me.album.aReleaseDate.ToShortDateString
         Me.Label11.Text = Me.album.convertLength()
-        Me.Label12.Text = Me.album.aArtist.aName
+        Me.Label12.Text = Me.album.aArtist.aName.Replace("''", "'")
         Me.PictureBox1.ImageLocation = Me.album.aCover
 
         Me.InfoLabel.Visible = True
@@ -156,8 +156,8 @@ Public Class frmSearch
         Me.Label1.Text = "Name"
         Me.Label2.Text = "Country"
         Me.Label5.Text = "Image"
-        Me.Label9.Text = Me.artist.aName
-        Me.Label10.Text = Me.artist.aCountry
+        Me.Label9.Text = Me.artist.aName.Replace("''", "'")
+        Me.Label10.Text = Me.artist.aCountry.Replace("''", "'")
         Me.PictureBox1.ImageLocation = Me.artist.aImage
 
         Me.InfoLabel.Visible = True
